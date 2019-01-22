@@ -8,11 +8,11 @@ import android.os.Handler;
 
 
 public class SplashScreen extends Activity {
-   private static int SPLASH_TIME_OUT = 3000;
+   private static int SPLASH_TIME_OUT = 3000000;
    protected void onCreate(Bundle savedInstanceState){
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_splash);
-      new android.os.Handler().postDelayed(new Runnable() {
+      new Handler().postDelayed(new Runnable() {
           @Override
           public void run() {
               Intent i = new Intent(SplashScreen.this, MainActivity.class);
