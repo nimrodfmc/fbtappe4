@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        //Définition de l'image d'entrée en mode portrait, sans titre, donc full écran,
+        //elle joue le role principal dans l'appli et se lancera des le demarage
+
+        <activity android:name="SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                </intent-filter>
+        </activity>
     </application>
 
 </manifest>
