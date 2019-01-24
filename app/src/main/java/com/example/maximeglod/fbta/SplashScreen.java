@@ -5,12 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.maximeglod.fbta.R;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int SPLASH_TIME = 5000; //Environ 5 secondes
+
+    private static int SPLASH_TIME = 4000; //Environ 4 secondes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +32,12 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
+
         //Code qui commence avec le timer et lance les actions ensuite
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 //On change de page
                 Intent mySuperIntent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(mySuperIntent);
@@ -39,4 +49,5 @@ public class SplashScreen extends AppCompatActivity {
             }
         }, SPLASH_TIME);
     }
+
 }
