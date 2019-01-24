@@ -12,9 +12,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:background="@android:color/background_dark"
         app:srcCompat="@drawable/splash" />
 
+    <ProgressBar
+        android:id="@+id/progressBar_cyclic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="127dp"
+        android:indeterminate="true"
+        android:minWidth="50dp"
+        android:minHeight="50dp" />
 
 </RelativeLayout>
