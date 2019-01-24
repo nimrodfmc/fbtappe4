@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         tv_taille = (TextView) findViewById(R.id.tvTaille);
         tv_sexe = (TextView) findViewById(R.id.tvSexe);
         tv_sport = (TextView) findViewById(R.id.tvSport);
-
         et_age = (EditText) findViewById(R.id.etAge);
         et_nom = (EditText) findViewById(R.id.etNom);
         et_objectif = (EditText) findViewById(R.id.etObjectif);
