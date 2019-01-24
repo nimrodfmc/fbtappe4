@@ -4,9 +4,13 @@
     <string name="tvTaille">Taille</string>
     <string name="tvNom">Nom</string>
     <string name="tvPrenom">Prénom</string>
-    <string name="tvAge">Age</string>
+    <string name="tvAge">Naissance</string>
     <string name="tvSexe">Sexe</string>
     <string name="tvSport">Activité Sportive</string>
     <string name="tvObjectif">Objectif de poids</string>
     <string name="btnProfil">Valider</string>
+    <string name="tv_identification">Identification</string>
+    <string name="cbSexe1">Homme</string>
+    <string name="cbSexe2">Femme</string>
+    <string name="cbSexe3">Ambigu</string>
 </resources>
