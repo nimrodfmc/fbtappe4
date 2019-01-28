@@ -13,4 +13,5 @@
     <string name="cbSexe1">Homme</string>
     <string name="cbSexe2">Femme</string>
     <string name="cbSexe3">Ambigu</string>
+    <string name="btn_inscrire">S\'inscrire</string>
 </resources>
