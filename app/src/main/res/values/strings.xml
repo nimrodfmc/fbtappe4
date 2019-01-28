@@ -9,4 +9,6 @@
     <string name="tvSport">Activité Sportive</string>
     <string name="tvObjectif">Objectif de poids</string>
     <string name="btnProfil">Valider</string>
+    <string name="nom_de_l_aliment">Nom de l\'aliment</string>
+    <string name="calories">Calories</string>
 </resources>
