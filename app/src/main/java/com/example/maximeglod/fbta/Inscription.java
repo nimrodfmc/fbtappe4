@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Inscription extends AppCompatActivity {
-    TextView tv_prenom, tv_nom, tv_naissance, tv_taille, tv_poids, tv_objectif;
+    TextView tv_prenom, tv_nom, tv_naissance, tv_taille, tv_poids, tv_objectif, tv_sexe, tv_activite;
     Button btn_inscrire;
 
     @Override
@@ -19,18 +19,22 @@ public class Inscription extends AppCompatActivity {
         tv_taille = (TextView) findViewById(R.id.tvTaille);
         tv_poids = (TextView) findViewById(R.id.tvPoids);
         tv_objectif = (TextView) findViewById(R.id.tvObjectif);
+        tv_sexe = (TextView) findViewById(R.id.tvSexe);
+        tv_activite = (TextView) findViewById(R.id.tvSport);
         btn_inscrire = (Button) findViewById(R.id.btn_inscrire);
         String lePrenom = getIntent().getStringExtra("Prénom");
         String leNom = getIntent().getStringExtra("Nom");
         String laNaissance = getIntent().getStringExtra("Naissance");
         String laTaille = getIntent().getStringExtra("Taille");
         String lePoids = getIntent().getStringExtra("Poids");
+        String lActivite = getIntent().getStringExtra("Activité sportive");
         String lObjectif = getIntent().getStringExtra("Objectif de poids");
         tv_prenom.setText("Prénom : " + lePrenom);
         tv_nom.setText("Nom : " + leNom);
         tv_naissance.setText("Date de naissance : " + laNaissance);
         tv_taille.setText("Taille : " + laTaille);
         tv_poids.setText("Poids : " + lePoids);
+        tv_activite.setText("Activité Sportive : " + lActivite);
         tv_objectif.setText("Objectif : " + lObjectif);
     }
 }

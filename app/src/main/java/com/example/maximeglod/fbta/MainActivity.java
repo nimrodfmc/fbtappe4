@@ -10,7 +10,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     Button bt_valider;
     CheckBox cb_sexe1, cb_sexe2, cb_sexe3;
     Spinner spinner;
+
+    String sexe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +63,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), et_prenom.getText().toString() + " " + et_nom.getText().toString() + " enregistré", Toast.LENGTH_LONG).show();
                 Intent i = new Intent(getApplicationContext(), Inscription.class);
                 i.putExtra("Prénom", et_prenom.getText().toString());
                 i.putExtra("Nom", et_nom.getText().toString());
                 i.putExtra("Naissance", et_age.getText().toString());
                 i.putExtra("Taille", et_taille.getText().toString());
                 i.putExtra("Poids", et_poids.getText().toString());
+                i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
                 i.putExtra("Objectif de poids", et_objectif.getText().toString());
                 startActivity(i);
             }
