@@ -25,6 +25,7 @@ public class Inscription extends AppCompatActivity {
         String lePrenom = getIntent().getStringExtra("Prénom");
         String leNom = getIntent().getStringExtra("Nom");
         String laNaissance = getIntent().getStringExtra("Naissance");
+        String leSexe = getIntent().getStringExtra("Sexe");
         String laTaille = getIntent().getStringExtra("Taille");
         String lePoids = getIntent().getStringExtra("Poids");
         String lActivite = getIntent().getStringExtra("Activité sportive");
@@ -32,6 +33,7 @@ public class Inscription extends AppCompatActivity {
         tv_prenom.setText("Prénom : " + lePrenom);
         tv_nom.setText("Nom : " + leNom);
         tv_naissance.setText("Date de naissance : " + laNaissance);
+        tv_sexe.setText("Sexe : " + leSexe);
         tv_taille.setText("Taille : " + laTaille);
         tv_poids.setText("Poids : " + lePoids);
         tv_activite.setText("Activité Sportive : " + lActivite);

@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -19,10 +20,11 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_poids, tv_taille, tv_nom, tv_age, tv_sexe, tv_sport, tv_objectif, tv_prenom;
     EditText et_poids, et_taille, et_nom, et_age, et_objectif, et_prenom;
     Button bt_valider;
-    CheckBox cb_sexe1, cb_sexe2, cb_sexe3;
+    RadioGroup rd_groupe;
+    RadioButton rbt_homme, rbt_femme;
     Spinner spinner;
-
-    String sexe;
+    String[] sexe={"Homme","Femme"};
+    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +46,15 @@ public class MainActivity extends AppCompatActivity {
         et_prenom = (EditText) findViewById(R.id.etPrenom);
         et_taille = (EditText) findViewById(R.id.etTaille);
 
-        cb_sexe1 = (CheckBox) findViewById(R.id.cbSexe1);
-        cb_sexe2 = (CheckBox) findViewById(R.id.cbSexe2);
-        cb_sexe3 = (CheckBox) findViewById(R.id.cbSexe3);
+        rd_groupe = (RadioGroup) findViewById(R.id.rdGrp);
+        rbt_homme = (RadioButton) findViewById(R.id.rbtnHomme);
+        if (rbt_homme.isChecked()) {
+            s = sexe[0];
+        }
+        else {
+            s = sexe[1];
+        }
+        rbt_femme = (RadioButton) findViewById(R.id.rbtnFemme);
 
         spinner = (Spinner) findViewById(R.id.spinner);
         List liste = new ArrayList();
@@ -67,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("Prénom", et_prenom.getText().toString());
                 i.putExtra("Nom", et_nom.getText().toString());
                 i.putExtra("Naissance", et_age.getText().toString());
+                i.putExtra("Sexe", s);
                 i.putExtra("Taille", et_taille.getText().toString());
                 i.putExtra("Poids", et_poids.getText().toString());
                 i.putExtra("Activité sportive", spinner.getSelectedItem().toString());

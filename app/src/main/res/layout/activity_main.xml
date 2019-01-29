@@ -10,94 +10,80 @@
         android:id="@+id/tvPoids"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/tvPoids"
-        app:layout_constraintBottom_toBottomOf="@+id/etPoids"
-        app:layout_constraintEnd_toStartOf="@+id/etPoids"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etPoids" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvSport"
+        app:layout_constraintStart_toStartOf="@+id/tvSport"
+        app:layout_constraintTop_toBottomOf="@+id/tvTaille"
+        app:layout_constraintVertical_bias="0.122" />
 
     <TextView
         android:id="@+id/tvTaille"
         android:layout_width="wrap_content"
         android:layout_height="15dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/tvTaille"
-        app:layout_constraintBottom_toBottomOf="@+id/etTaille"
-        app:layout_constraintEnd_toStartOf="@+id/etTaille"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etTaille" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvPoids"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvPoids"
+        app:layout_constraintTop_toBottomOf="@+id/tvSexe"
+        app:layout_constraintVertical_bias="0.005" />
 
     <TextView
         android:id="@+id/tvNom"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/tvNom"
-        app:layout_constraintBottom_toBottomOf="@+id/etNom"
-        app:layout_constraintEnd_toStartOf="@+id/etNom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etNom" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvAge"
+        app:layout_constraintStart_toStartOf="@+id/tvAge"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrenom"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="72dp"
         android:layout_marginBottom="8dp"
         android:text="@string/tvAge"
-        app:layout_constraintBottom_toTopOf="@+id/tvSexe"
-        app:layout_constraintEnd_toStartOf="@+id/etTaille"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvSexe"
+        app:layout_constraintStart_toStartOf="@+id/tvSexe"
+        app:layout_constraintTop_toBottomOf="@+id/tvNom"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvSexe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/tvSexe"
-        app:layout_constraintBottom_toBottomOf="@+id/cbSexe1"
-        app:layout_constraintEnd_toStartOf="@+id/cbSexe1"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cbSexe1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvTaille"
+        app:layout_constraintStart_toStartOf="@+id/tvTaille"
+        app:layout_constraintTop_toBottomOf="@+id/tvAge"
+        app:layout_constraintVertical_bias="0.009" />
 
     <TextView
         android:id="@+id/tvSport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/tvSport"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvObjectif"
+        app:layout_constraintStart_toStartOf="@+id/tvObjectif"
         app:layout_constraintTop_toBottomOf="@+id/etPoids"
-        app:layout_constraintVertical_bias="0.088" />
+        app:layout_constraintVertical_bias="0.147" />
 
     <TextView
         android:id="@+id/tvObjectif"
@@ -105,71 +91,63 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/tvObjectif"
-        app:layout_constraintBottom_toBottomOf="@+id/etObjectif"
-        app:layout_constraintEnd_toStartOf="@+id/etObjectif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnProfil"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etObjectif" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSport"
+        app:layout_constraintVertical_bias="0.386" />
 
     <EditText
         android:id="@+id/etPoids"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPoids"
         app:layout_constraintEnd_toEndOf="@+id/etObjectif"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etObjectif"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintTop_toTopOf="@+id/tvPoids" />
 
     <EditText
         android:id="@+id/etTaille"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etPoids"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTaille"
         app:layout_constraintEnd_toEndOf="@+id/etPoids"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etPoids"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintTop_toTopOf="@+id/tvTaille" />
 
     <EditText
         android:id="@+id/etNom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/tvAge"
-        app:layout_constraintEnd_toEndOf="@+id/etTaille"
-        app:layout_constraintStart_toStartOf="@+id/etTaille"
-        app:layout_constraintTop_toBottomOf="@+id/etPrenom" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvNom"
+        app:layout_constraintEnd_toEndOf="@+id/etAge"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etAge"
+        app:layout_constraintTop_toTopOf="@+id/tvNom"
+        app:layout_constraintVertical_bias="0.346" />
 
     <EditText
         android:id="@+id/etPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPrenom"
         app:layout_constraintEnd_toEndOf="@+id/etNom"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etNom"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintTop_toTopOf="@+id/tvPrenom" />
 
     <EditText
         android:id="@+id/etObjectif"
@@ -177,32 +155,27 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btnProfil"
+        app:layout_constraintBottom_toBottomOf="@+id/tvObjectif"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
+        app:layout_constraintStart_toStartOf="@+id/btnProfil"
+        app:layout_constraintTop_toTopOf="@+id/tvObjectif" />
 
     <TextView
         android:id="@+id/tvPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/tvPrenom"
-        app:layout_constraintBottom_toBottomOf="@+id/etPrenom"
-        app:layout_constraintEnd_toStartOf="@+id/etPrenom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etPrenom" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvNom"
+        app:layout_constraintStart_toStartOf="@+id/tvNom"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnProfil"
@@ -217,83 +190,54 @@
         android:text="@string/btnProfil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.967" />
-
-    <CheckBox
-        android:id="@+id/cbSexe1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/cbSexe1"
-        app:layout_constraintBottom_toTopOf="@+id/etTaille"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
-
-    <CheckBox
-        android:id="@+id/cbSexe2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/cbSexe2"
-        app:layout_constraintBottom_toBottomOf="@+id/cbSexe1"
-        app:layout_constraintEnd_toStartOf="@+id/cbSexe3"
-        app:layout_constraintStart_toEndOf="@+id/cbSexe1"
-        app:layout_constraintTop_toTopOf="@+id/cbSexe1" />
-
-    <CheckBox
-        android:id="@+id/cbSexe3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/cbSexe3"
-        app:layout_constraintBottom_toBottomOf="@+id/cbSexe2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cbSexe2" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/etObjectif"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSport"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintVertical_bias="0.048"
+        tools:layout_editor_absoluteX="8dp" />
 
     <EditText
         android:id="@+id/etAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="JJ/MM/AAAA"
-        app:layout_constraintBottom_toTopOf="@+id/cbSexe3"
-        app:layout_constraintEnd_toEndOf="@+id/etNom"
-        app:layout_constraintStart_toStartOf="@+id/etNom"
-        app:layout_constraintTop_toBottomOf="@+id/etNom" />
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAge"
+        app:layout_constraintEnd_toEndOf="@+id/etTaille"
+        app:layout_constraintStart_toStartOf="@+id/etTaille"
+        app:layout_constraintTop_toTopOf="@+id/tvAge" />
+
+    <RadioGroup
+        android:id="@+id/rdGrp"
+        android:layout_width="212dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSexe"
+        app:layout_constraintEnd_toEndOf="@+id/etTaille"
+        app:layout_constraintStart_toStartOf="@+id/etTaille"
+        app:layout_constraintTop_toTopOf="@+id/tvSexe">
+
+        <RadioButton
+            android:id="@+id/rbtnHomme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cbSexe1" />
+
+        <RadioButton
+            android:id="@+id/rbtnFemme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cbSexe2" />
+    </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>
