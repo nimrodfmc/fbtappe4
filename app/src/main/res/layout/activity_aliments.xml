@@ -10,20 +10,21 @@
     <GridView
 
         android:id="@+id/gridView"
-        android:layout_width="395dp"
-        android:layout_height="499dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp"
+        android:clickable="false"
         android:columnWidth="120dp"
         android:gravity="center"
         android:listSelector="@drawable/list_selector"
         android:numColumns="1"
+        android:verticalSpacing="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:verticalSpacing="20dp"
-        android:clickable="false" />
+        app:layout_constraintVertical_bias="0.719" />
 
 </android.support.constraint.ConstraintLayout>

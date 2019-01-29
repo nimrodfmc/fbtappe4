@@ -1,16 +1,20 @@
 package com.example.maximeglod.fbta;
 
 import android.content.Context;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Map;
+
 public class CustomGridAdapter extends BaseAdapter {
 
     private List<Aliments> listData;
@@ -22,6 +26,8 @@ public class CustomGridAdapter extends BaseAdapter {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
     }
+
+
 
     @Override
     public int getCount() {
@@ -42,12 +48,19 @@ public class CustomGridAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
+            //On récupère les éléments de notre vue
             convertView = layoutInflater.inflate(R.layout.grid_item_layout, null);
             holder = new ViewHolder();
             holder.imagealimentsView = (ImageView) convertView.findViewById(R.id.imageView_imagealiments);
             holder.alimentsNameView = (TextView) convertView.findViewById(R.id.textView_alimentsName);
             holder.caloriesView = (TextView) convertView.findViewById(R.id.textView_calories);
             holder.qteView = (TextView) convertView.findViewById(R.id.textView_qte);
+            ImageView add = (ImageView) convertView.findViewById(R.id.imageView_add);
+            ImageView rm = (ImageView) convertView.findViewById(R.id.imageView_rm);
+
+            add.setTag(position);
+            rm.setTag(position);
+            holder.qteView.setTag(position);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -77,5 +90,6 @@ public class CustomGridAdapter extends BaseAdapter {
         TextView caloriesView;
         TextView qteView;
     }
+
 }
 
