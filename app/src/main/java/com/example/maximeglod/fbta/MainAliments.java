@@ -10,13 +10,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.ImageView;
 
 public class MainAliments extends AppCompatActivity {
+//    private ListView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class MainAliments extends AppCompatActivity {
         });
 
     }
+
 
     private List<Aliments> getListData() {
         List<Aliments> list = new ArrayList<Aliments>();
@@ -154,7 +159,7 @@ public class MainAliments extends AppCompatActivity {
         Aliments cresson = new Aliments("Cresson","cresson",10);
         Aliments crevette = new Aliments("Crevette","crevette",10);
         Aliments croissant = new Aliments("Croissant","croissant",10);
-        Aliments cuissedegrnouille = new Aliments("Cuisse de grnouille","cuissedegrnouille",10);
+        Aliments cuissedegrnouille = new Aliments("Cuisse de grenouille","cuissedegrnouille",10);
         Aliments cuissepouletroti = new Aliments("Cuisse poulet rôti","cuissepouletroti",10);
         Aliments cumin = new Aliments("Cumin","cumin",10);
         Aliments curry = new Aliments("Curry","curry",10);
@@ -852,6 +857,57 @@ public class MainAliments extends AppCompatActivity {
 
 
         return list;
+    }
+
+    public void add(View v) {
+        ImageView add = (ImageView) v;
+        //on récupère la position à l'aide du tag défini dans la class
+
+//      int position2 = Integer.parseInt(add.getTag().toString());
+//    View parentRow = (View) v.getParent();
+//    GridView listView = (GridView) parentRow.getParent();
+//    final int position = listView.getPositionForView(parentRow);
+
+        //On change la couleur
+        if (add.isClickable()) {
+
+            TextView qte = this.findViewById(R.id.textView_qte);
+            // TextView qte = (TextView) findViewById(R.id.textView_qte);
+
+
+            int qte2=Integer.parseInt(qte.getText().toString())+1;
+            qte.setText(Integer.toString(qte2));
+
+
+            //Toast.makeText(getApplicationContext(),add.getTag().toString(),Toast.LENGTH_LONG).show();
+
+        } else {
+
+        }
+    }
+    public void rm(View v) {
+        ImageView rm = (ImageView) v;
+        //on récupère la position à l'aide du tag défini dans la class MyListAdapter
+     int position = Integer.parseInt(rm.getTag().toString());
+//      View o = list.getChildAt(position).findViewById(R.id.imageView_add);
+
+
+        //On change la couleur
+        if (rm.isClickable()) {
+            TextView qte = findViewById(R.id.textView_qte);
+rm.getTag(position);
+
+if (Integer.parseInt(qte.getText().toString()) > 0){
+            int qte2=Integer.parseInt(qte.getText().toString())-1;
+    qte.setText(Integer.toString(qte2));}
+            else {
+            }
+
+          // Toast.makeText(getApplicationContext(),,Toast.LENGTH_LONG).show();
+
+        } else {
+//jcccc
+        }
     }
 
 
