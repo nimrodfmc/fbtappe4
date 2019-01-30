@@ -18,7 +18,7 @@ import com.example.maximeglod.fbta.R;
 public class SplashScreen extends AppCompatActivity {
 
 
-    private static int SPLASH_TIME = 4000; //Environ 4 secondes
+    private static int SPLASH_TIME = 2000; //Environ 2 secondes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

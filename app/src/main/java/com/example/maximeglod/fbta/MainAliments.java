@@ -30,6 +30,7 @@ public class MainAliments extends AppCompatActivity {
 
         List<Aliments> image_details = getListData();
         final GridView gridView = (GridView) findViewById(R.id.gridView);
+        //On utilise notre adapter pour la liste des aliments
         gridView.setAdapter(new CustomGridAdapter(this, image_details));
 
         // Quand l'utilisateur clique sur un élément de la grid view
@@ -40,7 +41,7 @@ public class MainAliments extends AppCompatActivity {
                 Object o = gridView.getItemAtPosition(position);
 
                 Aliments aliments = (Aliments) o;
-
+        //On renvoie les infos de l'aliment
                 Toast.makeText(MainAliments.this, "Selection :"
                         + " " + aliments, Toast.LENGTH_LONG).show();
             }
@@ -48,6 +49,7 @@ public class MainAliments extends AppCompatActivity {
 
     }
 
+    //Saisie de tous les aliments en dur
 
     private List<Aliments> getListData() {
         List<Aliments> list = new ArrayList<Aliments>();
@@ -855,48 +857,90 @@ public class MainAliments extends AppCompatActivity {
 
 
 
-
+//Passage de la list a la view
         return list;
+
     }
 
+    public void recupcal(View v){
+
+    }
+
+    //Méthode appelé au clic du button + (Pour la quantité)
     public void add(View v) {
         ImageView add = (ImageView) v;
+        //On récupère la quantité
+        TextView qte = this.findViewById(R.id.textView_qte);
+        // TextView qte = (TextView) findViewById(R.id.textView_qte);
+        //On récupère le champ du total des calories du jour
+        TextView totalcalories = this.findViewById(R.id.totalcalories);
+        //On récupère les calories
+        TextView calorie = this.findViewById(R.id.textView_calories);
+        //Conversion des string en int et calcul du total calorique de l'aliment
+        int b = Integer.parseInt(calorie.getText().toString());
+        int a = Integer.parseInt(qte.getText().toString())+1;
+        int c = a*b;
+        int qtecalorie = c;
+        //Affichage des variables de calcul dans un toast
+        //Toast.makeText(getApplicationContext(),"Calorie:"+b+"qte: "+a+"prod"+c,Toast.LENGTH_LONG).show();
+        //Mise à jour du champ de total calorique
+        totalcalories.setText(Integer.toString(qtecalorie));
+        // totalcalories.setText(Integer.toString(qtecalorie));
         //on récupère la position à l'aide du tag défini dans la class
-
 //      int position2 = Integer.parseInt(add.getTag().toString());
 //    View parentRow = (View) v.getParent();
 //    GridView listView = (GridView) parentRow.getParent();
 //    final int position = listView.getPositionForView(parentRow);
 
-        //On change la couleur
         if (add.isClickable()) {
-
-            TextView qte = this.findViewById(R.id.textView_qte);
-            // TextView qte = (TextView) findViewById(R.id.textView_qte);
-
-
+//
+//            if (Integer.parseInt(qte.getText().toString()) > 0){
+//                TextView calorie = this.findViewById(R.id.textView_calories);
+//                int b = Integer.parseInt(calorie.getText().toString());
+//                int a = Integer.parseInt(qte.getText().toString());
+//                int c = a*b;
+//                int calorie2=(c);
+//
+//                calorie.setText(Integer.toString(calorie2));
+//
+//            }else {
+//
+//            }
+            //Augmentation de +1 de la quantité
             int qte2=Integer.parseInt(qte.getText().toString())+1;
             qte.setText(Integer.toString(qte2));
 
-
-            //Toast.makeText(getApplicationContext(),add.getTag().toString(),Toast.LENGTH_LONG).show();
-
         } else {
-
+    //on ne fais rien
         }
     }
+    //Méthode appelé au clic du button - (Pour la quantité)
     public void rm(View v) {
+        //Récupération des champs nécessaire au traitement
         ImageView rm = (ImageView) v;
+        TextView qte = this.findViewById(R.id.textView_qte);
+        // TextView qte = (TextView) findViewById(R.id.textView_qte);
+        TextView totalcalories = this.findViewById(R.id.totalcalories);
+        TextView calorie = this.findViewById(R.id.textView_calories);
+        int b = Integer.parseInt(calorie.getText().toString());
+        int a = Integer.parseInt(qte.getText().toString())-1;
+        int c = a*b;
+        int qtecalorie = c;
+        int total = (qtecalorie)+Integer.parseInt(totalcalories.getText().toString());
+       //Boucle permetant de ne pas avoir de total négatif quand on retire des quantités
+        if (qtecalorie<0){
+        }
+        else{
+            totalcalories.setText(Integer.toString(qtecalorie));
+        }
         //on récupère la position à l'aide du tag défini dans la class MyListAdapter
-     int position = Integer.parseInt(rm.getTag().toString());
+//     int position = Integer.parseInt(rm.getTag().toString());
 //      View o = list.getChildAt(position).findViewById(R.id.imageView_add);
-
-
         //On change la couleur
         if (rm.isClickable()) {
-            TextView qte = findViewById(R.id.textView_qte);
-rm.getTag(position);
+//            TextView qte = findViewById(R.id.textView_qte);
 
+//On enlève 1 à la quantité seulement si elle n'est pas null
 if (Integer.parseInt(qte.getText().toString()) > 0){
             int qte2=Integer.parseInt(qte.getText().toString())-1;
     qte.setText(Integer.toString(qte2));}
@@ -906,7 +950,7 @@ if (Integer.parseInt(qte.getText().toString()) > 0){
           // Toast.makeText(getApplicationContext(),,Toast.LENGTH_LONG).show();
 
         } else {
-//jcccc
+
         }
     }
 

@@ -6,7 +6,7 @@ public class Aliments {
     //Nom de l'image sans l'extension
     private String imagealimentsName;
     private int calories;
-
+    //Constructeur
     public Aliments(String nomalimentsName, String imagealimentsName, int calories){
         this.nomalimentsName= nomalimentsName;
         this.imagealimentsName= imagealimentsName;
