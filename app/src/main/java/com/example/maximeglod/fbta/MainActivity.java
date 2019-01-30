@@ -6,12 +6,13 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-    /** Called when the activity is first created. */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //On instancie des bouttons de menu sur la vue activity_main
+        // avec des intent pour lancer les activités correspondante
         Button inscription = (Button) findViewById(R.id.Button01);
         inscription.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -29,5 +30,6 @@ public class MainActivity extends Activity {
             }
 
         });
+        //les deux autres bouttons reste à faire
     }
 }
