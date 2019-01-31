@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,16 +61,56 @@ public class Inscription extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), validInscription.class);
 
-                i.putExtra("Prénom", et_prenom.getText().toString());
-                i.putExtra("Nom", et_nom.getText().toString());
-                i.putExtra("Naissance", et_age.getText().toString());
-                i.putExtra("Sexe", et_sexe.getText().toString());
-                i.putExtra("Taille", et_taille.getText().toString());
-                i.putExtra("Poids", et_poids.getText().toString());
-                i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
-                i.putExtra("Objectif de poids", et_objectif.getText().toString());
-
-                startActivity(i);
+                if (et_prenom.getText().toString().length() < 1) {
+                    Toast.makeText(getApplicationContext(),"Veuillez renseignez votre prénom", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    if (et_nom.getText().toString().length() < 1) {
+                        Toast.makeText(getApplicationContext(),"Veuillez renseignez votre nom", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        if (et_age.getText().toString().length() < 1) {
+                            Toast.makeText(getApplicationContext(),"Veuillez renseignez votre date de naissance", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            if (et_sexe.getText().toString().length() < 1) {
+                                Toast.makeText(getApplicationContext(),"Veuillez renseignez votre sexe", Toast.LENGTH_LONG).show();
+                            }
+                            else if (et_sexe.getText().toString().equals("M") || et_sexe.getText().toString().equals("F")) {
+                                if (et_taille.getText().toString().length() < 1) {
+                                    Toast.makeText(getApplicationContext(),"Veuillez renseignez votre taille", Toast.LENGTH_LONG).show();
+                                }
+                                else if (et_taille.getText().toString().length() == 3) {
+                                    Toast.makeText(getApplicationContext(),"Veuillez renseignez votre taille en m", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    if (et_poids.getText().toString().length() < 1) {
+                                        Toast.makeText(getApplicationContext(),"Veuillez renseignez votre poids", Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        if (et_objectif.getText().toString().length() < 1) {
+                                            Toast.makeText(getApplicationContext(),"Veuillez renseignez votre objectif de poids", Toast.LENGTH_LONG).show();
+                                        }
+                                        else {
+                                            i.putExtra("Prénom", et_prenom.getText().toString());
+                                            i.putExtra("Nom", et_nom.getText().toString());
+                                            i.putExtra("Naissance", et_age.getText().toString());
+                                            i.putExtra("Sexe", et_sexe.getText().toString());
+                                            i.putExtra("Taille", et_taille.getText().toString());
+                                            i.putExtra("Poids", et_poids.getText().toString());
+                                            i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
+                                            i.putExtra("Objectif de poids", et_objectif.getText().toString());
+                                            startActivity(i);
+                                        }
+                                    }
+                                }
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(),"Veuillez renseignez correctement votre sexe", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+                }
             }
 
         });
