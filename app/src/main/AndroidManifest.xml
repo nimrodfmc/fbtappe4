@@ -18,6 +18,8 @@
             <activity android:name=".MainActivity"></activity>
             <activity android:name=".Inscription"></activity>
             <activity android:name=".MainAliments"></activity>
+            <activity android:name=".validInscription"></activity>
+
         </application>
 
     </manifest>

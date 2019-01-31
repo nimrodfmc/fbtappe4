@@ -1,5 +1,6 @@
 package com.example.maximeglod.fbta;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -868,6 +869,8 @@ public class MainAliments extends AppCompatActivity {
 
     //Méthode appelé au clic du button + (Pour la quantité)
     public void add(View v) {
+        int position = (Integer) v.getTag();
+
         ImageView add = (ImageView) v;
         //On récupère la quantité
         TextView qte = this.findViewById(R.id.textView_qte);
@@ -916,9 +919,13 @@ public class MainAliments extends AppCompatActivity {
     }
     //Méthode appelé au clic du button - (Pour la quantité)
     public void rm(View v) {
+        int position = (Integer) v.getTag();
+        String position2=Integer.toString(position);
+Toast.makeText(getApplicationContext(),position2,Toast.LENGTH_LONG).show();
         //Récupération des champs nécessaire au traitement
         ImageView rm = (ImageView) v;
         TextView qte = this.findViewById(R.id.textView_qte);
+
         // TextView qte = (TextView) findViewById(R.id.textView_qte);
         TextView totalcalories = this.findViewById(R.id.totalcalories);
         TextView calorie = this.findViewById(R.id.textView_calories);

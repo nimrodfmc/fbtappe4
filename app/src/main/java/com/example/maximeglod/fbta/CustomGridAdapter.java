@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,8 @@ public class CustomGridAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
+
+
         if (convertView == null) {
             //On récupère les éléments de notre vue
             convertView = layoutInflater.inflate(R.layout.grid_item_layout, null);
@@ -57,6 +60,9 @@ public class CustomGridAdapter extends BaseAdapter {
             holder.qteView = (TextView) convertView.findViewById(R.id.textView_qte);
             ImageView add = (ImageView) convertView.findViewById(R.id.imageView_add);
             ImageView rm = (ImageView) convertView.findViewById(R.id.imageView_rm);
+//            add.setOnClickListener(addClickListener);
+//            rm.setOnClickListener(addClickListener);
+            //Stockage de la position dans les tag des bouttons
 
             add.setTag(position);
             rm.setTag(position);
@@ -74,6 +80,8 @@ public class CustomGridAdapter extends BaseAdapter {
         holder.imagealimentsView.setImageResource(imageId);
         return convertView;
     }
+
+
 
     //Trouver l'image id correspondant au nom de l'image dans le dossier mipmap
     public int getMipmapResIdByName(String resName) {
