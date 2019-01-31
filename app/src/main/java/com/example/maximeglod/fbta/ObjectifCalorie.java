@@ -8,8 +8,8 @@ import android.widget.Toast;
 public class ObjectifCalorie extends AppCompatActivity {
     TextView tv_objectif, tv_calorie, tv_conso, tv_total;
     Personne p1 = new Personne("Jules","Couraud",18,"Homme", (float) 1.78,90,"Intensité forte", 80);
-    TextView total = (TextView )findViewById(R.id.tv_total);
-
+    //TextView total = (TextView )findViewById(R.id.tv_total);
+//tftgj
 public float totalcal = 2500;
 }
 
