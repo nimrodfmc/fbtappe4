@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     EditText et_poids, et_taille, et_nom, et_age, et_objectif, et_prenom, et_sexe;
     Button bt_valider;
     Spinner spinner;
-
-    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
