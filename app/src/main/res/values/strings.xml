@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Fbta</string>
+    <string name="tvPoids">Poids</string>
+    <string name="tvTaille">Taille</string>
+    <string name="tvNom">Nom</string>
+    <string name="tvPrenom">Prénom</string>
+    <string name="tvAge">Age</string>
+    <string name="tvSexe">Sexe</string>
+    <string name="tvSport">Activité Sportive</string>
+    <string name="tvObjectif">Objectif de poids</string>
+    <string name="btnProfil">Valider</string>
+    <string name="nom_de_l_aliment">Nom de l\'aliment</string>
+    <string name="calories">Calories</string>
 </resources>

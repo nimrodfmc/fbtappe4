@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="S'inscrire" />
+
+    <Button
+        android:id="@+id/Button02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alimentation" />
+
+    <Button
+        android:id="@+id/Button03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Evolution" />
+
+    <Button
+        android:id="@+id/Button04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Activité Sportive" />
+</LinearLayout>
