@@ -119,6 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="(ex. 1,70)"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/tvTaille"
         app:layout_constraintEnd_toEndOf="@+id/etPoids"
@@ -216,28 +217,16 @@
         app:layout_constraintStart_toStartOf="@+id/etTaille"
         app:layout_constraintTop_toTopOf="@+id/tvAge" />
 
-    <RadioGroup
-        android:id="@+id/rdGrp"
-        android:layout_width="212dp"
-        android:layout_height="54dp"
+    <EditText
+        android:id="@+id/etSexe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="M = Homme, F = Femme"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/tvSexe"
-        app:layout_constraintEnd_toEndOf="@+id/etTaille"
-        app:layout_constraintStart_toStartOf="@+id/etTaille"
-        app:layout_constraintTop_toTopOf="@+id/tvSexe">
-
-        <RadioButton
-            android:id="@+id/rbtnHomme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/cbSexe1" />
-
-        <RadioButton
-            android:id="@+id/rbtnFemme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/cbSexe2" />
-    </RadioGroup>
+        app:layout_constraintEnd_toEndOf="@+id/etAge"
+        app:layout_constraintStart_toStartOf="@+id/etAge"
+        app:layout_constraintTop_toTopOf="@+id/tvSexe" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,9 +1,12 @@
 package com.example.maximeglod.fbta;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Inscription extends AppCompatActivity {
     TextView tv_prenom, tv_nom, tv_naissance, tv_taille, tv_poids, tv_objectif, tv_sexe, tv_activite;
@@ -22,8 +25,8 @@ public class Inscription extends AppCompatActivity {
         tv_sexe = (TextView) findViewById(R.id.tvSexe);
         tv_activite = (TextView) findViewById(R.id.tvSport);
         btn_inscrire = (Button) findViewById(R.id.btn_inscrire);
-        String lePrenom = getIntent().getStringExtra("Prénom");
-        String leNom = getIntent().getStringExtra("Nom");
+        final String lePrenom = getIntent().getStringExtra("Prénom");
+        final String leNom = getIntent().getStringExtra("Nom");
         String laNaissance = getIntent().getStringExtra("Naissance");
         String leSexe = getIntent().getStringExtra("Sexe");
         String laTaille = getIntent().getStringExtra("Taille");
@@ -38,5 +41,16 @@ public class Inscription extends AppCompatActivity {
         tv_poids.setText("Poids : " + lePoids);
         tv_activite.setText("Activité Sportive : " + lActivite);
         tv_objectif.setText("Objectif : " + lObjectif);
+
+        btn_inscrire.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent e = new Intent(getApplicationContext(), MainActivity.class);
+                Toast.makeText(getApplicationContext(), lePrenom + " " + leNom + " enregistré",Toast.LENGTH_LONG).show();
+                startActivity(e);
+            }
+
+        });
     }
 }
