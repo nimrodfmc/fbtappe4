@@ -1,21 +1,25 @@
 package com.example.maximeglod.fbta;
 
-
-
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Inscription extends AppCompatActivity {
     TextView tv_poids, tv_taille, tv_nom, tv_age, tv_sexe, tv_sport, tv_objectif, tv_prenom;
-    EditText et_poids, et_taille, et_nom, et_age, et_sexe, et_sport, et_objectif, et_prenom;
+    EditText et_poids, et_taille, et_nom, et_age, et_objectif, et_prenom, et_sexe;
     Button bt_valider;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +40,40 @@ public class Inscription extends AppCompatActivity {
         et_poids = (EditText) findViewById(R.id.etPoids);
         et_prenom = (EditText) findViewById(R.id.etPrenom);
         et_taille = (EditText) findViewById(R.id.etTaille);
+
         et_sexe = (EditText) findViewById(R.id.etSexe);
-        et_sport = (EditText) findViewById(R.id.etActivite);
+
+        spinner = (Spinner) findViewById(R.id.spinner);
+        List liste = new ArrayList();
+        liste.add("Détente");
+        liste.add("Modéré");
+        liste.add("Intense");
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,liste);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         bt_valider = (Button) findViewById(R.id.btnProfil);
 
         bt_valider.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), tv_prenom+" "+tv_nom+" enregistré", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(getApplicationContext(), validInscription.class);
+
+                i.putExtra("Prénom", et_prenom.getText().toString());
+                i.putExtra("Nom", et_nom.getText().toString());
+                i.putExtra("Naissance", et_age.getText().toString());
+                i.putExtra("Sexe", et_sexe.getText().toString());
+                i.putExtra("Taille", et_taille.getText().toString());
+                i.putExtra("Poids", et_poids.getText().toString());
+                i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
+                i.putExtra("Objectif de poids", et_objectif.getText().toString());
+
+                startActivity(i);
             }
+
         });
+
     }
 }
 

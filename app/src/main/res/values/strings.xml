@@ -11,4 +11,5 @@
     <string name="btnProfil">Valider</string>
     <string name="nom_de_l_aliment">Nom de l\'aliment</string>
     <string name="calories">Calories</string>
+    <string name="btn_inscrire">S inscrire</string>
 </resources>
