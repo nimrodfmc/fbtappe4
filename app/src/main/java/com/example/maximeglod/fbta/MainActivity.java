@@ -7,7 +7,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import java.util.HashMap;
+
 public class MainActivity extends Activity {
+
+    public static HashMap<String,Object> personne = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

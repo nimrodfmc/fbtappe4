@@ -24,6 +24,7 @@ import android.widget.ImageView;
 public class MainAliments extends AppCompatActivity {
 //    private ListView gridView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -47,7 +48,7 @@ public class MainAliments extends AppCompatActivity {
                 Object o = gridView.getItemAtPosition(position);
 
                 Aliments aliments = (Aliments) o;
-        //On renvoie les infos de l'aliment
+                //On renvoie les infos de l'aliment
                 Toast.makeText(MainAliments.this, "Selection :"
                         + " " + aliments + " Position : "+ position, Toast.LENGTH_LONG).show();
             }
@@ -918,7 +919,7 @@ public class MainAliments extends AppCompatActivity {
             qte.setText(Integer.toString(qte2));
 
         } else {
-    //on ne fais rien
+            //on ne fais rien
         }
     }
     //Méthode appelé au clic du button - (Pour la quantité)
@@ -934,7 +935,7 @@ public class MainAliments extends AppCompatActivity {
         int c = a*b;
         int qtecalorie = c;
         int total = (qtecalorie)+Integer.parseInt(totalcalories.getText().toString());
-       //Boucle permetant de ne pas avoir de total négatif quand on retire des quantités
+        //Boucle permetant de ne pas avoir de total négatif quand on retire des quantités
         if (qtecalorie<0){
         }
         else{
@@ -948,13 +949,13 @@ public class MainAliments extends AppCompatActivity {
 //            TextView qte = findViewById(R.id.textView_qte);
 
 //On enlève 1 à la quantité seulement si elle n'est pas null
-if (Integer.parseInt(qte.getText().toString()) > 0){
-            int qte2=Integer.parseInt(qte.getText().toString())-1;
-    qte.setText(Integer.toString(qte2));}
+            if (Integer.parseInt(qte.getText().toString()) > 0){
+                int qte2=Integer.parseInt(qte.getText().toString())-1;
+                qte.setText(Integer.toString(qte2));}
             else {
             }
 
-         // Toast.makeText(getApplicationContext(),position,Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(),position,Toast.LENGTH_LONG).show();
 
         } else {
 

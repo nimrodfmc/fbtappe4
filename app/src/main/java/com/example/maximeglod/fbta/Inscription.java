@@ -106,7 +106,42 @@ public class Inscription extends AppCompatActivity {
                                             i.putExtra("Poids", et_poids.getText().toString());
                                             i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
                                             i.putExtra("Objectif de poids", et_objectif.getText().toString());
+
+                                            // Récupération de la valeur du prénom
+                                            MainActivity.personne.put("prenom",et_prenom.getText().toString());
+                                            String prenom = (String) MainActivity.personne.get("prenom");
+
+                                            // Récupération de la valeur du nom
+                                            MainActivity.personne.put("nom",et_nom.getText().toString());
+                                            String nom = (String) MainActivity.personne.get("nom");
+
+                                            // Récupération de la valeur de l'âge
+                                            MainActivity.personne.put("age",et_age.getText().toString());
+                                            String age = (String) MainActivity.personne.get("age");
+
+                                            // Récupération de la valeur du sexe
+                                            MainActivity.personne.put("sexe",et_sexe.getText().toString());
+                                            String sexe = (String) MainActivity.personne.get("sexe");
+
+                                            // Récupération de la valeur de la taille
+                                            MainActivity.personne.put("taille",et_taille.getText().toString());
+                                            String taille = (String) MainActivity.personne.get("taille");
+
+                                            // Récupération de la valeur du poids
+                                            MainActivity.personne.put("poids",et_poids.getText().toString());
+                                            String poids = (String) MainActivity.personne.get("poids");
+
+                                            // Récupération de la valeur de l'activité sportive
+                                            MainActivity.personne.put("activité_sportive",spinner.getSelectedItem().toString());
+                                            String activite_sportive = (String) MainActivity.personne.get("activité_sportive");
+
+                                            // Récupération de la valeur de son objectif de poids
+                                            MainActivity.personne.put("objectif_poids",et_objectif.getText().toString());
+                                            String objectif_poids = (String) MainActivity.personne.get("objectif_poids");
+
                                             startActivity(i);
+
+
                                         }
                                     }
                                 }
