@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +16,10 @@ public class validInscription extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // On retire la barre de notifications pour afficher l'application en plein écran
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //Définission le contenu de la vue APRES les instructions précédentes pour éviter un crash
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_valid_inscription);
         tv_prenom = (TextView) findViewById(R.id.tvPrenom);
