@@ -43,7 +43,7 @@ public class MainAliments extends AppCompatActivity {
                 Aliments aliments = (Aliments) o;
         //On renvoie les infos de l'aliment
                 Toast.makeText(MainAliments.this, "Selection :"
-                        + " " + aliments, Toast.LENGTH_LONG).show();
+                        + " " + aliments + " Position : "+ position, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -55,7 +55,7 @@ public class MainAliments extends AppCompatActivity {
         List<Aliments> list = new ArrayList<Aliments>();
         Aliments ail = new Aliments("Ail", "ail", 5);
         Aliments ailenpoudre = new Aliments("Ail en poudre", "ailenpoudre", 333);
-        Aliments amendesblanchiessechees = new Aliments("Amandes Blanchies Séchées", "amandesblanchiessechees",586);
+        Aliments amendesblanchiessechees = new Aliments("Amandes Blanchies", "amandesblanchiessechees",586);
         Aliments amandessechees = new Aliments("Amandes séchées","amandessechees",589);
         Aliments anethfraiche = new Aliments("Aneth Fraiche","anethfraiche",43);
         Aliments anethsechee = new Aliments("Aneth Séchée","anethsechee",253);
@@ -868,6 +868,7 @@ public class MainAliments extends AppCompatActivity {
 
     //Méthode appelé au clic du button + (Pour la quantité)
     public void add(View v) {
+
         ImageView add = (ImageView) v;
         //On récupère la quantité
         TextView qte = this.findViewById(R.id.textView_qte);
@@ -947,7 +948,7 @@ if (Integer.parseInt(qte.getText().toString()) > 0){
             else {
             }
 
-          // Toast.makeText(getApplicationContext(),,Toast.LENGTH_LONG).show();
+         // Toast.makeText(getApplicationContext(),position,Toast.LENGTH_LONG).show();
 
         } else {
 
