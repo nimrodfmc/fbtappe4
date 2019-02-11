@@ -3,7 +3,6 @@ package com.example.maximeglod.fbta;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,6 +23,8 @@ public class Inscription extends AppCompatActivity {
     Button bt_valider;
     Spinner spinner;
 
+    private String poids, taille, nom, naissance, sexe, sport, objectif, prenom;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -41,14 +42,27 @@ public class Inscription extends AppCompatActivity {
         tv_sexe = (TextView) findViewById(R.id.tvSexe);
         tv_sport = (TextView) findViewById(R.id.tvSport);
 
+
         et_age = (EditText) findViewById(R.id.etAge);
+        this.naissance = et_age.getText().toString();
+
         et_nom = (EditText) findViewById(R.id.etNom);
+        this.nom = et_nom.getText().toString();
+
         et_objectif = (EditText) findViewById(R.id.etObjectif);
+        this.objectif = et_objectif.getText().toString();
+
         et_poids = (EditText) findViewById(R.id.etPoids);
+        this.poids = et_poids.getText().toString();
+
         et_prenom = (EditText) findViewById(R.id.etPrenom);
+        this.prenom = et_prenom.getText().toString();
+
         et_taille = (EditText) findViewById(R.id.etTaille);
+        this.taille = et_taille.getText().toString();
 
         et_sexe = (EditText) findViewById(R.id.etSexe);
+        this.sexe = et_sexe.getText().toString();
 
         spinner = (Spinner) findViewById(R.id.spinner);
         List liste = new ArrayList();
@@ -58,6 +72,7 @@ public class Inscription extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,liste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        this.objectif = spinner.getSelectedItem().toString();
 
         bt_valider = (Button) findViewById(R.id.btnProfil);
 
@@ -125,5 +140,37 @@ public class Inscription extends AppCompatActivity {
         });
 
     }
-}
 
+    public String getPoids() {
+        return this.poids;
+    }
+
+    public String getTaille() {
+        return this.taille;
+    }
+
+    public String getNom() {
+        return this.nom;
+    }
+
+    public String getPrenom() {
+        return this.prenom;
+    }
+
+    public String getNaiss() {
+        return this.naissance;
+    }
+
+    public String getSexe() {
+        return this.sexe;
+    }
+
+    public String getSport() {
+        return this.sport;
+    }
+
+    public String getObjectif() {
+        return this.objectif;
+    }
+
+}
