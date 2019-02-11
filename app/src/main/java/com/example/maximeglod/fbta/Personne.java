@@ -1,15 +1,14 @@
 package com.example.maximeglod.fbta;
 
 public class Personne{
-    private String prenom;
-    private String nom;
-    private int age;
-    private String sexe;
-    private float taille;
-    private float poids;
-    private String sport;
-    private int obj_poids;
-
+    public String prenom;
+    public String nom;
+    public int age;
+    public String sexe;
+    public float taille;
+    public float poids;
+    public String sport;
+    public int obj_poids;
 /*public float Calorie;*/
 
     //constructeur
@@ -24,3 +23,4 @@ public class Personne{
         this.obj_poids = obj_poids;
     }
 }
+
