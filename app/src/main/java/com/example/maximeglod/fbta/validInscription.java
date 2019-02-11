@@ -19,10 +19,9 @@ public class validInscription extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // On retire la barre de notifications pour afficher l'application en plein écran
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        //Définission le contenu de la vue APRES les instructions précédentes pour éviter un crash
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inscription);
-
+        setContentView(R.layout.activity_valid_inscription);
         tv_prenom = (TextView) findViewById(R.id.tvPrenom);
         tv_nom = (TextView) findViewById(R.id.tvNom);
         tv_naissance = (TextView) findViewById(R.id.tvAge);
@@ -54,9 +53,7 @@ public class validInscription extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent e = new Intent(getApplicationContext(), MainActivity.class);
-
-                Toast.makeText(getApplicationContext(), lePrenom + " " + leNom + " enregistré", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(getApplicationContext(), lePrenom + " " + leNom + " enregistré",Toast.LENGTH_LONG).show();
                 startActivity(e);
             }
 

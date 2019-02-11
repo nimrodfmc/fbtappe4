@@ -29,9 +29,7 @@ public class Inscription extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // On retire la barre de notifications pour afficher l'application en plein écran
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         //Définission le contenu de la vue APRES les instructions précédentes pour éviter un crash
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
         tv_age = (TextView) findViewById(R.id.tvAge);
@@ -57,10 +55,7 @@ public class Inscription extends AppCompatActivity {
         liste.add("Détente");
         liste.add("Modéré");
         liste.add("Intense");
-
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, liste);
-
-
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,liste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -71,18 +66,6 @@ public class Inscription extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), validInscription.class);
-
-
-                i.putExtra("Prénom", et_prenom.getText().toString());
-                i.putExtra("Nom", et_nom.getText().toString());
-                i.putExtra("Naissance", et_age.getText().toString());
-                i.putExtra("Sexe", et_sexe.getText().toString());
-                i.putExtra("Taille", et_taille.getText().toString());
-                i.putExtra("Poids", et_poids.getText().toString());
-                i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
-                i.putExtra("Objectif de poids", et_objectif.getText().toString());
-
-                startActivity(i);
 
                 if (et_prenom.getText().toString().length() < 1) {
                     Toast.makeText(getApplicationContext(),"Veuillez renseigner votre prénom", Toast.LENGTH_LONG).show();
@@ -137,7 +120,6 @@ public class Inscription extends AppCompatActivity {
                         }
                     }
                 }
-
             }
 
         });
