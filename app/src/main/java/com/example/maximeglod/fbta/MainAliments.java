@@ -883,16 +883,33 @@ public class MainAliments extends AppCompatActivity {
             TextView objectifcalories = (TextView) findViewById(R.id.objectif);
             int objectif = Integer.parseInt(objectifcalories.getText().toString());
 
-            if (sum < objectif) {
+            if (sum <= objectif) {
                 Button b1 = (Button) findViewById(R.id.verif);
                 b1.setBackgroundResource(R.drawable.rounded_button_ok);
                 b1.setText("V");
                 b1.setTextColor(Color.BLACK);
+                //On tolère une marge de 5% par rapport à l'objectif (Changement de couleur)
+                if (sum >= objectif - (objectif * 0.05)) {
+                    Button b2 = (Button) findViewById(R.id.verif);
+                    b2.setBackgroundResource(R.drawable.rounded_button_mid);
+                    b2.setText("~");
+                    b2.setTextColor(Color.WHITE);
+                }
             } else {
-                Button b1 = (Button) findViewById(R.id.verif);
-                b1.setBackgroundResource(R.drawable.rounded_button_false);
-                b1.setText("X");
-                b1.setTextColor(Color.WHITE);
+
+                //On tolère une marge de 5% par rapport à l'objectif (Changement de couleur)
+                if (sum <= objectif + (objectif * 0.05)) {
+                    Button b2 = (Button) findViewById(R.id.verif);
+                    b2.setBackgroundResource(R.drawable.rounded_button_mid);
+                    b2.setText("~");
+                    b2.setTextColor(Color.WHITE);
+                } else {
+                    Button b1 = (Button) findViewById(R.id.verif);
+                    b1.setBackgroundResource(R.drawable.rounded_button_false);
+                    b1.setText("X");
+                    b1.setTextColor(Color.WHITE);
+                }
+
             }
             //On appel cette fonction toutes les 5 milisecondes
             myHandler.postDelayed(this, 5);

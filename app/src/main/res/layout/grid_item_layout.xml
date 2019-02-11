@@ -34,7 +34,7 @@
 
     <TextView
         android:id="@+id/textView_calories"
-        android:layout_width="309dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView_alimentsName"
         android:layout_marginStart="14dp"
@@ -52,19 +52,19 @@
         android:layout_height="36dp"
         android:layout_below="@+id/textView_calories"
         android:layout_alignBottom="@+id/imageView_imagealiments"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/imageView_imagealiments"
         android:layout_toRightOf="@+id/imageView_imagealiments"
-        app:srcCompat="@drawable/add"
-        android:contentDescription="@string/todo" />
+        android:contentDescription="@string/todo"
+        app:srcCompat="@drawable/add" />
 
 
     <ImageView
         android:id="@+id/button_rm"
-        android:layout_width="44dp"
+        android:layout_width="42dp"
         android:layout_height="47dp"
         android:layout_below="@+id/textView_calories"
         android:layout_alignBottom="@+id/imageView_imagealiments"
@@ -74,8 +74,8 @@
         android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/button_add"
         android:layout_toRightOf="@+id/button_add"
-        app:srcCompat="@drawable/rm"
-        android:contentDescription="@string/todo" />
+        android:contentDescription="@string/todo"
+        app:srcCompat="@drawable/rm" />
 
     <TextView
         android:id="@+id/textView"
@@ -104,6 +104,19 @@
         android:layout_toRightOf="@+id/button_rm"
         android:text="@string/_0" />
 
+    <TextView
+        android:id="@+id/calfor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_alimentsName"
+        android:layout_alignBottom="@+id/textView_calories"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/textView_calories"
+        android:layout_toRightOf="@+id/textView_calories"
+        android:text="Cal/100g" />
 
 
 </RelativeLayout>
