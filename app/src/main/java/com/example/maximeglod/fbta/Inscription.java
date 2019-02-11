@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,9 @@ public class Inscription extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // On retire la barre de notifications pour afficher l'application en plein écran
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
         tv_age = (TextView) findViewById(R.id.tvAge);
@@ -47,7 +52,7 @@ public class Inscription extends AppCompatActivity {
         liste.add("Détente");
         liste.add("Modéré");
         liste.add("Intense");
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,liste);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, liste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 

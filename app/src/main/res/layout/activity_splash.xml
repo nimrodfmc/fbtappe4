@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorDark"
     tools:context=".SplashScreen">
 
     <ImageView
@@ -26,7 +27,9 @@
         android:layout_centerVertical="true"
         android:layout_marginBottom="127dp"
         android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress"
         android:minWidth="50dp"
-        android:minHeight="50dp" />
+        android:minHeight="50dp"
+        android:scaleX="-1" />
 
 </RelativeLayout>

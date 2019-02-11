@@ -1,32 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_height="match_parent"
+
+
+    android:orientation="vertical">
 
 
     <Button
         android:id="@+id/Button01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="S'inscrire" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/s_inscrire"
+        android:textColor="@color/colorOrange" />
 
     <Button
         android:id="@+id/Button02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Alimentation" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/alimentation"
+        android:textColor="@color/colorOrange" />
 
     <Button
         android:id="@+id/Button03"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Evolution" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/evolution"
+        android:textColor="@color/colorOrange" />
 
     <Button
         android:id="@+id/Button04"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Activité Sportive" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/activit_sportive"
+        android:textColor="@color/colorOrange" />
+
 </LinearLayout>

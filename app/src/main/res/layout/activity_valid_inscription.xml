@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inscription">
+    tools:context=".Inscription"
+    android:background="@color/colorDark">
 
     <TextView
         android:id="@+id/tvPoids"
