@@ -57,4 +57,12 @@
         android:text="@string/activit_sportive"
         android:textColor="@color/colorOrange" />
 
+    <TextView
+        android:id="@+id/currentdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:baselineAligned="false"
+        android:text="TextView" />
+
 </LinearLayout>

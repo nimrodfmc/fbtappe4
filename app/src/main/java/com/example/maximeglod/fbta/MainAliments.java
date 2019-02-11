@@ -888,13 +888,6 @@ public class MainAliments extends AppCompatActivity {
                 b1.setBackgroundResource(R.drawable.rounded_button_ok);
                 b1.setText("V");
                 b1.setTextColor(Color.BLACK);
-                //On tolère une marge de 5% par rapport à l'objectif (Changement de couleur)
-                if (sum >= objectif - (objectif * 0.05)) {
-                    Button b2 = (Button) findViewById(R.id.verif);
-                    b2.setBackgroundResource(R.drawable.rounded_button_mid);
-                    b2.setText("~");
-                    b2.setTextColor(Color.WHITE);
-                }
             } else {
 
                 //On tolère une marge de 5% par rapport à l'objectif (Changement de couleur)

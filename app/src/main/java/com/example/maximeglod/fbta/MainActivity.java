@@ -7,6 +7,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends Activity {
 
@@ -40,5 +46,15 @@ public class MainActivity extends Activity {
 
         });
         //les deux autres bouttons reste à faire
+
+        TextView dateView = (TextView)findViewById(R.id.currentdate);
+        setDate(dateView);
     }
+    public void setDate (TextView view){
+        Date today = Calendar.getInstance().getTime();//getting date
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");//formating according to my need
+        String date = formatter.format(today);
+        view.setText(date);
+    }
+
 }
