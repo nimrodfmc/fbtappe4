@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/colorDark">
+    android:background="@color/colorDark"
+    tools:context=".MainActivity">
 
     <GridView
-
         android:id="@+id/gridView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -21,6 +20,7 @@
         android:layout_marginRight="8dp"
         android:clickable="false"
         android:columnWidth="120dp"
+        android:descendantFocusability="blocksDescendants"
         android:gravity="center"
         android:listSelector="@drawable/list_selector"
         android:numColumns="1"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:text="0"
+        android:text="@string/_0"
         app:layout_constraintBottom_toBottomOf="@+id/libelecaltotal"
         app:layout_constraintStart_toEndOf="@+id/libelecaltotal"
         app:layout_constraintTop_toTopOf="@+id/libelecaltotal" />
@@ -48,7 +48,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Calories consommées :"
+        android:text="@string/calories_consomm_es"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,11 +56,11 @@
         android:id="@+id/libeleobj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:text="Objectif : "
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/objectif"
         app:layout_constraintBottom_toBottomOf="@+id/totalcalories"
-        app:layout_constraintStart_toEndOf="@+id/totalcalories"
+        app:layout_constraintEnd_toStartOf="@+id/objectif"
         app:layout_constraintTop_toTopOf="@+id/totalcalories"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -68,11 +68,11 @@
         android:id="@+id/objectif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="2500"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/_2500"
         app:layout_constraintBottom_toBottomOf="@+id/libeleobj"
-        app:layout_constraintStart_toEndOf="@+id/libeleobj"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/libeleobj" />
 
 </android.support.constraint.ConstraintLayout>

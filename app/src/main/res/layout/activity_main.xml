@@ -17,10 +17,9 @@
         android:layout_marginTop="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
-        android:text="S'inscrire"
         android:background="@drawable/rounded_button"
-        android:textColor="@color/colorOrange"
-        />
+        android:text="@string/s_inscrire"
+        android:textColor="@color/colorOrange" />
 
     <Button
         android:id="@+id/Button02"
@@ -30,9 +29,9 @@
         android:layout_marginTop="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
-        android:text="Alimentation"
         android:background="@drawable/rounded_button"
-        android:textColor="@color/colorOrange"/>
+        android:text="@string/alimentation"
+        android:textColor="@color/colorOrange" />
 
     <Button
         android:id="@+id/Button03"
@@ -42,9 +41,10 @@
         android:layout_marginTop="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
-        android:text="Evolution"
         android:background="@drawable/rounded_button"
-        android:textColor="@color/colorOrange"/>
+        android:text="@string/evolution"
+        android:textColor="@color/colorOrange" />
+
 
     <Button
         android:id="@+id/Button04"
@@ -53,8 +53,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
         android:layout_marginRight="25dp"
-        android:text="Activité Sportive"
         android:background="@drawable/rounded_button"
-        android:textColor="@color/colorOrange"/>
+        android:text="@string/activit_sportive"
+        android:textColor="@color/colorOrange" />
 
 </LinearLayout>

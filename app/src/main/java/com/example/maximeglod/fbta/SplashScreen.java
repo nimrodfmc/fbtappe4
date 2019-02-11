@@ -1,4 +1,5 @@
 package com.example.maximeglod.fbta;
+
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         //On enlève la barre de titre
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // On retire la barre de notifications pour afficher l'application en plein écran
@@ -30,7 +32,6 @@ public class SplashScreen extends AppCompatActivity {
         this.setContentView(R.layout.activity_splash);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
 
 
         //Code qui commence avec le timer et lance les actions ensuite
@@ -42,9 +43,9 @@ public class SplashScreen extends AppCompatActivity {
                 Intent mySuperIntent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(mySuperIntent);
 
-                        /* Ce finish() sert à quitter l'application lorsque le bouton de retour est enfoncé
-                        * de la page d'accueil qui est mainactivity
-                        */
+                /* Ce finish() sert à quitter l'application lorsque le bouton de retour est enfoncé
+                 * de la page d'accueil qui est mainactivity
+                 */
                 finish();
             }
         }, SPLASH_TIME);
