@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
+
     <solid android:color="@color/colorVert" />
 
     <stroke
@@ -17,4 +18,5 @@
         android:bottomRightRadius="15dip"
         android:topLeftRadius="15dip"
         android:topRightRadius="15dip" />
+
 </shape>

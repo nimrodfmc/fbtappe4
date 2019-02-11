@@ -8,7 +8,6 @@
     tools:context=".MainActivity">
 
     <GridView
-
         android:id="@+id/gridView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -26,7 +25,6 @@
         android:listSelector="@drawable/list_selector"
         android:numColumns="1"
         android:verticalSpacing="20dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

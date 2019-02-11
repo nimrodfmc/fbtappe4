@@ -87,8 +87,8 @@
         android:layout_marginTop="11dp"
         android:layout_toEndOf="@+id/button_rm"
         android:layout_toRightOf="@+id/button_rm"
-        android:onClick="recupcal"
         android:text="@string/quantit" />
+
 
     <TextView
         android:id="@+id/textView_qte"
@@ -103,6 +103,7 @@
         android:layout_toEndOf="@+id/button_rm"
         android:layout_toRightOf="@+id/button_rm"
         android:text="@string/_0" />
+
 
 
 </RelativeLayout>
