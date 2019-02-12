@@ -22,4 +22,5 @@
     <string name="alimentation">Alimentation</string>
     <string name="evolution">Evolution</string>
     <string name="activit_sportive">Activité Sportive</string>
+    <string name="affdate">TextView</string>
 </resources>
