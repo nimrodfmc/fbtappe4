@@ -14,7 +14,11 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
+import java.util.HashMap;
+
 public class MainActivity extends Activity {
+
+    public static HashMap<String,Object> personne = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
