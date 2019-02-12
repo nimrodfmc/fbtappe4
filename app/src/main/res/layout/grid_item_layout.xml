@@ -79,12 +79,12 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="60dp"
-        android:layout_height="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView_calories"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="9dp"
         android:layout_toEndOf="@+id/button_rm"
         android:layout_toRightOf="@+id/button_rm"
         android:text="@string/quantit" />
@@ -96,12 +96,12 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView"
         android:layout_alignBottom="@+id/textView"
-        android:layout_marginStart="81dp"
-        android:layout_marginLeft="81dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/button_rm"
-        android:layout_toRightOf="@+id/button_rm"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
         android:text="@string/_0" />
 
     <TextView

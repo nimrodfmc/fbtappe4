@@ -1,6 +1,8 @@
 package com.example.maximeglod.fbta;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.example.maximeglod.fbta.MainAliments.dateMap;
 
 public class CustomGridAdapter extends BaseAdapter {
 
@@ -43,6 +47,10 @@ public class CustomGridAdapter extends BaseAdapter {
     }
 
     public View getView(final int position, View convertView, final ViewGroup parent) {
+
+
+
+
         final ViewHolder holder;
         ViewHolder holder1;
         if (convertView == null) {
@@ -196,10 +204,14 @@ public class CustomGridAdapter extends BaseAdapter {
         TextView qteView;
         TextView totalcalories;
     }
+    public void onCreate (Bundle savedInstanceState){
+
+    }
 
     //Hashmap des quantités
     public static Map<Integer, Integer> maMap = new HashMap<>();
     //Hashmap des calories
     public static Map<Integer, Integer> calMap = new HashMap<>();
+
 
 };

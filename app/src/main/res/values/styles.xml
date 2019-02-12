@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CalenderViewDateCustomText">
+        <item name="android:textColor">@color/colorOrange</item>
+        <item name="android:weekNumberColor">@color/colorRed</item>
+    </style>
+
 </resources>

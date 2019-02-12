@@ -1,5 +1,6 @@
 package com.example.maximeglod.fbta;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.Dimension;
@@ -21,10 +22,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 import static com.example.maximeglod.fbta.CustomGridAdapter.calMap;
+import static com.example.maximeglod.fbta.CustomGridAdapter.maMap;
 
 public class MainAliments extends AppCompatActivity {
 
@@ -38,6 +42,10 @@ public class MainAliments extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aliments);
+
+         Intent intent = getIntent();
+         String date = intent.getStringExtra("date");
+         String date2 = date.toString();
 
         //Instance de Handler pour lancer une fonction à intervalle de temps régulier
         myHandler = new Handler();
@@ -904,6 +912,17 @@ public class MainAliments extends AppCompatActivity {
                 }
 
             }
+
+            Intent intent = getIntent();
+            String date = intent.getStringExtra("date");
+            String date2 = date.toString();
+            maMap.getClass();
+
+            dateMap.put(date2,maMap);
+            dateMap.get(date2);
+
+                dateMap.put(date2,new HashMap<Integer, Integer>());
+
             //On appel cette fonction toutes les 5 milisecondes
             myHandler.postDelayed(this, 5);
 
@@ -911,5 +930,7 @@ public class MainAliments extends AppCompatActivity {
         }
     };
 
+    //Hashmap en fonction de la date
+    public static Map<String,Map<Integer,Integer>> dateMap = new HashMap<String,Map<Integer,Integer>>();
 
 }
