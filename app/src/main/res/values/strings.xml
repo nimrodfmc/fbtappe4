@@ -12,4 +12,14 @@
     <string name="nom_de_l_aliment">Nom de l\'aliment</string>
     <string name="calories">Calories</string>
     <string name="btn_inscrire">S inscrire</string>
+    <string name="quantit">Quantité :</string>
+    <string name="_0">0</string>
+    <string name="todo">TODO</string>
+    <string name="calories_consomm_es">Calories consommées :</string>
+    <string name="objectif">Objectif :</string>
+    <string name="_2500">2500</string>
+    <string name="s_inscrire">S\'inscrire</string>
+    <string name="alimentation">Alimentation</string>
+    <string name="evolution">Evolution</string>
+    <string name="activit_sportive">Activité Sportive</string>
 </resources>

@@ -15,7 +15,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp" />
+        android:layout_marginRight="5dp"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView_alimentsName"
@@ -35,8 +36,6 @@
         android:id="@+id/textView_calories"
         android:layout_width="309dp"
         android:layout_height="wrap_content"
-
-
         android:layout_below="@+id/textView_alimentsName"
         android:layout_marginStart="14dp"
         android:layout_marginLeft="14dp"
@@ -48,7 +47,7 @@
         android:textColor="@android:color/white" />
 
     <ImageView
-        android:id="@+id/imageView_add"
+        android:id="@+id/button_add"
         android:layout_width="42dp"
         android:layout_height="36dp"
         android:layout_below="@+id/textView_calories"
@@ -59,11 +58,12 @@
         android:layout_marginBottom="1dp"
         android:layout_toEndOf="@+id/imageView_imagealiments"
         android:layout_toRightOf="@+id/imageView_imagealiments"
-        android:onClick="add"
-        app:srcCompat="@drawable/add" />
+        app:srcCompat="@drawable/add"
+        android:contentDescription="@string/todo" />
+
 
     <ImageView
-        android:id="@+id/imageView_rm"
+        android:id="@+id/button_rm"
         android:layout_width="44dp"
         android:layout_height="47dp"
         android:layout_below="@+id/textView_calories"
@@ -72,24 +72,23 @@
         android:layout_marginLeft="6dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/imageView_add"
-        android:layout_toRightOf="@+id/imageView_add"
-        android:onClick="rm"
-        app:srcCompat="@drawable/rm" />
+        android:layout_toEndOf="@+id/button_add"
+        android:layout_toRightOf="@+id/button_add"
+        app:srcCompat="@drawable/rm"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="60dp"
         android:layout_height="18dp"
         android:layout_below="@+id/textView_calories"
-        android:layout_alignBottom="@+id/imageView"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="11dp"
-        android:layout_marginBottom="16dp"
-        android:layout_toEndOf="@+id/imageView_rm"
-        android:layout_toRightOf="@+id/imageView_rm"
-        android:text="Quantité :" />
+        android:layout_toEndOf="@+id/button_rm"
+        android:layout_toRightOf="@+id/button_rm"
+        android:text="@string/quantit" />
+
 
     <TextView
         android:id="@+id/textView_qte"
@@ -101,9 +100,10 @@
         android:layout_marginLeft="81dp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/imageView_rm"
-        android:layout_toRightOf="@+id/imageView_rm"
-        android:text="0" />
+        android:layout_toEndOf="@+id/button_rm"
+        android:layout_toRightOf="@+id/button_rm"
+        android:text="@string/_0" />
+
 
 
 </RelativeLayout>
