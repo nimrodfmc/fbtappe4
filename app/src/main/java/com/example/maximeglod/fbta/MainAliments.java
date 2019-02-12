@@ -912,21 +912,24 @@ public class MainAliments extends AppCompatActivity {
                 }
 
             }
+
             Intent intent = getIntent();
             String date = intent.getStringExtra("date");
             String date2 = date.toString();
-            if (maMap!=null){
+            maMap.getClass();
+
             dateMap.put(date2,maMap);
-            dateMap.get(date2);}
-            else {
-                dateMap.put(date2,null);
-            }
+            dateMap.get(date2);
+
+                dateMap.put(date2,new HashMap<Integer, Integer>());
+
             //On appel cette fonction toutes les 5 milisecondes
             myHandler.postDelayed(this, 5);
 
 
         }
     };
+
     //Hashmap en fonction de la date
     public static Map<String,Map<Integer,Integer>> dateMap = new HashMap<String,Map<Integer,Integer>>();
 

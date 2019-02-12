@@ -47,7 +47,7 @@ public class CustomGridAdapter extends BaseAdapter {
     }
 
     public View getView(final int position, View convertView, final ViewGroup parent) {
-        maMap.clear();
+
 
 
 
@@ -113,9 +113,9 @@ public class CustomGridAdapter extends BaseAdapter {
 
                 //Si le HashMap de contient pas la position de l'aliment, alors il n'a pas été modifié donc
                 //on défini la quantité à 0 (Sinon la vue est "regonflé")
-                Integer verif = dateMap.get("date").get(position);
+                Integer verif = maMap.get(position);
                 if (verif != null) {
-                    holder.qteView.setText(Integer.toString(dateMap.get("date").get(position)));
+                    holder.qteView.setText(Integer.toString(maMap.get(position)));
                 } else {
                     holder.qteView.setText("0");
                 }
@@ -156,9 +156,9 @@ public class CustomGridAdapter extends BaseAdapter {
 
                 //Si le HashMap de contient pas la position de l'aliment, alors il n'a pas été modifié donc
                 //on défini la quantité à 0 (Sinon la vue est "regonflé")
-                Integer verif = dateMap.get("date").get(position);
+                Integer verif = maMap.get(position);
                 if (verif != null) {
-                    holder.qteView.setText(Integer.toString(dateMap.get("date").get(position)));
+                    holder.qteView.setText(Integer.toString(maMap.get(position)));
                 } else {
                     holder.qteView.setText("0");
                 }
@@ -174,9 +174,9 @@ public class CustomGridAdapter extends BaseAdapter {
 
         //Si le HashMap de contient pas la position de l'aliment, alors il n'a pas été modifié donc
         //on défini la quantité à 0 (Sinon la vue est "regonflé")
-        Integer verif = dateMap.get("date").get(position);
+        Integer verif = maMap.get(position);
         if (verif != null) {
-            holder.qteView.setText(Integer.toString(dateMap.get("date").get(position)));
+            holder.qteView.setText(Integer.toString(maMap.get(position)));
         } else {
             holder.qteView.setText("0");
         }
