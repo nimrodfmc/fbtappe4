@@ -25,6 +25,10 @@ public class Inscription extends AppCompatActivity {
 
     private String poids, taille, nom, naissance, sexe, sport, objectif, prenom;
 
+    public Inscription() {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);

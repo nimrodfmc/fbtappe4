@@ -18,10 +18,12 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 import static com.example.maximeglod.fbta.CustomGridAdapter.calMap;
 
 public class MainActivity extends Activity {
+    public static HashMap<String, Object> personne = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
