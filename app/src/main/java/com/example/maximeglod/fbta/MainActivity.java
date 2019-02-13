@@ -18,10 +18,12 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 import static com.example.maximeglod.fbta.CustomGridAdapter.calMap;
 
 public class MainActivity extends Activity {
+    public static HashMap<String, Object> personne = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,8 @@ public class MainActivity extends Activity {
         myHandler.postDelayed(myRunnable, 5);
         TextView dateView = (TextView)findViewById(R.id.currentdate);
         Calendar cal = Calendar.getInstance();
-        final String heures = (cal.get(Calendar.DAY_OF_MONTH)+"/"+cal.get(Calendar.DAY_OF_WEEK)+"/"+cal.get(Calendar.YEAR));
+        int ds=cal.get(Calendar.MONTH)+1;
+        final String heures = (cal.get(Calendar.DAY_OF_MONTH)+"/"+ds+"/"+cal.get(Calendar.YEAR));
         dateView.setText(heures);
 
         CalendarView view = findViewById(R.id.calendarView);

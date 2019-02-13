@@ -1,7 +1,6 @@
 package com.example.maximeglod.fbta;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,6 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.example.maximeglod.fbta.MainAliments.dateMap;
 
 public class CustomGridAdapter extends BaseAdapter {
 
@@ -49,7 +46,16 @@ public class CustomGridAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, final ViewGroup parent) {
 
 
-
+        String date = MainAliments.recup_date;
+//        if ((dateMap.get(date)).size()>0){
+//            //si les map sont pleines
+//
+//        } else{
+//            maMap.clear();
+//
+//        }
+        final String date2 = date.toString();
+        //if (dateMap.get(date2)).
 
         final ViewHolder holder;
         ViewHolder holder1;
@@ -107,15 +113,23 @@ public class CustomGridAdapter extends BaseAdapter {
                     if (Integer.parseInt(holder.qteView.getText().toString()) > 0) {
                         int qte2 = Integer.parseInt(holder.qteView.getText().toString()) - 1;
                         //Ajout de la valeur en quantité modifié dans un HashMap dédié
-                        maMap.put(position, qte2);
+
+                       // maMap.put(position, qte2);
+                        Integer valpos = maMap.get(position);
+                        dateMap.put(date2, new HashMap<Integer, Integer>());
+                        dateMap.get(date2).put(position,qte2);
+
                     }
                 }
 
                 //Si le HashMap de contient pas la position de l'aliment, alors il n'a pas été modifié donc
                 //on défini la quantité à 0 (Sinon la vue est "regonflé")
-                Integer verif = maMap.get(position);
-                if (verif != null) {
-                    holder.qteView.setText(Integer.toString(maMap.get(position)));
+                maMap.get(position);
+
+                Boolean verif = dateMap.get(date2).containsKey(position);
+                if (verif == true) {
+
+                    holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
                 } else {
                     holder.qteView.setText("0");
                 }
@@ -150,15 +164,19 @@ public class CustomGridAdapter extends BaseAdapter {
 
                     //Augmentation de +1 de la quantité
                     int qte2 = Integer.parseInt(holder.qteView.getText().toString()) + 1;
-                    maMap.put(position, qte2);
+                    //maMap.put(position, qte2);
+
+                    dateMap.put(date2, new HashMap<Integer, Integer>());
+                    dateMap.get(date2).put(position,qte2);
 
                 }
 
                 //Si le HashMap de contient pas la position de l'aliment, alors il n'a pas été modifié donc
                 //on défini la quantité à 0 (Sinon la vue est "regonflé")
-                Integer verif = maMap.get(position);
+
+                Integer verif = ((dateMap.get(date2)).get(position));
                 if (verif != null) {
-                    holder.qteView.setText(Integer.toString(maMap.get(position)));
+                    holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
                 } else {
                     holder.qteView.setText("0");
                 }
@@ -174,12 +192,25 @@ public class CustomGridAdapter extends BaseAdapter {
 
         //Si le HashMap de contient pas la position de l'aliment, alors il n'a pas été modifié donc
         //on défini la quantité à 0 (Sinon la vue est "regonflé")
-        Integer verif = maMap.get(position);
-        if (verif != null) {
-            holder.qteView.setText(Integer.toString(maMap.get(position)));
-        } else {
-            holder.qteView.setText("0");
+        //dateMap.get(date2).get(position);
+
+        //Integer testcomplet= ((dateMap.get(date)).get(position));
+        //dateMap.put(date2, new HashMap<Integer, Integer>());
+
+
+        for (int i = 0; i <= listData.size(); i++) {
+            Boolean verif = dateMap.containsValue(maMap.containsValue(i));
+            if (verif == true) {
+                //holder.qteView.setText("0");
+
+                    holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(i)));
+
+            } else {
+                //holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
+                holder.qteView.setText("0");
+            }
         }
+
 
         //On va chercher les images correspondantes aux nom d'aliments
         int imageId = this.getMipmapResIdByName(aliments.getImagealimentsName());
@@ -204,10 +235,12 @@ public class CustomGridAdapter extends BaseAdapter {
         TextView qteView;
         TextView totalcalories;
     }
-    public void onCreate (Bundle savedInstanceState){
+
+    public void onCreate(Bundle savedInstanceState) {
 
     }
 
+    public static Map<String, Map<Integer, Integer>> dateMap = new HashMap<>();
     //Hashmap des quantités
     public static Map<Integer, Integer> maMap = new HashMap<>();
     //Hashmap des calories
