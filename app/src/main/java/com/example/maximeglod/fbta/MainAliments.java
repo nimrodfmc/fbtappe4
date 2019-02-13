@@ -50,8 +50,16 @@ public class MainAliments extends AppCompatActivity {
         recup_date = date;
         String date2 = date.toString();
         maMap.getClass();
+       Boolean verif = dateMap.containsKey(date2);
+
+if (verif==true){
+
+}else {
+    dateMap.put(date2,new HashMap<Integer, Integer>());
+    (dateMap.get(date2)).put(900000,900000);
 
 
+}
 
        // dateMap.put(date2,new HashMap<Integer, Integer>());
 

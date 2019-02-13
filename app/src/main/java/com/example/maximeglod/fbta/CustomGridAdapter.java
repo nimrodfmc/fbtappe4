@@ -198,18 +198,22 @@ public class CustomGridAdapter extends BaseAdapter {
         //dateMap.put(date2, new HashMap<Integer, Integer>());
 
 
-        for (int i = 0; i <= listData.size(); i++) {
-            Boolean verif = dateMap.containsValue(maMap.containsValue(i));
-            if (verif == true) {
+
+            Boolean verif = dateMap.containsKey(date2);
+            if (verif == true ) {
                 //holder.qteView.setText("0");
+if ((dateMap.get(date2)).get(position)!=null) {
+    holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
 
-                    holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(i)));
-
+}else {
+    //holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
+    holder.qteView.setText("0");
+}
             } else {
                 //holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
                 holder.qteView.setText("0");
             }
-        }
+
 
 
         //On va chercher les images correspondantes aux nom d'aliments
