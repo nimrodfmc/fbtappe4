@@ -94,8 +94,24 @@ public class MainActivity extends Activity {
 
 
         });
-        //les deux autres bouttons reste à faire
 
+        Button activite = (Button) findViewById(R.id.Button04);
+        activite.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), ActiviteSportive.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
+        Button poids = (Button) findViewById(R.id.Button05);
+        poids.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), SaisiePoids.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
 
     }
     private Handler myHandler;
