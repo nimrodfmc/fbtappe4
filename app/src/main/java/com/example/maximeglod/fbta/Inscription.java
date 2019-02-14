@@ -71,14 +71,15 @@ public class Inscription extends AppCompatActivity {
         this.poids = et_poids.getText().toString();
 
         spinner = (Spinner) findViewById(R.id.spinner);
-        List liste = new ArrayList();
+        List liste = new ArrayList<String>();
         liste.add("Détente");
         liste.add("Modéré");
         liste.add("Intense");
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,liste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        this.objectif = spinner.getSelectedItem().toString();
+        this.sport = spinner.getSelectedItem().toString();
+
         et_objectif = (EditText) findViewById(R.id.etObjectif);
         this.objectif = et_objectif.getText().toString();
 
