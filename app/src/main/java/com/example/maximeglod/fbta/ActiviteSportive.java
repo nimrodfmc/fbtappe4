@@ -25,9 +25,9 @@ public class ActiviteSportive extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activite_sportive);
 
-        r_nulle = (RadioButton) findViewById(R.id.radioButton);
-        r_modere = (RadioButton) findViewById(R.id.radioButton2);
-        r_forte = (RadioButton) findViewById(R.id.radioButton3);
+        r_nulle = (RadioButton) findViewById(R.id.btnNulle);
+        r_modere = (RadioButton) findViewById(R.id.btnModere);
+        r_forte = (RadioButton) findViewById(R.id.btnForte);
         r_grp = (RadioGroup) findViewById(R.id.radioGroup);
         btn = (Button) findViewById(R.id.save);
 
