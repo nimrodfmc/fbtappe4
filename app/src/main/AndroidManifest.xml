@@ -35,6 +35,9 @@
         <activity
             android:name=".MainAliments"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Evolution"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

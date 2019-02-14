@@ -113,6 +113,15 @@ public class MainActivity extends Activity {
 
         });
 
+        Button evolution = (Button) findViewById(R.id.Button03);
+        evolution.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), Evolution.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
     }
     private Handler myHandler;
     private Runnable myRunnable = new Runnable() {
