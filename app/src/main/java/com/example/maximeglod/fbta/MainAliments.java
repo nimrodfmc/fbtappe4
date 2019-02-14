@@ -58,6 +58,9 @@ public class MainAliments extends AppCompatActivity {
             dateMap.put(date2,new HashMap<Integer, Integer>());
             (dateMap.get(date2)).put(900000,900000);
 
+            caltolMap.put(date2,new HashMap<Integer, Integer>());
+           // (caltolMap.get(date2)).put(8000,0);
+
 
         }
 
@@ -893,15 +896,35 @@ public class MainAliments extends AppCompatActivity {
             int sum = 0;
             //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
             //dans la variable sum
-            for (int f : calMap.values()) {
-                sum += f;
+            //calMap.values()
+
+            Boolean verif2= (CustomGridAdapter.caltolMap.get(recup_date)).isEmpty();
+
+            if (verif2==false){
+                for (int f : caltolMap.get(recup_date).values()) {
+                    sum += f;
+                }
+
+                //On récupère le champ totalcalories de la vue
+                TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                String sumtotal = Integer.toString(sum);
+                //On met à jour le text de totalcalories avec la valeur calculée
+                totalcalories.setText(sumtotal);
+
+            } else {
+                TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                totalcalories.setText("0");
             }
 
-            //On récupère le champ totalcalories de la vue
-            TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
-            String sumtotal = Integer.toString(sum);
-            //On met à jour le text de totalcalories avec la valeur calculée
-            totalcalories.setText(sumtotal);
+//            for (int f : (caltolMap.get(recup_date)).values()) {
+//                sum += f;
+//            }
+//
+//            //On récupère le champ totalcalories de la vue
+//            TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+//            String sumtotal = Integer.toString(sum);
+//            //On met à jour le text de totalcalories avec la valeur calculée
+//            totalcalories.setText(sumtotal);
 
             //Changement de la couleur d'un élément si l'objectif n'est pas respecté
             TextView objectifcalories = (TextView) findViewById(R.id.objectif);
@@ -940,6 +963,7 @@ public class MainAliments extends AppCompatActivity {
 
 
     //Hashmap en fonction de la date
-    public static Map<String,Map<Integer,Integer>> dateMap = new HashMap<String,Map<Integer,Integer>>();
+    public static Map<String,Map<Integer,Integer>> dateMap =  CustomGridAdapter.dateMap;
+    public static Map<String,Map<Integer,Integer>> caltolMap = CustomGridAdapter.caltolMap;
 
 }

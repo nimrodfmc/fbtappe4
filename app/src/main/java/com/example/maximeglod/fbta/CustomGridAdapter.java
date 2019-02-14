@@ -104,7 +104,10 @@ public class CustomGridAdapter extends BaseAdapter {
                 //Boucle permetant de ne pas avoir de total négatif quand on retire des quantités
                 if (qtecalorie >= 0) {
                     //Ajout de la valeur calculé dans un hashmap dédié au calcul du total calorique
-                    calMap.put(position, qtecalorie);
+                    caltolMap.put(date2,new HashMap<Integer, Integer>());
+                    caltolMap.get(date2).put(position,qtecalorie);
+                    //(caltolMap.get(date2)).put(8000,0);
+                    //calMap.put(position, qtecalorie);
                 }
 
                 //Si on clique sur le button -
@@ -157,11 +160,18 @@ public class CustomGridAdapter extends BaseAdapter {
                 int qtecalorie = c;
 
                 //Ajout de la valeur calculé dans un hashmap dédié au calcul du total calorique
-                calMap.put(position, qtecalorie);
+                caltolMap.put(date2,new HashMap<Integer, Integer>());
+                caltolMap.get(date2).put(position,qtecalorie);
+                (caltolMap.get(date2)).put(8000,0);
+                //calMap.put(position, qtecalorie);
 
                 //Si on clique sur le button +
                 if (add.isClickable()) {
+                    caltolMap.put(date2,new HashMap<Integer, Integer>());
 
+                    Boolean verif2= (caltolMap.get(date2)).containsKey(8000);
+                    Boolean verif3= (caltolMap.get(date2)).isEmpty();
+                    if (verif2==true){};
                     //Augmentation de +1 de la quantité
                     int qte2 = Integer.parseInt(holder.qteView.getText().toString()) + 1;
                     //maMap.put(position, qte2);
@@ -243,6 +253,7 @@ public class CustomGridAdapter extends BaseAdapter {
     public void onCreate(Bundle savedInstanceState) {
 
     }
+    public static Map<String, Map<Integer,Integer>> caltolMap = new HashMap<>();
 
     public static Map<String, Map<Integer, Integer>> dateMap = new HashMap<>();
     //Hashmap des quantités
