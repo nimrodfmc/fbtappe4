@@ -180,5 +180,5 @@ public class Inscription extends AppCompatActivity {
         return this.sport;
     }
 
-
+    public String getObjectif() {return this.objectif;}
 }

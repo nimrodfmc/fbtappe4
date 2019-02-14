@@ -54,7 +54,7 @@ public class Personne extends Inscription {
         return sport;
     }
 
-    public int getObjectif() {
+    public int getObjectifs() {
         return objectif ;
     }
 

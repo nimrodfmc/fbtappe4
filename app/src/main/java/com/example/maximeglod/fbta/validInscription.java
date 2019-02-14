@@ -91,7 +91,7 @@ public class validInscription extends AppCompatActivity {
             @Override
 
             public void onClick(View view) {
-                BDHelper bdHelper = new BDHelper(getBaseContext());
+                BDHelper bdHelper = new BDHelper(getBaseContext(), "fbta", null, 1);
 
                 //LISTE DES PARAMETRES A AJOUTER A LA BDD
                 HashMap<String,String> params = new HashMap<>();

@@ -1,20 +1,22 @@
 package com.example.maximeglod.fbta;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.HashMap;
 import java.util.Map;
 
 //Fichier de gestion de la BDD
-public class BDHelper {
+public class BDHelper extends SQLiteOpenHelper {
     private SQLiteDatabase maBase;
     private BDD maBDD;
 
     //constructeur qui initialise la base
-    public BDHelper(Context context) {
-        maBDD = new BDD(context);
+    public BDHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
     }
 
     // on obtient l’accès en écriture, ce qui permet de lire et modifier les données
@@ -25,6 +27,16 @@ public class BDHelper {
     //pour libérer la connection
     public void close() {
         maBase.close();
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        //requête
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
     }
 
     //ajout de la liste (HashMap) dans la BDD
