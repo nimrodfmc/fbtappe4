@@ -21,7 +21,8 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/affdate"
-            app:layout_column="1" />
+            app:layout_column="0"
+            app:layout_row="0" />
 
 
         <TextView
@@ -32,9 +33,10 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="8dp"
             android:text="@string/calories_consomm_es"
-            app:layout_column="2"
+            app:layout_column="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_row="0" />
 
         <TextView
             android:id="@+id/totalcalories"
@@ -44,8 +46,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="0dp"
             android:text="@string/_0"
-            app:layout_column="3"
-            />
+            app:layout_column="2"
+            app:layout_row="0" />
 
         <Button
             android:id="@+id/verif"
@@ -56,7 +58,8 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/rounded_button"
             android:focusable="false"
-            app:layout_column="6" />
+            app:layout_column="6"
+            app:layout_row="0" />
 
         <TextView
             android:id="@+id/libeleobj"
@@ -66,8 +69,8 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="8dp"
             android:text="@string/objectif"
-            app:layout_column="4"
-             />
+            app:layout_column="3"
+            app:layout_row="0" />
 
         <TextView
             android:id="@+id/objectif"
@@ -77,7 +80,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="4dp"
             android:text="@string/_2500"
-            app:layout_column="5" />
+            app:layout_column="4"
+            app:layout_row="0" />
 
 
     </android.support.v7.widget.GridLayout>
