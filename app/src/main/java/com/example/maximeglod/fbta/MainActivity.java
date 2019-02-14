@@ -59,6 +59,21 @@ public class MainActivity extends Activity {
                 TextView dateView = (TextView)findViewById(R.id.currentdate);
                 String heures2 = (date+"/"+(month+1)+"/"+year);
                 dateView.setText(heures2);
+                TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                totalcalories.setText("0");
+                calMap.clear();
+                int sum = 0;
+                //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
+                //dans la variable sum
+                for (int f : calMap.values()) {
+                    sum += f;
+                }
+
+                //On récupère le champ totalcalories tde la vue
+
+                String sumtotal = Integer.toString(sum);
+                //On met à jour le text de totalcalories avec la valeur calculée
+                totalcalories.setText(sumtotal);
 
             }
         });

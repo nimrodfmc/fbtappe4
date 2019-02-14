@@ -114,7 +114,7 @@ public class CustomGridAdapter extends BaseAdapter {
                         int qte2 = Integer.parseInt(holder.qteView.getText().toString()) - 1;
                         //Ajout de la valeur en quantité modifié dans un HashMap dédié
 
-                       // maMap.put(position, qte2);
+                        // maMap.put(position, qte2);
                         Integer valpos = maMap.get(position);
                         dateMap.put(date2, new HashMap<Integer, Integer>());
                         dateMap.get(date2).put(position,qte2);
@@ -199,20 +199,20 @@ public class CustomGridAdapter extends BaseAdapter {
 
 
 
-            Boolean verif = dateMap.containsKey(date2);
-            if (verif == true ) {
-                //holder.qteView.setText("0");
-if ((dateMap.get(date2)).get(position)!=null) {
-    holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
+        Boolean verif = dateMap.containsKey(date2);
+        if (verif == true ) {
+            //holder.qteView.setText("0");
+            if ((dateMap.get(date2)).get(position)!=null) {
+                holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
 
-}else {
-    //holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
-    holder.qteView.setText("0");
-}
-            } else {
+            }else {
                 //holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
                 holder.qteView.setText("0");
             }
+        } else {
+            //holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
+            holder.qteView.setText("0");
+        }
 
 
 

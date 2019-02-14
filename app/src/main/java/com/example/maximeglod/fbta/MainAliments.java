@@ -50,18 +50,18 @@ public class MainAliments extends AppCompatActivity {
         recup_date = date;
         String date2 = date.toString();
         maMap.getClass();
-       Boolean verif = dateMap.containsKey(date2);
+        Boolean verif = dateMap.containsKey(date2);
 
-if (verif==true){
+        if (verif==true){
 
-}else {
-    dateMap.put(date2,new HashMap<Integer, Integer>());
-    (dateMap.get(date2)).put(900000,900000);
+        }else {
+            dateMap.put(date2,new HashMap<Integer, Integer>());
+            (dateMap.get(date2)).put(900000,900000);
 
 
-}
+        }
 
-       // dateMap.put(date2,new HashMap<Integer, Integer>());
+        // dateMap.put(date2,new HashMap<Integer, Integer>());
 
         //Instance de Handler pour lancer une fonction à intervalle de temps régulier
         myHandler = new Handler();
