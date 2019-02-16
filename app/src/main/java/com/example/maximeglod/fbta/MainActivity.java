@@ -2,6 +2,7 @@ package com.example.maximeglod.fbta;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +22,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import static com.example.maximeglod.fbta.CustomGridAdapter.calMap;
 import static com.example.maximeglod.fbta.CustomGridAdapter.caltolMap;
 
@@ -35,7 +37,6 @@ public class MainActivity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-
         //Définission le contenu de la vue APRES les instructions précédentes pour éviter un crash
 
         super.onCreate(savedInstanceState);
@@ -44,30 +45,30 @@ public class MainActivity extends Activity {
         //Instance de Handler pour lancer une fonction à intervalle de temps régulier
         myHandler = new Handler();
         myHandler.postDelayed(myRunnable, 5);
-        TextView dateView = (TextView)findViewById(R.id.currentdate);
+        TextView dateView = (TextView) findViewById(R.id.currentdate);
         Calendar cal = Calendar.getInstance();
-        int ds=cal.get(Calendar.MONTH)+1;
-        final String heures = (cal.get(Calendar.DAY_OF_MONTH)+"/"+ds+"/"+cal.get(Calendar.YEAR));
+        int ds = cal.get(Calendar.MONTH) + 1;
+        final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
         dateView.setText(heures);
 
         CalendarView view = findViewById(R.id.calendarView);
 
-
+        //A chaque changement de la date sur la liste
         view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
             @Override
             public void onSelectedDayChange(CalendarView arg0, int year, int month,
                                             int date) {
 
-                TextView dateView = (TextView)findViewById(R.id.currentdate);
-                String heures2 = (date+"/"+(month+1)+"/"+year);
+                TextView dateView = (TextView) findViewById(R.id.currentdate);
+                String heures2 = (date + "/" + (month + 1) + "/" + year);
                 dateView.setText(heures2);
                 TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
                 calMap.clear();
 
 
-                caltolMap.put(heures2,new HashMap<Integer, Integer>());
-                (caltolMap.get(heures2)).put(8000,0);
+                caltolMap.put(heures2, new HashMap<Integer, Integer>());
+                (caltolMap.get(heures2)).put(8000, 0);
 
                 int sum = 0;
                 //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
@@ -86,11 +87,8 @@ public class MainActivity extends Activity {
         });
 
 
-
-
-
         myHandler = new Handler();
-        myHandler.postDelayed(myRunnable,5);
+        myHandler.postDelayed(myRunnable, 5);
 
         //On instancie des bouttons de menu sur la vue activity_main
         // avec des intent pour lancer les activités correspondante
@@ -106,7 +104,7 @@ public class MainActivity extends Activity {
         Button alimentation = (Button) findViewById(R.id.Button02);
         alimentation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                TextView dateView2 = (TextView)findViewById(R.id.currentdate);
+                TextView dateView2 = (TextView) findViewById(R.id.currentdate);
                 final String heures3 = dateView2.getText().toString();
                 Intent myIntent = new Intent(getBaseContext(), MainAliments.class);
                 myIntent.putExtra("date", heures3);
@@ -117,20 +115,49 @@ public class MainActivity extends Activity {
 
 
         });
-        //les deux autres bouttons reste à faire
 
-if (savedInstanceState==null){
-//première ouverture
-    TextView dateView2 = (TextView) findViewById(R.id.currentdate);
-    final String heures3 = dateView2.getText().toString();
-    caltolMap.put(heures3,new HashMap<Integer, Integer>());
-    (caltolMap.get(heures3)).put(8000,0);
-    caltolMap.put(heures3,new HashMap<Integer, Integer>());
-} else {
-    final int verif = 0;
+        if (savedInstanceState == null) {
+            //première ouverture
+            TextView dateView2 = (TextView) findViewById(R.id.currentdate);
+            final String heures3 = dateView2.getText().toString();
+            caltolMap.put(heures3, new HashMap<Integer, Integer>());
+            (caltolMap.get(heures3)).put(8000, 0);
+            caltolMap.put(heures3, new HashMap<Integer, Integer>());
+        } else {
+            final int verif = 0;
 
-}
+        }
+
+        Button activite = (Button) findViewById(R.id.Button04);
+        activite.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), ActiviteSportive.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
+        Button poids = (Button) findViewById(R.id.Button05);
+        poids.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), SaisiePoids.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
+        Button evolution = (Button) findViewById(R.id.Button03);
+        evolution.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), Evolution.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
+
     }
+
     private Handler myHandler;
     private final Runnable myRunnable = new Runnable() {
         @Override
@@ -187,5 +214,5 @@ if (savedInstanceState==null){
     };
 
 
-    public static Map<String, Map<Integer,Integer>> caltolMap = new HashMap<>();
+    public static Map<String, Map<Integer, Integer>> caltolMap = new HashMap<>();
 }
