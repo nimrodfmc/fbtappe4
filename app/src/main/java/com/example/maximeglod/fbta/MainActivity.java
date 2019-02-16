@@ -20,8 +20,11 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+
 
 import static com.example.maximeglod.fbta.CustomGridAdapter.calMap;
+import static com.example.maximeglod.fbta.CustomGridAdapter.caltolMap;
 
 public class MainActivity extends Activity {
     public static HashMap<String, Object> personne = new HashMap<>();
@@ -45,7 +48,8 @@ public class MainActivity extends Activity {
         myHandler.postDelayed(myRunnable, 5);
         TextView dateView = (TextView)findViewById(R.id.currentdate);
         Calendar cal = Calendar.getInstance();
-        final String heures = (cal.get(Calendar.DAY_OF_MONTH)+"/"+cal.get(Calendar.DAY_OF_WEEK)+"/"+cal.get(Calendar.YEAR));
+        int ds=cal.get(Calendar.MONTH)+1;
+        final String heures = (cal.get(Calendar.DAY_OF_MONTH)+"/"+ds+"/"+cal.get(Calendar.YEAR));
         dateView.setText(heures);
 
         CalendarView view = findViewById(R.id.calendarView);
@@ -56,9 +60,29 @@ public class MainActivity extends Activity {
             @Override
             public void onSelectedDayChange(CalendarView arg0, int year, int month,
                                             int date) {
+
                 TextView dateView = (TextView)findViewById(R.id.currentdate);
                 String heures2 = (date+"/"+(month+1)+"/"+year);
                 dateView.setText(heures2);
+                TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                calMap.clear();
+
+
+                caltolMap.put(heures2,new HashMap<Integer, Integer>());
+                (caltolMap.get(heures2)).put(8000,0);
+
+                int sum = 0;
+                //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
+                //dans la variable sum
+                for (int f : (caltolMap.get(heures2)).values()) {
+                    sum += f;
+                }
+
+                //On récupère le champ totalcalories tde la vue
+
+                String sumtotal = Integer.toString(sum);
+                //On met à jour le text de totalcalories avec la valeur calculée
+                totalcalories.setText(sumtotal);
 
             }
         });
@@ -88,12 +112,26 @@ public class MainActivity extends Activity {
                 final String heures3 = dateView2.getText().toString();
                 Intent myIntent = new Intent(getBaseContext(), MainAliments.class);
                 myIntent.putExtra("date", heures3);
+                calMap.clear();
 
                 startActivityForResult(myIntent, 0);
             }
 
 
         });
+
+
+if (savedInstanceState==null){
+//première ouverture
+    TextView dateView2 = (TextView) findViewById(R.id.currentdate);
+    final String heures3 = dateView2.getText().toString();
+    caltolMap.put(heures3,new HashMap<Integer, Integer>());
+    (caltolMap.get(heures3)).put(8000,0);
+    caltolMap.put(heures3,new HashMap<Integer, Integer>());
+} else {
+    final int verif = 0;
+
+}
 
         Button activite = (Button) findViewById(R.id.Button04);
         activite.setOnClickListener(new View.OnClickListener() {
@@ -122,20 +160,22 @@ public class MainActivity extends Activity {
 
         });
 
+
     }
     private Handler myHandler;
-    private Runnable myRunnable = new Runnable() {
+    private final Runnable myRunnable = new Runnable() {
         @Override
         public void run() {
             // Code à éxécuter de façon périodique
 
-
-
-
-            int sum = 0;
+            //initialisation de la somme
             //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
             //dans la variable sum
-            for (int f : calMap.values()) {
+            //récupération du champ de date
+            TextView dateView2 = (TextView) findViewById(R.id.currentdate);
+            final String heures3 = dateView2.getText().toString();
+            int sum = 0;
+            for (int f : (caltolMap.get(heures3)).values()) {
                 sum += f;
             }
 
@@ -172,13 +212,11 @@ public class MainActivity extends Activity {
             }
 
 
-
-
             myHandler.postDelayed(this, 5);
 
         }
     };
 
 
-
+    public static Map<String, Map<Integer,Integer>> caltolMap = new HashMap<>();
 }

@@ -32,9 +32,11 @@ import static com.example.maximeglod.fbta.CustomGridAdapter.maMap;
 
 public class MainAliments extends AppCompatActivity {
 
-    @Override
+    public static String recup_date;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // On retire la barre de notifications pour afficher l'application en plein écran
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -43,9 +45,26 @@ public class MainAliments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aliments);
 
-         Intent intent = getIntent();
-         String date = intent.getStringExtra("date");
-         String date2 = date.toString();
+        Intent intent = getIntent();
+        String date = intent.getStringExtra("date");
+        recup_date = date;
+        String date2 = date.toString();
+
+        Boolean verif = dateMap.containsKey(date2);
+
+        if (verif==true){
+
+        }else {
+            dateMap.put(date2,new HashMap<Integer, Integer>());
+            (dateMap.get(date2)).put(900000,900000);
+
+            caltolMap.put(date2,new HashMap<Integer, Integer>());
+            //(caltolMap.get(date2)).put(8000,0);
+
+
+        }
+
+        // dateMap.put(date2,new HashMap<Integer, Integer>());
 
         //Instance de Handler pour lancer une fonction à intervalle de temps régulier
         myHandler = new Handler();
@@ -877,15 +896,30 @@ public class MainAliments extends AppCompatActivity {
             int sum = 0;
             //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
             //dans la variable sum
-            for (int f : calMap.values()) {
-                sum += f;
-            }
+            //calMap.values()
 
-            //On récupère le champ totalcalories de la vue
-            TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
-            String sumtotal = Integer.toString(sum);
-            //On met à jour le text de totalcalories avec la valeur calculée
-            totalcalories.setText(sumtotal);
+
+                for (int f : (caltolMap.get(recup_date)).values()) {
+                    sum += f;
+                }
+
+                //On récupère le champ totalcalories de la vue
+                TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                String sumtotal = Integer.toString(sum);
+                //On met à jour le text de totalcalories avec la valeur calculée
+                totalcalories.setText(sumtotal);
+
+
+
+//            for (int f : (caltolMap.get(recup_date)).values()) {
+//                sum += f;
+//            }
+//
+//            //On récupère le champ totalcalories de la vue
+//            TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+//            String sumtotal = Integer.toString(sum);
+//            //On met à jour le text de totalcalories avec la valeur calculée
+//            totalcalories.setText(sumtotal);
 
             //Changement de la couleur d'un élément si l'objectif n'est pas respecté
             TextView objectifcalories = (TextView) findViewById(R.id.objectif);
@@ -913,15 +947,7 @@ public class MainAliments extends AppCompatActivity {
 
             }
 
-            Intent intent = getIntent();
-            String date = intent.getStringExtra("date");
-            String date2 = date.toString();
-            maMap.getClass();
 
-            dateMap.put(date2,maMap);
-            dateMap.get(date2);
-
-                dateMap.put(date2,new HashMap<Integer, Integer>());
 
             //On appel cette fonction toutes les 5 milisecondes
             myHandler.postDelayed(this, 5);
@@ -930,7 +956,9 @@ public class MainAliments extends AppCompatActivity {
         }
     };
 
+
     //Hashmap en fonction de la date
-    public static Map<String,Map<Integer,Integer>> dateMap = new HashMap<String,Map<Integer,Integer>>();
+    public static Map<String,Map<Integer,Integer>> dateMap =  CustomGridAdapter.dateMap;
+    public static Map<String,Map<Integer,Integer>> caltolMap = CustomGridAdapter.caltolMap;
 
 }
