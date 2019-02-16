@@ -49,7 +49,7 @@ public class MainAliments extends AppCompatActivity {
         String date = intent.getStringExtra("date");
         recup_date = date;
         String date2 = date.toString();
-        maMap.getClass();
+
         Boolean verif = dateMap.containsKey(date2);
 
         if (verif==true){
@@ -59,7 +59,7 @@ public class MainAliments extends AppCompatActivity {
             (dateMap.get(date2)).put(900000,900000);
 
             caltolMap.put(date2,new HashMap<Integer, Integer>());
-           // (caltolMap.get(date2)).put(8000,0);
+            //(caltolMap.get(date2)).put(8000,0);
 
 
         }
@@ -898,10 +898,8 @@ public class MainAliments extends AppCompatActivity {
             //dans la variable sum
             //calMap.values()
 
-            Boolean verif2= (CustomGridAdapter.caltolMap.get(recup_date)).isEmpty();
 
-            if (verif2==false){
-                for (int f : caltolMap.get(recup_date).values()) {
+                for (int f : (caltolMap.get(recup_date)).values()) {
                     sum += f;
                 }
 
@@ -911,10 +909,7 @@ public class MainAliments extends AppCompatActivity {
                 //On met à jour le text de totalcalories avec la valeur calculée
                 totalcalories.setText(sumtotal);
 
-            } else {
-                TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
-                totalcalories.setText("0");
-            }
+
 
 //            for (int f : (caltolMap.get(recup_date)).values()) {
 //                sum += f;

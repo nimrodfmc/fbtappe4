@@ -19,6 +19,7 @@ public class CustomGridAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private Context context;
 
+
     public CustomGridAdapter(Context aContext, List<Aliments> listData) {
         this.context = aContext;
         this.listData = listData;
@@ -104,7 +105,8 @@ public class CustomGridAdapter extends BaseAdapter {
                 //Boucle permetant de ne pas avoir de total négatif quand on retire des quantités
                 if (qtecalorie >= 0) {
                     //Ajout de la valeur calculé dans un hashmap dédié au calcul du total calorique
-                    caltolMap.put(date2,new HashMap<Integer, Integer>());
+                    //
+                    // caltolMap.put(date2,new HashMap<Integer, Integer>());
                     caltolMap.get(date2).put(position,qtecalorie);
                     //(caltolMap.get(date2)).put(8000,0);
                     //calMap.put(position, qtecalorie);
@@ -119,7 +121,7 @@ public class CustomGridAdapter extends BaseAdapter {
 
                         // maMap.put(position, qte2);
                         Integer valpos = maMap.get(position);
-                        dateMap.put(date2, new HashMap<Integer, Integer>());
+
                         dateMap.get(date2).put(position,qte2);
 
                     }
@@ -160,23 +162,22 @@ public class CustomGridAdapter extends BaseAdapter {
                 int qtecalorie = c;
 
                 //Ajout de la valeur calculé dans un hashmap dédié au calcul du total calorique
-                caltolMap.put(date2,new HashMap<Integer, Integer>());
+
                 caltolMap.get(date2).put(position,qtecalorie);
-                (caltolMap.get(date2)).put(8000,0);
+               // (caltolMap.get(date2)).put(8000,0);
                 //calMap.put(position, qtecalorie);
 
                 //Si on clique sur le button +
                 if (add.isClickable()) {
-                    caltolMap.put(date2,new HashMap<Integer, Integer>());
+
 
                     Boolean verif2= (caltolMap.get(date2)).containsKey(8000);
                     Boolean verif3= (caltolMap.get(date2)).isEmpty();
-                    if (verif2==true){};
+                    if (verif3==true){};
                     //Augmentation de +1 de la quantité
                     int qte2 = Integer.parseInt(holder.qteView.getText().toString()) + 1;
                     //maMap.put(position, qte2);
 
-                    dateMap.put(date2, new HashMap<Integer, Integer>());
                     dateMap.get(date2).put(position,qte2);
 
                 }
