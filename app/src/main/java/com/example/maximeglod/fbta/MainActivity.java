@@ -2,6 +2,7 @@ package com.example.maximeglod.fbta;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 
 import static com.example.maximeglod.fbta.CustomGridAdapter.calMap;
 import static com.example.maximeglod.fbta.CustomGridAdapter.caltolMap;
@@ -117,7 +119,7 @@ public class MainActivity extends Activity {
 
 
         });
-        //les deux autres bouttons reste à faire
+
 
 if (savedInstanceState==null){
 //première ouverture
@@ -130,6 +132,35 @@ if (savedInstanceState==null){
     final int verif = 0;
 
 }
+
+        Button activite = (Button) findViewById(R.id.Button04);
+        activite.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), ActiviteSportive.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
+        Button poids = (Button) findViewById(R.id.Button05);
+        poids.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), SaisiePoids.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
+        Button evolution = (Button) findViewById(R.id.Button03);
+        evolution.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getBaseContext(), Evolution.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
+
     }
     private Handler myHandler;
     private final Runnable myRunnable = new Runnable() {
