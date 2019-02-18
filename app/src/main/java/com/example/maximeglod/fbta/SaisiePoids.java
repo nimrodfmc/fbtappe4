@@ -48,7 +48,9 @@ public class SaisiePoids extends AppCompatActivity {
                 else {
                     Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
                     Toast.makeText(getApplicationContext(), "La saisie de votre poids a bien été sauvegardée", Toast.LENGTH_LONG).show();
-                    poidsMap.put(recup_date, Integer.parseInt(poids.getText().toString()));
+                   Integer poidscurrent = Integer.parseInt(poids.getText().toString());
+                    poidsMap.put(recup_date,poidscurrent);
+                    poidsMap.get(recup_date);
                     startActivityForResult(myIntent, 0);
                 }
             }

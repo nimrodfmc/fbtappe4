@@ -9,17 +9,21 @@ import android.widget.AbsListView;
 import android.widget.RelativeLayout;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import static com.example.maximeglod.fbta.SaisiePoids.poidsMap;
@@ -82,16 +86,33 @@ public class Evolution extends Activity {
         yl.setAxisMaxValue(120f);
         yl.setDrawGridLines(false);
 
+
+
         YAxis yl2 = mChart.getAxisRight();
         yl2.setEnabled(false);
+        final List list_x_axis_name = new ArrayList<>();
 
 
        ArrayList<Entry> yValues = new ArrayList<>();
       Integer result = poidsMap.get("18/02/2019");
-if (poidsMap!=null){
-    for (Map.Entry<String,Integer> e : poidsMap.entrySet()){
 
-        yValues.add(new Entry(0,poidsMap.get(recup_date)));
+if (poidsMap!=null){
+    //Boucle While + iterator
+    Iterator iterator = poidsMap.entrySet().iterator();
+    Float a = 0f;
+    while (iterator.hasNext()){
+Map.Entry mapentry = (Map.Entry) iterator.next();
+Object i = mapentry.getValue();
+Integer i2=(Integer) i;
+Object o = mapentry.getKey();
+String o2=(String) o;
+Float b = a+1;
+        list_x_axis_name.add(o2);
+
+
+
+
+        yValues.add(new Entry(b+1,i2));
         //yValues.add(new Entry(1,63));
         LineDataSet set1 = new LineDataSet(yValues,"Evolution de votre poids");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -105,34 +126,7 @@ if (poidsMap!=null){
 
 
     }
-//    @Override
-//    protected void onResume() {
-//
-//        super.onResume();
-//        //Simulation d'ajout en temps réel
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                //On ahoute 100 entrées
-//                for (int i = 0; i<100;i++){
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        addEntry(); //Le graphique est notifié du changement d'entrée
-//
-//                    }
-//                });
-//                //Pause entre les ajouts
-//                    try {
-//                        Thread.sleep(600);
-//                    } catch (InterruptedException e) {
-//                        //On gère l'erreur...
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
-//    }
+
 
     //Ajout des données au graph
 
