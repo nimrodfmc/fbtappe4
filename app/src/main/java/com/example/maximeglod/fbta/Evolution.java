@@ -15,7 +15,10 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
 
 public class Evolution extends Activity {
     private RelativeLayout Evolution;
@@ -40,9 +43,9 @@ public class Evolution extends Activity {
         Evolution.addView(mChart, new AbsListView.LayoutParams
                 (AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT));
         //Personalisation du graphique
-        mChart.setDescription("");
-        mChart.setNoDataTextDescription("Pas de données pour le moment");
-        mChart.setHighlightEnabled(true);
+
+        mChart.setNoDataText("Pas de données pour le moment");
+        mChart.setHighlightPerTapEnabled(true);
         //Autorisation des geste de touché
         mChart.setTouchEnabled(true);
         //On souhaite aussi autoriser la mise à l'échelle
@@ -54,10 +57,10 @@ public class Evolution extends Activity {
         //Alternative color background
         mChart.setBackgroundColor(Color.BLACK);
         //Maintenant on travail sur les données
-        LineData data = new LineData();
-        data.setValueTextColor(Color.WHITE);
+        //LineData data = new LineData();
+       // data.setValueTextColor(Color.WHITE);
         //On ajoute les données au graphique
-        mChart.setData(data);
+       // mChart.setData(data);
         //Récupération de la légende
         Legend l = mChart.getLegend();
         //Personalisation de la légende
@@ -77,36 +80,51 @@ public class Evolution extends Activity {
         YAxis yl2 = mChart.getAxisRight();
         yl2.setEnabled(false);
 
+       ArrayList<Entry> yValues = new ArrayList<>();
+       yValues.add(new Entry(0,60));
+       yValues.add(new Entry(1,63));
+       LineDataSet set1 = new LineDataSet(yValues,"data set 1");
+    ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+    dataSets.add(set1);
+    LineData data2 = new LineData(dataSets);
+    //LineData data3 = new LineDataSet(null,"Evolution du poids");
 
+    mChart.setData(data2);
     }
+//    @Override
+//    protected void onResume() {
+//
+//        super.onResume();
+//        //Simulation d'ajout en temps réel
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                //On ahoute 100 entrées
+//                for (int i = 0; i<100;i++){
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        addEntry(); //Le graphique est notifié du changement d'entrée
+//
+//                    }
+//                });
+//                //Pause entre les ajouts
+//                    try {
+//                        Thread.sleep(600);
+//                    } catch (InterruptedException e) {
+//                        //On gère l'erreur...
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        });
+//    }
 
     //Ajout des données au graph
-    private void addEntry() {
-        LineData data = mChart.getData();
-        if (data != null) {
-            LineDataSet set = (LineDataSet) data.getDataSetByIndex(0);
-            if (set == null) {
-                //création if null
-                set = createSet();
-                data.addDataSet(set);
-            }
-            //ajout de nouvelles valeurs random
-            data.addXValue("");
-            data.addEntry(new Entry((float) (Math.random() * 75) + 60f, set.getEntryCount()), 0);
-            //le graphique a connaissance du changement
-            mChart.notifyDataSetChanged();
 
-            //On limote le nombre d'entrée visible
-            mChart.setVisibleXRange(6);
-
-            //Scroll à la dernière entrée
-            mChart.moveViewToX(data.getXValCount() - 7);
-        }
-    }
     //Méthode to create set
     private LineDataSet createSet() {
-        LineDataSet set = new LineDataSet(null,"SPL Db");
-        set.setDrawCubic(true);
+        LineDataSet set = new LineDataSet(null, "Evolution du poids");
         set.setCubicIntensity(0.2f);
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(ColorTemplate.getHoloBlue());
@@ -118,8 +136,8 @@ public class Evolution extends Activity {
         set.setValueTextSize(10f);
 
 
-
         return set;
 
     }
+
 }
