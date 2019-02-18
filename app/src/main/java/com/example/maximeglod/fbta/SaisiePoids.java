@@ -11,7 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SaisiePoids extends AppCompatActivity {
+    public static String recup_date;
     TextView saisie;
     EditText poids;
     Button save;
@@ -24,10 +28,16 @@ public class SaisiePoids extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saisie_poids);
+        Intent intent = getIntent();
+        String date = intent.getStringExtra("date");
+        recup_date = date;
+        TextView date5 = (TextView) findViewById(R.id.currentdate);
+        date5.setText(recup_date);
 
         saisie = (TextView) findViewById(R.id.tvSaisie);
         poids = (EditText) findViewById(R.id.etSaisie);
         save = (Button) findViewById(R.id.btSaisie);
+
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,9 +48,11 @@ public class SaisiePoids extends AppCompatActivity {
                 else {
                     Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
                     Toast.makeText(getApplicationContext(), "La saisie de votre poids a bien été sauvegardée", Toast.LENGTH_LONG).show();
+                    poidsMap.put(recup_date, Integer.parseInt(poids.getText().toString()));
                     startActivityForResult(myIntent, 0);
                 }
             }
         });
     }
+    public static Map<String, Integer> poidsMap = new HashMap<>();
 }

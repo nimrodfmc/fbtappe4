@@ -140,7 +140,10 @@ public class MainActivity extends Activity {
         Button poids = (Button) findViewById(R.id.Button05);
         poids.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                TextView dateView2 = (TextView) findViewById(R.id.currentdate);
+                final String heures3 = dateView2.getText().toString();
                 Intent myIntent = new Intent(getBaseContext(), SaisiePoids.class);
+                myIntent.putExtra("date", heures3);
                 startActivityForResult(myIntent, 0);
             }
 
