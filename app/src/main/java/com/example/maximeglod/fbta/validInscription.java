@@ -30,6 +30,28 @@ public class validInscription extends AppCompatActivity {
     private String lActivite;
     private String lObjectif;
 
+    public validInscription(int date2) {
+        this.date2 = date2;
+    }
+
+    //private String ladate;
+
+    private String getNaiss() {
+        return laNaissance;
+    }
+    private String getPoids() {
+        return lePoids;
+    }
+    private String getTaille() {
+        return laTaille;
+    }
+    private String getSexe() {
+        return leSexe;
+    }
+
+    private int date2;
+    double age = (Integer.parseInt(getNaiss()) - date2);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +62,13 @@ public class validInscription extends AppCompatActivity {
         //Définission le contenu de la vue APRES les instructions précédentes pour éviter un crash
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_valid_inscription);
+
+
+
+        Intent intent = getIntent();
+        String date = intent.getStringExtra("date");
+        final String date2 = date.toString();
+        Toast.makeText(getApplicationContext(),"La date : "+date2,Toast.LENGTH_LONG).show();
 
         //BDD
         fbta = new BDD(this);
@@ -53,6 +82,7 @@ public class validInscription extends AppCompatActivity {
         tv_sexe = (TextView) findViewById(R.id.tvSexe);
         tv_activite = (TextView) findViewById(R.id.tvSport);
         btn_inscrire = (Button) findViewById(R.id.btn_inscrire);
+
         lePrenom = getIntent().getStringExtra("Prénom");
         leNom = getIntent().getStringExtra("Nom");
         laNaissance = getIntent().getStringExtra("Naissance");
@@ -61,6 +91,8 @@ public class validInscription extends AppCompatActivity {
         lePoids = getIntent().getStringExtra("Poids");
         lActivite = getIntent().getStringExtra("Activité sportive");
         lObjectif = getIntent().getStringExtra("Objectif de poids");
+        //ladate = getIntent().getStringExtra("date");
+
         tv_prenom.setText("Prénom : " + lePrenom);
         tv_nom.setText("Nom : " + leNom);
         tv_naissance.setText("Date de naissance : " + laNaissance);
@@ -69,13 +101,38 @@ public class validInscription extends AppCompatActivity {
         tv_poids.setText("Poids : " + lePoids);
         tv_activite.setText("Activité Sportive : " + lActivite);
         tv_objectif.setText("Objectif : " + lObjectif);
-
         btn_inscrire.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent e = new Intent(getApplicationContext(), MainActivity.class);
+
+                Intent intent = getIntent();
+                String date = intent.getStringExtra("date");
+                final String date2 = date.toString();
+                Toast.makeText(getApplicationContext(),"La date : "+date2,Toast.LENGTH_LONG).show();
                 Toast.makeText(getApplicationContext(), lePrenom + " " + leNom + " enregistré",Toast.LENGTH_LONG).show();
+
+                //CALCUL OBJECTIF CALORIQUE
+                //SI LE SEXE EST HOMME
+                double cal_1 = (13.707 * (Integer.parseInt(getPoids()) + 492.3 * + (Integer.parseInt(getTaille())) - 6.673 * age + 77.607));
+
+                //SI LE SEXE EST FEMME
+                double cal_2 = (9.740 * (Integer.parseInt(getPoids()) + 172.9 * +(Integer.parseInt(getTaille())) - 4.737 * age + 6670.51));
+
+
+                double objectif_cal;
+                if(leSexe == "M"){
+                    objectif_cal = cal_1;
+                    //SERT A RIEN ??
+                    //return objectif_cal;
+                }else{
+                    objectif_cal = cal_2;
+                    //SERT A RIEN ??
+                    // return objectif_cal;
+                }
+
+                Toast.makeText(getApplicationContext(),"objectif calorique : " + objectif_cal,Toast.LENGTH_LONG).show();
                 startActivity(e);
             }
 
@@ -83,8 +140,17 @@ public class validInscription extends AppCompatActivity {
 
         //AJOUT DES DONNEES
         AddData();
-
     }
+
+  /*  public String getLeSexe() {
+        return leSexe;
+    }*/
+
+    //double cal1 = (13.707 * (Integer.parseInt(getPoids()) + 492.3 * + (Integer.parseInt(getTaille())) - 6.673 * age + 77.607));
+    //double cal2 = (9.740 * (Integer.parseInt(getPoids()) + 172.9 * +(Integer.parseInt(getTaille())) - 4.737 * age + 6670.51));
+
+
+
     // AJOUT DES DONNEES DANS LA BASE DE DONNEES SUR LE CLIC DU BOUTON DE VALIDINSCRIPTION
     public void AddData() {
         btn_inscrire.setOnClickListener(new View.OnClickListener() {
