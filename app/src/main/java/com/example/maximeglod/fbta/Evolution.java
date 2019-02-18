@@ -2,7 +2,9 @@ package com.example.maximeglod.fbta;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AbsListView;
@@ -20,7 +22,15 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -33,6 +43,7 @@ public class Evolution extends Activity {
     private RelativeLayout Evolution;
     private LineChart mChart;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -94,8 +105,9 @@ public class Evolution extends Activity {
 
         ArrayList<Entry> yValues = new ArrayList<>();
         Integer result = poidsMap.get("18/02/2019");
+        //Implémentation fonction différence date
 
-
+        //////////
         if (poidsMap != null) {
             //Boucle While + iterator
             Iterator iterator = poidsMap.entrySet().iterator();
@@ -104,11 +116,26 @@ public class Evolution extends Activity {
                 Map.Entry mapentry = (Map.Entry) iterator.next();
                 Object i = mapentry.getValue();
                 Integer i2 = (Integer) i;
+                //DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                String dateduhashmap = (String) mapentry.getKey();
 
-                Integer b = a +1;
+
+                Calendar cal = Calendar.getInstance();
+                int ds = cal.get(Calendar.MONTH) + 1;
+                final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
 
 
-                yValues.add(new Entry(b, i2));
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/M/yyyy"); // format jour / mois / année
+
+                LocalDate date1 = LocalDate.parse(dateduhashmap, format);
+                LocalDate date2 = LocalDate.parse(heures, format);
+
+                Period period = Period.between(date1, date2);
+
+                Integer b = a + 1;
+
+
+                yValues.add(new Entry(period.getDays(), i2));
                 //yValues.add(new Entry(1,63));
                 LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids");
                 ArrayList<ILineDataSet> dataSets = new ArrayList<>();

@@ -48,8 +48,24 @@ public class MainActivity extends Activity {
         TextView dateView = (TextView) findViewById(R.id.currentdate);
         Calendar cal = Calendar.getInstance();
         int ds = cal.get(Calendar.MONTH) + 1;
-        final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
-        dateView.setText(heures);
+        if (cal.get(Calendar.DAY_OF_MONTH)<10){
+            String corjour="0";
+
+            if ((cal.get(Calendar.MONTH)+1)<10){
+                final String heures = (corjour+cal.get(Calendar.DAY_OF_MONTH) + "/" +corjour+ds+ "/" + cal.get(Calendar.YEAR));
+                dateView.setText(heures);
+            } else {
+                final String heures = (corjour+cal.get(Calendar.DAY_OF_MONTH) + "/" +ds+ "/" + cal.get(Calendar.YEAR));
+                dateView.setText(heures);
+            }
+
+        } else {
+
+            final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
+            dateView.setText(heures);
+        }
+        //final String heures = (corjour+cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
+        //dateView.setText(heures);
 
         CalendarView view = findViewById(R.id.calendarView);
 
