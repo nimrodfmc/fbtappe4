@@ -19,6 +19,11 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.maximeglod.fbta.SaisiePoids.poidsMap;
+import static com.example.maximeglod.fbta.SaisiePoids.recup_date;
 
 public class Evolution extends Activity {
     private RelativeLayout Evolution;
@@ -75,21 +80,30 @@ public class Evolution extends Activity {
         YAxis yl = mChart.getAxisLeft();
         yl.setTextColor(Color.WHITE);
         yl.setAxisMaxValue(120f);
-        yl.setDrawGridLines(true);
+        yl.setDrawGridLines(false);
 
         YAxis yl2 = mChart.getAxisRight();
         yl2.setEnabled(false);
 
-       ArrayList<Entry> yValues = new ArrayList<>();
-       yValues.add(new Entry(0,60));
-       yValues.add(new Entry(1,63));
-       LineDataSet set1 = new LineDataSet(yValues,"data set 1");
-    ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-    dataSets.add(set1);
-    LineData data2 = new LineData(dataSets);
-    //LineData data3 = new LineDataSet(null,"Evolution du poids");
 
-    mChart.setData(data2);
+       ArrayList<Entry> yValues = new ArrayList<>();
+      Integer result = poidsMap.get("18/02/2019");
+if (poidsMap!=null){
+    for (Map.Entry<String,Integer> e : poidsMap.entrySet()){
+
+        yValues.add(new Entry(0,poidsMap.get(recup_date)));
+        //yValues.add(new Entry(1,63));
+        LineDataSet set1 = new LineDataSet(yValues,"Evolution de votre poids");
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(set1);
+        LineData data2 = new LineData(dataSets);
+        //LineData data3 = new LineDataSet(null,"Evolution du poids");
+
+        mChart.setData(data2);
+    }
+}
+
+
     }
 //    @Override
 //    protected void onResume() {
@@ -140,4 +154,5 @@ public class Evolution extends Activity {
 
     }
 
+    public static Map<String, Integer> poidsMap = SaisiePoids.poidsMap;
 }
