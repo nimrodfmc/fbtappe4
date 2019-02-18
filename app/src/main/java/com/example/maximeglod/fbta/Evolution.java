@@ -67,9 +67,9 @@ public class Evolution extends Activity {
         mChart.setBackgroundColor(Color.BLACK);
         //Maintenant on travail sur les données
         //LineData data = new LineData();
-       // data.setValueTextColor(Color.WHITE);
+        // data.setValueTextColor(Color.WHITE);
         //On ajoute les données au graphique
-       // mChart.setData(data);
+        // mChart.setData(data);
         //Récupération de la légende
         Legend l = mChart.getLegend();
         //Personalisation de la légende
@@ -87,42 +87,38 @@ public class Evolution extends Activity {
         yl.setDrawGridLines(false);
 
 
-
         YAxis yl2 = mChart.getAxisRight();
         yl2.setEnabled(false);
         final List list_x_axis_name = new ArrayList<>();
 
 
-       ArrayList<Entry> yValues = new ArrayList<>();
-      Integer result = poidsMap.get("18/02/2019");
-
-if (poidsMap!=null){
-    //Boucle While + iterator
-    Iterator iterator = poidsMap.entrySet().iterator();
-    Float a = 0f;
-    while (iterator.hasNext()){
-Map.Entry mapentry = (Map.Entry) iterator.next();
-Object i = mapentry.getValue();
-Integer i2=(Integer) i;
-Object o = mapentry.getKey();
-String o2=(String) o;
-Float b = a+1;
-        list_x_axis_name.add(o2);
+        ArrayList<Entry> yValues = new ArrayList<>();
+        Integer result = poidsMap.get("18/02/2019");
 
 
+        if (poidsMap != null) {
+            //Boucle While + iterator
+            Iterator iterator = poidsMap.entrySet().iterator();
+            Integer a = 0;
+            while (iterator.hasNext()) {
+                Map.Entry mapentry = (Map.Entry) iterator.next();
+                Object i = mapentry.getValue();
+                Integer i2 = (Integer) i;
+
+                Integer b = a +1;
 
 
-        yValues.add(new Entry(b+1,i2));
-        //yValues.add(new Entry(1,63));
-        LineDataSet set1 = new LineDataSet(yValues,"Evolution de votre poids");
-        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(set1);
-        LineData data2 = new LineData(dataSets);
-        //LineData data3 = new LineDataSet(null,"Evolution du poids");
+                yValues.add(new Entry(b, i2));
+                //yValues.add(new Entry(1,63));
+                LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids");
+                ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+                dataSets.add(set1);
+                LineData data2 = new LineData(dataSets);
+                //LineData data3 = new LineDataSet(null,"Evolution du poids");
 
-        mChart.setData(data2);
-    }
-}
+                mChart.setData(data2);
+            }
+        }
 
 
     }
@@ -149,4 +145,5 @@ Float b = a+1;
     }
 
     public static Map<String, Integer> poidsMap = SaisiePoids.poidsMap;
+
 }

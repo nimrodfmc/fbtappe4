@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,17 +47,18 @@ public class SaisiePoids extends AppCompatActivity {
             public void onClick(View v) {
                 if (poids.getText().toString().length() < 1) {
                     Toast.makeText(getApplicationContext(), "Veuillez renseigner votre poids", Toast.LENGTH_LONG).show();
-                }
-                else {
+                } else {
                     Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
                     Toast.makeText(getApplicationContext(), "La saisie de votre poids a bien été sauvegardée", Toast.LENGTH_LONG).show();
-                   Integer poidscurrent = Integer.parseInt(poids.getText().toString());
-                    poidsMap.put(recup_date,poidscurrent);
+                    Integer poidscurrent = Integer.parseInt(poids.getText().toString());
+                    //On va plutôt stocker dans le hashmap la différence entre la date sélectionné et la date actuelle car on ne peut pas mettre de string pour l'axe des x dans evolution 
+                    poidsMap.put(recup_date, poidscurrent);
                     poidsMap.get(recup_date);
                     startActivityForResult(myIntent, 0);
                 }
             }
         });
     }
+
     public static Map<String, Integer> poidsMap = new HashMap<>();
 }
