@@ -48,14 +48,14 @@ public class MainActivity extends Activity {
         TextView dateView = (TextView) findViewById(R.id.currentdate);
         Calendar cal = Calendar.getInstance();
         int ds = cal.get(Calendar.MONTH) + 1;
-        if (cal.get(Calendar.DAY_OF_MONTH)<10){
-            String corjour="0";
+        if (cal.get(Calendar.DAY_OF_MONTH) < 10) {
+            String corjour = "0";
 
-            if ((cal.get(Calendar.MONTH)+1)<10){
-                final String heures = (corjour+cal.get(Calendar.DAY_OF_MONTH) + "/" +corjour+ds+ "/" + cal.get(Calendar.YEAR));
+            if ((cal.get(Calendar.MONTH) + 1) < 10) {
+                final String heures = (corjour + cal.get(Calendar.DAY_OF_MONTH) + "/" + corjour + ds + "/" + cal.get(Calendar.YEAR));
                 dateView.setText(heures);
             } else {
-                final String heures = (corjour+cal.get(Calendar.DAY_OF_MONTH) + "/" +ds+ "/" + cal.get(Calendar.YEAR));
+                final String heures = (corjour + cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
                 dateView.setText(heures);
             }
 
@@ -77,27 +77,104 @@ public class MainActivity extends Activity {
                                             int date) {
 
                 TextView dateView = (TextView) findViewById(R.id.currentdate);
-                String heures2 = (date + "/" + (month + 1) + "/" + year);
-                dateView.setText(heures2);
-                TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
-                calMap.clear();
+                if (date < 10) {
+                    String corjour = "0";
+                    if ((month + 1) < 10) {
+                        String heures2 = (corjour + date + "/" + corjour + (month + 1) + "/" + year);
+                        dateView.setText(heures2);
+                        TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                        calMap.clear();
 
 
-                caltolMap.put(heures2, new HashMap<Integer, Integer>());
-                (caltolMap.get(heures2)).put(8000, 0);
+                        caltolMap.put(heures2, new HashMap<Integer, Integer>());
+                        (caltolMap.get(heures2)).put(8000, 0);
 
-                int sum = 0;
-                //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
-                //dans la variable sum
-                for (int f : (caltolMap.get(heures2)).values()) {
-                    sum += f;
+                        int sum = 0;
+                        //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
+                        //dans la variable sum
+                        for (int f : (caltolMap.get(heures2)).values()) {
+                            sum += f;
+                        }
+
+                        //On récupère le champ totalcalories tde la vue
+
+                        String sumtotal = Integer.toString(sum);
+                        //On met à jour le text de totalcalories avec la valeur calculée
+                        totalcalories.setText(sumtotal);
+                    } else {
+                        String heures2 = (corjour + date + "/" + (month + 1) + "/" + year);
+                        dateView.setText(heures2);
+                        TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                        calMap.clear();
+
+
+                        caltolMap.put(heures2, new HashMap<Integer, Integer>());
+                        (caltolMap.get(heures2)).put(8000, 0);
+
+                        int sum = 0;
+                        //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
+                        //dans la variable sum
+                        for (int f : (caltolMap.get(heures2)).values()) {
+                            sum += f;
+                        }
+
+                        //On récupère le champ totalcalories tde la vue
+
+                        String sumtotal = Integer.toString(sum);
+                        //On met à jour le text de totalcalories avec la valeur calculée
+                        totalcalories.setText(sumtotal);
+                    }
+
+                } else {
+                    String corjour = "0";
+                    if ((month + 1) < 10) {
+                        String heures2 = (date + "/" + corjour + (month + 1) + "/" + year);
+                        dateView.setText(heures2);
+                        TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                        calMap.clear();
+
+
+                        caltolMap.put(heures2, new HashMap<Integer, Integer>());
+                        (caltolMap.get(heures2)).put(8000, 0);
+
+                        int sum = 0;
+                        //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
+                        //dans la variable sum
+                        for (int f : (caltolMap.get(heures2)).values()) {
+                            sum += f;
+                        }
+
+                        //On récupère le champ totalcalories tde la vue
+
+                        String sumtotal = Integer.toString(sum);
+                        //On met à jour le text de totalcalories avec la valeur calculée
+                        totalcalories.setText(sumtotal);
+                    } else {
+
+                        String heures2 = (date + "/" + (month + 1) + "/" + year);
+                        dateView.setText(heures2);
+                        TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+                        calMap.clear();
+
+
+                        caltolMap.put(heures2, new HashMap<Integer, Integer>());
+                        (caltolMap.get(heures2)).put(8000, 0);
+
+                        int sum = 0;
+                        //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
+                        //dans la variable sum
+                        for (int f : (caltolMap.get(heures2)).values()) {
+                            sum += f;
+                        }
+
+                        //On récupère le champ totalcalories tde la vue
+
+                        String sumtotal = Integer.toString(sum);
+                        //On met à jour le text de totalcalories avec la valeur calculée
+                        totalcalories.setText(sumtotal);
+                    }
                 }
 
-                //On récupère le champ totalcalories tde la vue
-
-                String sumtotal = Integer.toString(sum);
-                //On met à jour le text de totalcalories avec la valeur calculée
-                totalcalories.setText(sumtotal);
 
             }
         });

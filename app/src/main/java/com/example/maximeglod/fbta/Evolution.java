@@ -122,28 +122,85 @@ public class Evolution extends Activity {
 
                 Calendar cal = Calendar.getInstance();
                 int ds = cal.get(Calendar.MONTH) + 1;
-                final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
+                if (cal.get(Calendar.DAY_OF_MONTH) < 10) {
+                    String corjour = "0";
+
+                    if ((cal.get(Calendar.MONTH) + 1) < 10) {
+                        final String heures = (corjour + cal.get(Calendar.DAY_OF_MONTH) + "/" + corjour + ds + "/" + cal.get(Calendar.YEAR));
+
+                        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // format jour / mois / année
+
+                        LocalDate date1 = LocalDate.parse(dateduhashmap, format);
+                        LocalDate date2 = LocalDate.parse(heures, format);
+
+                        Period period = Period.between(date1, date2);
+
+                        Integer b = a + 1;
 
 
-                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/M/yyyy"); // format jour / mois / année
+                        yValues.add(new Entry(period.getDays(), i2));
+                        //yValues.add(new Entry(1,63));
+                        LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids");
+                        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+                        dataSets.add(set1);
+                        LineData data2 = new LineData(dataSets);
+                        //LineData data3 = new LineDataSet(null,"Evolution du poids");
 
-                LocalDate date1 = LocalDate.parse(dateduhashmap, format);
-                LocalDate date2 = LocalDate.parse(heures, format);
+                        mChart.setData(data2);
 
-                Period period = Period.between(date1, date2);
+                    } else {
+                        final String heures = (corjour + cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
 
-                Integer b = a + 1;
+                        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // format jour / mois / année
+
+                        LocalDate date1 = LocalDate.parse(dateduhashmap, format);
+                        LocalDate date2 = LocalDate.parse(heures, format);
+
+                        Period period = Period.between(date1, date2);
+
+                        Integer b = a + 1;
 
 
-                yValues.add(new Entry(period.getDays(), i2));
-                //yValues.add(new Entry(1,63));
-                LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids");
-                ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                dataSets.add(set1);
-                LineData data2 = new LineData(dataSets);
-                //LineData data3 = new LineDataSet(null,"Evolution du poids");
+                        yValues.add(new Entry(period.getDays(), i2));
+                        //yValues.add(new Entry(1,63));
+                        LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids");
+                        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+                        dataSets.add(set1);
+                        LineData data2 = new LineData(dataSets);
+                        //LineData data3 = new LineDataSet(null,"Evolution du poids");
 
-                mChart.setData(data2);
+                        mChart.setData(data2);
+
+                    }
+
+                } else {
+
+                    final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
+
+                    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // format jour / mois / année
+
+                    LocalDate date1 = LocalDate.parse(dateduhashmap, format);
+                    LocalDate date2 = LocalDate.parse(heures, format);
+
+                    Period period = Period.between(date1, date2);
+
+                    Integer b = a + 1;
+
+
+                    yValues.add(new Entry(period.getDays(), i2));
+                    //yValues.add(new Entry(1,63));
+                    LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids");
+                    ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+                    dataSets.add(set1);
+                    LineData data2 = new LineData(dataSets);
+                    //LineData data3 = new LineDataSet(null,"Evolution du poids");
+
+                    mChart.setData(data2);
+
+                }
+                //final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
+
+
             }
         }
 
