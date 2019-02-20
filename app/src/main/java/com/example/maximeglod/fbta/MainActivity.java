@@ -212,61 +212,6 @@ public class MainActivity extends Activity {
 
     }
 
-//   } private Handler myHandler;
-//    private final Runnable myRunnable = new Runnable() {
-//        @Override
-//        public void run() {
-//            // Code à éxécuter de façon périodique
-//
-//            //initialisation de la somme
-//            //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
-//            //dans la variable sum
-//            //récupération du champ de date
-//            TextView dateView2 = (TextView) findViewById(R.id.currentdate);
-//            final String heures3 = dateView2.getText().toString();
-//            int sum = 0;
-//            for (int f : (caltolMap.get(heures3)).values()) {
-//                sum += f;
-//            }
-//
-//            //On récupère le champ totalcalories de la vue
-//            TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
-//            String sumtotal = Integer.toString(sum);
-//            //On met à jour le text de totalcalories avec la valeur calculée
-//            totalcalories.setText(sumtotal);
-//
-//            //Changement de la couleur d'un élément si l'objectif n'est pas respecté
-//            TextView objectifcalories = (TextView) findViewById(R.id.objectif);
-//            int objectif = Integer.parseInt(objectifcalories.getText().toString());
-//
-//            if (sum <= objectif) {
-//                Button b1 = (Button) findViewById(R.id.verif);
-//                b1.setBackgroundResource(R.drawable.rounded_button_ok);
-//                b1.setText("V");
-//                b1.setTextColor(Color.BLACK);
-//            } else {
-//
-//                //On tolère une marge de 5% par rapport à l'objectif (Changement de couleur)
-//                if (sum <= objectif + (objectif * 0.05)) {
-//                    Button b2 = (Button) findViewById(R.id.verif);
-//                    b2.setBackgroundResource(R.drawable.rounded_button_mid);
-//                    b2.setText("~");
-//                    b2.setTextColor(Color.WHITE);
-//                } else {
-//                    Button b1 = (Button) findViewById(R.id.verif);
-//                    b1.setBackgroundResource(R.drawable.rounded_button_false);
-//                    b1.setText("X");
-//                    b1.setTextColor(Color.WHITE);
-//                }
-//
-//            }
-//
-//
-//            myHandler.postDelayed(this, 5);
-//
-//        }
-//    };
-
 
     public static Map<String, Map<Integer, Integer>> caltolMap = new HashMap<>();
 }

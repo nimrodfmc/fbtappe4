@@ -51,7 +51,7 @@ public class SaisiePoids extends AppCompatActivity {
                     Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
                     Toast.makeText(getApplicationContext(), "La saisie de votre poids a bien été sauvegardée", Toast.LENGTH_LONG).show();
                     Integer poidscurrent = Integer.parseInt(poids.getText().toString());
-                    //On va plutôt stocker dans le hashmap la différence entre la date sélectionné et la date actuelle car on ne peut pas mettre de string pour l'axe des x dans evolution
+                    //Stockage du poids dans un hashmap
                     poidsMap.put(recup_date, poidscurrent);
                     poidsMap.get(recup_date);
                     startActivityForResult(myIntent, 0);

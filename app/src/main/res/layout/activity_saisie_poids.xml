@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SaisiePoids"
-    android:background="@color/colorDark">
+    android:background="@color/colorDark"
+    tools:context=".SaisiePoids">
 
     <TextView
         android:id="@+id/currentdate"
@@ -16,7 +16,8 @@
         android:text="@string/affdate"
         app:layout_column="0"
         app:layout_row="0" />
-<TextView
+
+    <TextView
         android:id="@+id/tvSaisie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

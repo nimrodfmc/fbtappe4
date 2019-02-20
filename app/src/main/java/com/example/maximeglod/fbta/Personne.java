@@ -55,9 +55,8 @@ public class Personne extends Inscription {
     }
 
     public int getObjectifs() {
-        return objectif ;
+        return objectif;
     }
-
 
 
     Inscription i = new Inscription();

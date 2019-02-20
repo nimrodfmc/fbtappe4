@@ -38,8 +38,6 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
-
-
         //Code qui commence avec le timer et lance les actions ensuite
         new Handler().postDelayed(new Runnable() {
             @Override

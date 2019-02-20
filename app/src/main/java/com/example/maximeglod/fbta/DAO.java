@@ -30,7 +30,7 @@ public class DAO {
         v.put("poids", inscription.getPoids());
         v.put("activité", inscription.getSport());
         v.put("objectif", inscription.getObjectif());
-        return  maBase.insert("personne", null, v);
+        return maBase.insert("personne", null, v);
     }
 
 }

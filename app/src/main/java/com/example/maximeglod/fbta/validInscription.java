@@ -75,7 +75,7 @@ public class validInscription extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent e = new Intent(getApplicationContext(), MainActivity.class);
-                Toast.makeText(getApplicationContext(), lePrenom + " " + leNom + " enregistré",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), lePrenom + " " + leNom + " enregistré", Toast.LENGTH_LONG).show();
                 startActivity(e);
             }
 
@@ -85,6 +85,7 @@ public class validInscription extends AppCompatActivity {
         AddData();
 
     }
+
     // AJOUT DES DONNEES DANS LA BASE DE DONNEES SUR LE CLIC DU BOUTON DE VALIDINSCRIPTION
     public void AddData() {
         btn_inscrire.setOnClickListener(new View.OnClickListener() {
@@ -94,15 +95,15 @@ public class validInscription extends AppCompatActivity {
                 BDHelper bdHelper = new BDHelper(getBaseContext(), "fbta", null, 1);
 
                 //LISTE DES PARAMETRES A AJOUTER A LA BDD
-                HashMap<String,String> params = new HashMap<>();
-                params.put(BDD.TABLE_NAME_COL_2,lePrenom);
-                params.put(BDD.TABLE_NAME_COL_3,leNom);
-                params.put(BDD.TABLE_NAME_COL_4,laNaissance);
-                params.put(BDD.TABLE_NAME_COL_5,leSexe);
-                params.put(BDD.TABLE_NAME_COL_6,laTaille);
-                params.put(BDD.TABLE_NAME_COL_7,lePoids);
-                params.put(BDD.TABLE_NAME_COL_8,lActivite);
-                params.put(BDD.TABLE_NAME_COL_9,lObjectif);
+                HashMap<String, String> params = new HashMap<>();
+                params.put(BDD.TABLE_NAME_COL_2, lePrenom);
+                params.put(BDD.TABLE_NAME_COL_3, leNom);
+                params.put(BDD.TABLE_NAME_COL_4, laNaissance);
+                params.put(BDD.TABLE_NAME_COL_5, leSexe);
+                params.put(BDD.TABLE_NAME_COL_6, laTaille);
+                params.put(BDD.TABLE_NAME_COL_7, lePoids);
+                params.put(BDD.TABLE_NAME_COL_8, lActivite);
+                params.put(BDD.TABLE_NAME_COL_9, lObjectif);
 
                 //OUVERTURE DE LA BDD
                 bdHelper.open();
@@ -110,8 +111,8 @@ public class validInscription extends AppCompatActivity {
 
                 //AFFICHAGE RAPIDE
                 //LES DONNEES NE SONT PAS MISE DANS LA BDD
-                if (!retour){
-                    Toast.makeText(validInscription.this,"SA MARCHE PAS", Toast.LENGTH_LONG).show();
+                if (!retour) {
+                    Toast.makeText(validInscription.this, "SA MARCHE PAS", Toast.LENGTH_LONG).show();
                 }
                 bdHelper.close();
             }
