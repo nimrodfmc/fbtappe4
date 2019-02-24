@@ -16,7 +16,7 @@ public class BDHelper extends SQLiteOpenHelper {
 
     //Propriétés
     private String creation="create table utilisateur ("
-            +"id INTEGER AUTOINCREMENT, "
+            +"id INTEGER PRIMARY KEY AUTOINCREMENT, "
             +"sexe TEXT,"
             +"prenom TEXT,"
             +"age INTEGER,"
@@ -43,6 +43,7 @@ public class BDHelper extends SQLiteOpenHelper {
     //Si changement de bdd
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(creation);
         //requête
     }
 
