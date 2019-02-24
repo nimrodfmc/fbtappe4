@@ -29,6 +29,7 @@ public class BDHelper extends SQLiteOpenHelper {
         maBase.close();
     }
 
+    //Si changement de bdd
     @Override
     public void onCreate(SQLiteDatabase db) {
         //requête

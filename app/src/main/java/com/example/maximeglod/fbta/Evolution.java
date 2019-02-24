@@ -102,7 +102,7 @@ public class Evolution extends Activity {
         mChart.getAxisRight().setStartAtZero(false);
 
         ArrayList<Entry> yValues = new ArrayList<>();
-        
+
         if (poidsMap != null) {
             mChart.getAxisLeft().setStartAtZero(false);
             mChart.getAxisRight().setStartAtZero(false);
