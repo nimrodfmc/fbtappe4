@@ -14,17 +14,6 @@ public class BDHelper extends SQLiteOpenHelper {
     private SQLiteDatabase maBase;
     private BDD maBDD;
 
-    //Propriétés
-    private String creation="create table utilisateur ("
-            +"id INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +"sexe TEXT,"
-            +"prenom TEXT,"
-            +"age INTEGER,"
-            +"taille REAL,"
-            +"poids REAL,"
-            +"act_sport INTEGER,"
-            +"objectif INTEGER);";
-
     //constructeur qui initialise la base
     public BDHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -40,14 +29,11 @@ public class BDHelper extends SQLiteOpenHelper {
         maBase.close();
     }
 
-    //Si changement de bdd
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(creation);
         //requête
     }
 
-    //Si changement de version
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
