@@ -198,13 +198,18 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="395dp"
+        android:layout_width="369dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSport"
-        app:layout_constraintVertical_bias="0.048"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <EditText
         android:id="@+id/etAge"

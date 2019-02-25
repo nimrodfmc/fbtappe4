@@ -4,9 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/colorDark"
 
     android:orientation="vertical">
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:addStatesFromChildren="true">
+
+        <TextView
+            android:id="@+id/currentdate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/affdate"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+
+    </android.support.v7.widget.GridLayout>
 
 
     <Button
@@ -14,9 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/rounded_button"
         android:text="@string/s_inscrire"
         android:textColor="@color/colorOrange" />
@@ -26,35 +45,77 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/rounded_button"
         android:text="@string/alimentation"
         android:textColor="@color/colorOrange" />
+
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/Button04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_button"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/activit_sportive"
+            android:textColor="@color/colorOrange"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <Button
+            android:id="@+id/Button05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_button"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="Saisie du Poids"
+            android:textColor="@color/colorOrange"
+            app:layout_column="2"
+            app:layout_row="0" />
+
+    </android.support.v7.widget.GridLayout>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="328dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/rounded_button" />
 
     <Button
         android:id="@+id/Button03"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/rounded_button"
         android:text="@string/evolution"
         android:textColor="@color/colorOrange" />
 
 
-    <Button
-        android:id="@+id/Button04"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/rounded_button"
-        android:text="@string/activit_sportive"
-        android:textColor="@color/colorOrange" />
+
+
+
 
 </LinearLayout>

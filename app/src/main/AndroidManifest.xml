@@ -10,9 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SaisiePoids"></activity>
         <activity
             android:name=".validInscription"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait">
@@ -26,11 +27,18 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ActiviteSportive"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Inscription"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainAliments"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Evolution"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
