@@ -1,5 +1,6 @@
 package com.example.maximeglod.fbta;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -33,6 +34,7 @@ import static com.example.maximeglod.fbta.CustomGridAdapter.maMap;
 public class MainAliments extends AppCompatActivity {
 
     public static String recup_date;
+    private static AccesLocal accesLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,8 @@ public class MainAliments extends AppCompatActivity {
         if (verif==true){
 
         }else {
+
+
             dateMap.put(date2,new HashMap<Integer, Integer>());
             (dateMap.get(date2)).put(900000,900000);
 

@@ -22,19 +22,20 @@ public class SaisiePoids extends AppCompatActivity {
     TextView saisie;
     EditText poids;
     Button save;
+    public static AccesLocal accesLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // On retire la barre de notifications pour afficher l'application en plein écran
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+    accesLocal = new AccesLocal(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saisie_poids);
         Intent intent = getIntent();
         String date = intent.getStringExtra("date");
         recup_date = date;
-        TextView date5 = (TextView) findViewById(R.id.currentdate);
+        final TextView date5 = (TextView) findViewById(R.id.currentdate);
         date5.setText(recup_date);
 
         saisie = (TextView) findViewById(R.id.tvSaisie);
@@ -52,8 +53,16 @@ public class SaisiePoids extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "La saisie de votre poids a bien été sauvegardée", Toast.LENGTH_LONG).show();
                     Integer poidscurrent = Integer.parseInt(poids.getText().toString());
                     //Stockage du poids dans un hashmap
-                    poidsMap.put(recup_date, poidscurrent);
-                    poidsMap.get(recup_date);
+                    //Stockage dans la bdd
+                    String recupdate2 = recup_date;
+                    if ((accesLocal.checkevolution(recupdate2))!="ok"){
+                        accesLocal.ajoutevolution(recupdate2,poidscurrent);
+                    } else {
+                        accesLocal.modifevolution(recupdate2,poidscurrent);
+                    }
+                    //accesLocal.ajoutevolution(recupdate2,poidscurrent);
+                    //poidsMap.put(recup_date, poidscurrent);
+                    //poidsMap.get(recup_date);
                     startActivityForResult(myIntent, 0);
                 }
             }
