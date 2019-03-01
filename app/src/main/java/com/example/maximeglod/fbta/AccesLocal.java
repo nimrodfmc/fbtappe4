@@ -8,6 +8,9 @@ import com.github.mikephil.charting.components.XAxis;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AccesLocal {
 
     //propriétés
@@ -49,6 +52,23 @@ public class AccesLocal {
         bd = accesBD.getWritableDatabase();
         String req="UPDATE evolution set poids="+poids+" Where date=\""+date+"\";";
         bd.execSQL(req);
+    }
+    //Récupération de l'ensemble des évolutions
+    public Map selectevolution(){
+        bd = accesBD.getReadableDatabase();
+        String req = "Select * from evolution";
+        Cursor curseur = bd.rawQuery(req,null);
+        Map<String, Integer> poidsMap = new HashMap<>();
+
+        while (curseur.moveToNext()){
+            String date = curseur.getString(0);
+            Integer poids = curseur.getInt(1);
+            poidsMap.put(date,poids);
+
+        }
+        curseur.close();
+
+        return poidsMap;
     }
     //Récupération du dernier profil de la bd
     public Personne recupDernier(){

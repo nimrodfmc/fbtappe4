@@ -29,7 +29,7 @@ public class SaisiePoids extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // On retire la barre de notifications pour afficher l'application en plein écran
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    accesLocal = new AccesLocal(getApplicationContext());
+        accesLocal = new AccesLocal(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saisie_poids);
         Intent intent = getIntent();
@@ -55,10 +55,10 @@ public class SaisiePoids extends AppCompatActivity {
                     //Stockage du poids dans un hashmap
                     //Stockage dans la bdd
                     String recupdate2 = recup_date;
-                    if ((accesLocal.checkevolution(recupdate2))!="ok"){
-                        accesLocal.ajoutevolution(recupdate2,poidscurrent);
+                    if ((accesLocal.checkevolution(recupdate2)) != "ok") {
+                        accesLocal.ajoutevolution(recupdate2, poidscurrent);
                     } else {
-                        accesLocal.modifevolution(recupdate2,poidscurrent);
+                        accesLocal.modifevolution(recupdate2, poidscurrent);
                     }
                     //accesLocal.ajoutevolution(recupdate2,poidscurrent);
                     //poidsMap.put(recup_date, poidscurrent);
