@@ -15,6 +15,8 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
             +"poids REAL,"
             +"act_sport INTEGER,"
             +"objectif INTEGER);";
+    private String creationtableevolution="create table evolution(date TEXT, poids INTEGER);";
+
 
 
 
@@ -28,6 +30,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         sqLiteDatabase.execSQL(creationtableuser);
+        sqLiteDatabase.execSQL(creationtableevolution);
 
 
     }
