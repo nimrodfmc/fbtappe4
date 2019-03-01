@@ -7,17 +7,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     //Propriétés
-    private String creationtableuser="create table user ("
-            +"sexe TEXT,"
-            +"prenom TEXT,"
-            +"age INTEGER,"
-            +"taille REAL,"
-            +"poids REAL,"
-            +"act_sport INTEGER,"
-            +"objectif INTEGER);";
-    private String creationtableevolution="create table evolution(date TEXT, poids INTEGER);";
-
-
+    private String creationtableuser = "create table user ("
+            + "sexe TEXT,"
+            + "prenom TEXT,"
+            + "age INTEGER,"
+            + "taille REAL,"
+            + "poids REAL,"
+            + "act_sport INTEGER,"
+            + "objectif INTEGER);";
+    //Création table évolution
+    private String creationtableevolution = "create table evolution(date TEXT, poids INTEGER);";
+    //Création table alimentation
+    private String creationtablealimentation = "create table alimentation(date TEXT,position INTEGER,qtecalorie INTEGER);";
 
 
     //Constructeur
@@ -29,9 +30,10 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        //Lancement des requètes de création de tables
         sqLiteDatabase.execSQL(creationtableuser);
         sqLiteDatabase.execSQL(creationtableevolution);
-
+        sqLiteDatabase.execSQL(creationtablealimentation);
 
     }
 

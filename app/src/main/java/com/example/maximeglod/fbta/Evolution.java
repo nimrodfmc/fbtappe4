@@ -317,6 +317,6 @@ public class Evolution extends Activity {
     }
 
 
-    public static Map<String, Integer> poidsMap = SaisiePoids.poidsMap;
+    //public static Map<String, Integer> poidsMap = SaisiePoids.poidsMap;
 
 }

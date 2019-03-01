@@ -18,6 +18,7 @@ public class CustomGridAdapter extends BaseAdapter {
     private List<Aliments> listData;
     private LayoutInflater layoutInflater;
     private Context context;
+    private static AccesLocal accesLocal;
 
 
     public CustomGridAdapter(Context aContext, List<Aliments> listData) {
@@ -45,6 +46,7 @@ public class CustomGridAdapter extends BaseAdapter {
     }
 
     public View getView(final int position, View convertView, final ViewGroup parent) {
+        accesLocal = new AccesLocal(context);
 
 
         String date = MainAliments.recup_date;
@@ -107,7 +109,8 @@ public class CustomGridAdapter extends BaseAdapter {
                     //Ajout de la valeur calculé dans un hashmap dédié au calcul du total calorique
                     //
                     // caltolMap.put(date2,new HashMap<Integer, Integer>());
-                    caltolMap.get(date2).put(position,qtecalorie);
+                    accesLocal.ajoutalimentation(date2,position,qtecalorie);
+                                            //caltolMap.get(date2).put(position,qtecalorie);
                     //(caltolMap.get(date2)).put(8000,0);
                     //calMap.put(position, qtecalorie);
                 }
@@ -120,9 +123,9 @@ public class CustomGridAdapter extends BaseAdapter {
                         //Ajout de la valeur en quantité modifié dans un HashMap dédié
 
                         // maMap.put(position, qte2);
-                        Integer valpos = maMap.get(position);
-
-                        dateMap.get(date2).put(position,qte2);
+                        //Integer valpos = maMap.get(position);
+                        accesLocal.ajoutalimentation(date2,position,qte2);
+                                    //dateMap.get(date2).put(position,qte2);
 
                     }
                 }
@@ -132,9 +135,10 @@ public class CustomGridAdapter extends BaseAdapter {
                 maMap.get(position);
 
                 Boolean verif = dateMap.get(date2).containsKey(position);
-                if (verif == true) {
+                Boolean ver = accesLocal.returnqtecal(date2,position)==null;
+                if (ver == true) {
 
-                    holder.qteView.setText(Integer.toString((dateMap.get(date2)).get(position)));
+                    holder.qteView.setText(Integer.toString(accesLocal.returnqtecal(date2,position)));
                 } else {
                     holder.qteView.setText("0");
                 }
@@ -162,8 +166,8 @@ public class CustomGridAdapter extends BaseAdapter {
                 int qtecalorie = c;
 
                 //Ajout de la valeur calculé dans un hashmap dédié au calcul du total calorique
-
-                caltolMap.get(date2).put(position,qtecalorie);
+                accesLocal.ajoutalimentation(date2,position,qtecalorie);
+                              //caltolMap.get(date2).put(position,qtecalorie);
                // (caltolMap.get(date2)).put(8000,0);
                 //calMap.put(position, qtecalorie);
 
@@ -177,8 +181,8 @@ public class CustomGridAdapter extends BaseAdapter {
                     //Augmentation de +1 de la quantité
                     int qte2 = Integer.parseInt(holder.qteView.getText().toString()) + 1;
                     //maMap.put(position, qte2);
-
-                    dateMap.get(date2).put(position,qte2);
+                    accesLocal.ajoutalimentation(date2,position,qte2);
+                            //dateMap.get(date2).put(position,qte2);
 
                 }
 

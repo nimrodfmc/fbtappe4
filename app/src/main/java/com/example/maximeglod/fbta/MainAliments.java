@@ -46,7 +46,7 @@ public class MainAliments extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aliments);
-
+        accesLocal = new AccesLocal(getApplicationContext());
         Intent intent = getIntent();
         String date = intent.getStringExtra("date");
         recup_date = date;
