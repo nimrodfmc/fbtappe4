@@ -53,6 +53,7 @@ public class Inscription extends AppCompatActivity {
 
 
         et_prenom = (EditText) findViewById(R.id.etPrenom);
+        et_prenom.requestFocus();
         this.prenom = et_prenom.getText().toString();
 
         et_nom = (EditText) findViewById(R.id.etNom);

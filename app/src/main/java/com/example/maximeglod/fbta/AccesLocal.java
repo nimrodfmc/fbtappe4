@@ -248,9 +248,9 @@ public class AccesLocal {
     }
 
     //Mise à jour de l'activité sportive de l'utilisateur
-    public void majactsport(String act_sport){
+    public void majactsport(String act_sport,Integer objectif){
         bd = accesBD.getWritableDatabase();
-        String req = "UPDATE user set act_sport=\"" + act_sport + "\";";
+        String req = "UPDATE user set act_sport=\"" + act_sport + "\", objectif="+objectif+";";
         bd.execSQL(req);
     }
 }
