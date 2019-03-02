@@ -45,10 +45,13 @@ public class AccesLocal {
         Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToLast();
         if (curseur.isAfterLast()) {
+            curseur.close();
             return "pasok";
         } else {
+            curseur.close();
             return "ok";
         }
+
     }
 
     public String checkalimentation(String date, Integer position) {
@@ -57,8 +60,10 @@ public class AccesLocal {
         Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToLast();
         if (curseur.isAfterLast()) {
+            curseur.close();
             return "pasok";
         } else {
+            curseur.close();
             return "ok";
         }
     }
@@ -69,8 +74,10 @@ public class AccesLocal {
         Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToLast();
         if (curseur.isAfterLast()) {
+            curseur.close();
             return "pasok";
         } else {
+            curseur.close();
             return "ok";
         }
     }
@@ -81,8 +88,10 @@ public class AccesLocal {
         Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToLast();
         if (curseur.isAfterLast()) {
+            curseur.close();
             return "pasok";
         } else {
+            curseur.close();
             return "ok";
         }
     }
@@ -122,6 +131,7 @@ public class AccesLocal {
         String req = "select qtecalorie from alimentation where alimentation.date=\"" + date + "\" AND alimentation.position=" + position + "";
         Cursor curseur = bd.rawQuery(req, null);
         Integer qte = curseur.getInt(0);
+        curseur.close();
         return qte;
 
     }
@@ -132,6 +142,7 @@ public class AccesLocal {
         String req = "select qtecalorie from alimentation where date=\"" + date + "\"";
         Cursor curseur = bd.rawQuery(req, null);
         Integer qte = curseur.getInt(0);
+        curseur.close();
         return qte;
 
     }
@@ -145,8 +156,10 @@ public class AccesLocal {
 
         if (curseur != null && curseur.moveToFirst()) {
             Integer qte = curseur.getInt(0);
+            curseur.close();
             return qte;
         }
+        curseur.close();
         return 0;
     }
 
@@ -176,16 +189,19 @@ public class AccesLocal {
     }
 
     //Création d'une requète qui renvoi la somme des calories journalière
-    public int sumcal(String date){
+    public int sumcal(String date) {
         bd = accesBD.getReadableDatabase();
-        String req="select sum(qtecalorie) from alimentation where alimentation.date=\"" + date + "\";";
+        String req = "select sum(qtecalorie) from alimentation where alimentation.date=\"" + date + "\";";
         Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToFirst();
 
         if (curseur != null && curseur.moveToFirst()) {
             Integer qte = curseur.getInt(0);
+            curseur.close();
             return qte;
+
         }
+        curseur.close();
         return 0;
 
 
