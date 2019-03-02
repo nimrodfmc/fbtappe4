@@ -20,6 +20,7 @@ import java.util.Calendar;
 public class validInscription extends AppCompatActivity {
     TextView tv_prenom, tv_nom, tv_naissance, tv_taille, tv_poids, tv_objectif, tv_sexe, tv_activite;
     Button btn_inscrire;
+    private static AccesLocal accesLocal;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -30,6 +31,7 @@ public class validInscription extends AppCompatActivity {
         //Définission le contenu de la vue APRES les instructions précédentes pour éviter un crash
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_valid_inscription);
+        accesLocal = new AccesLocal(getApplicationContext());
         tv_prenom = (TextView) findViewById(R.id.tvPrenom);
         tv_nom = (TextView) findViewById(R.id.tvNom);
         tv_naissance = (TextView) findViewById(R.id.tvAge);
@@ -42,10 +44,10 @@ public class validInscription extends AppCompatActivity {
         final String lePrenom = getIntent().getStringExtra("Prénom");
         final String leNom = getIntent().getStringExtra("Nom");
         String laNaissance = getIntent().getStringExtra("Naissance");
-        String leSexe = getIntent().getStringExtra("Sexe");
-        String laTaille = getIntent().getStringExtra("Taille");
-        String lePoids = getIntent().getStringExtra("Poids");
-        String lActivite = getIntent().getStringExtra("Activité sportive");
+        final String leSexe = getIntent().getStringExtra("Sexe");
+        final String laTaille = getIntent().getStringExtra("Taille");
+        final String lePoids = getIntent().getStringExtra("Poids");
+        final String lActivite = getIntent().getStringExtra("Activité sportive");
         tv_prenom.setText("Prénom : " + lePrenom);
         tv_nom.setText("Nom : " + leNom);
         tv_naissance.setText("Date de naissance : " + laNaissance);
@@ -54,7 +56,7 @@ public class validInscription extends AppCompatActivity {
         tv_poids.setText("Poids : " + lePoids);
         tv_activite.setText("Activité Sportive : " + lActivite);
 
-
+Integer lObjectif =0;
         //Calcul de l'âge
 
         Calendar cal = Calendar.getInstance();
@@ -69,7 +71,7 @@ public class validInscription extends AppCompatActivity {
 
         Period period = Period.between(date1, date2);
 
-        Integer age = period.getYears();
+        final Integer age = period.getYears();
         //Vérification de l'âge avec breakpoints
         // Integer age2=age;
 
@@ -81,17 +83,17 @@ public class validInscription extends AppCompatActivity {
                 //Si l'activité est faible
 
                 Integer objectifcalorique = (int) (objcal * 1.375);
-                Integer checkobj = objectifcalorique;
+                lObjectif = objectifcalorique;
 
             } else if (lActivite.equals("Modéré")) {
                 //Si l'activité est modéré
                 Integer objectifcalorique = (int) (objcal * 1.64);
-                Integer checkobj = objectifcalorique;
+                lObjectif = objectifcalorique;
 
             } else {
                 //Si l'activité est intense
                 Integer objectifcalorique = (int) (objcal * 1.82);
-                Integer checkobj = objectifcalorique;
+                lObjectif = objectifcalorique;
             }
         } else {
             //Calcul de l'objectif calorique pour un homme
@@ -100,28 +102,31 @@ public class validInscription extends AppCompatActivity {
                 //Si l'activité est faible
 
                 Integer objectifcalorique = (int) (objcal * 1.375);
-                Integer checkobj = objectifcalorique;
+                lObjectif = objectifcalorique;
 
-            }
-            else if (lActivite.equals("Modéré")) {
+            } else if (lActivite.equals("Modéré")) {
                 //Si l'activité est modéré
                 Integer objectifcalorique = (int) (objcal * 1.64);
-                Integer checkobj = objectifcalorique;
+                lObjectif = objectifcalorique;
 
             } else {
                 //Si l'activité est intense
                 Integer objectifcalorique = (int) (objcal * 1.82);
-                Integer checkobj = objectifcalorique;
+                lObjectif = objectifcalorique;
+
             }
         }
 
+        final Integer finalLObjectif = lObjectif;
         btn_inscrire.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
             public void onClick(View v) {
                 Intent e = new Intent(getApplicationContext(), MainActivity.class);
-                Toast.makeText(getApplicationContext(), lePrenom + " " + leNom + " enregistré", Toast.LENGTH_LONG).show();
+                //Inscription dans la base de données
+                accesLocal.ajoututilisateur(leSexe,lePrenom,age,Double.parseDouble(laTaille),Double.parseDouble(lePoids),lActivite, finalLObjectif);
+                Toast.makeText(getApplicationContext(), "Utilisateur "+lePrenom + " " + leNom + " bien enregistré", Toast.LENGTH_LONG).show();
                 startActivity(e);
             }
 

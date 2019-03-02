@@ -207,25 +207,10 @@ public class AccesLocal {
 
     }
 
-    //Récupération du dernier profil de la bd
-    public Personne recupDernier() {
-        bd = accesBD.getReadableDatabase();
-        Personne personne = null;
-        String req = "select * from user";
-        Cursor curseur = bd.rawQuery(req, null);
-        curseur.moveToLast();
-        if (!curseur.isAfterLast()) {
-            String sexe = curseur.getString(0);
-            String prenom = curseur.getString(1);
-            Integer age = curseur.getInt(2);
-            Float taille = curseur.getFloat(3);
-            Integer poids = curseur.getInt(4);
-            Integer act_sport = curseur.getInt(5);
-            Integer objectif = curseur.getInt(6);
-            personne = new Personne(sexe, prenom, age, taille, poids, act_sport, objectif);
-
-        }
-        curseur.close();
-        return personne;
-    }
+  //Insertion d'un utilisateur dans la bdd
+  public void ajoututilisateur(String sexe, String prenom, Integer age, Double taille,Double poids,String act_sport,Integer objectif) {
+      bd = accesBD.getWritableDatabase();
+      String req = "insert into user (sexe,prenom,age,taille,poids,act_sport,objectif) values(\""+sexe+"\",\"" + prenom + "\"," + age + "," + taille + ","+poids+",\""+act_sport+"\","+objectif+");";
+      bd.execSQL(req);
+  }
 }

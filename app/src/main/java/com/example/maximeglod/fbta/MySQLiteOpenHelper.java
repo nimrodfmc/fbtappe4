@@ -12,7 +12,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
             + "age INTEGER,"
             + "taille REAL,"
             + "poids REAL,"
-            + "act_sport INTEGER,"
+            + "act_sport TEXT,"
             + "objectif INTEGER);";
     //Création table évolution
     private String creationtableevolution = "create table evolution(date TEXT, poids INTEGER);";
