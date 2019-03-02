@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fbta</string>
+    <string name="app_name">FBTA</string>
     <string name="tvPoids">Poids</string>
     <string name="tvTaille">Taille</string>
     <string name="tvNom">Nom</string>

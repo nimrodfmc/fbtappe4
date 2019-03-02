@@ -1,8 +1,8 @@
 package com.example.maximeglod.fbta;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -82,7 +82,6 @@ public class Inscription extends AppCompatActivity {
         this.sport = spinner.getSelectedItem().toString();
 
 
-
         bt_valider = (Button) findViewById(R.id.btnProfil);
 
         bt_valider.setOnClickListener(new View.OnClickListener() {
@@ -114,18 +113,17 @@ public class Inscription extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "Veuillez renseigner votre poids", Toast.LENGTH_LONG).show();
                                     } else {
 
-                                            i.putExtra("Prénom", et_prenom.getText().toString());
-                                            i.putExtra("Nom", et_nom.getText().toString());
-                                            i.putExtra("Naissance", et_age.getText().toString());
-                                            i.putExtra("Sexe", et_sexe.getText().toString());
-                                            i.putExtra("Taille", et_taille.getText().toString());
-                                            i.putExtra("Poids", et_poids.getText().toString());
-                                            i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
-                                            startActivity(i);
-                                        }
+                                        i.putExtra("Prénom", et_prenom.getText().toString());
+                                        i.putExtra("Nom", et_nom.getText().toString());
+                                        i.putExtra("Naissance", et_age.getText().toString());
+                                        i.putExtra("Sexe", et_sexe.getText().toString());
+                                        i.putExtra("Taille", et_taille.getText().toString());
+                                        i.putExtra("Poids", et_poids.getText().toString());
+                                        i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
+                                        startActivity(i);
                                     }
                                 }
-                             else {
+                            } else {
                                 Toast.makeText(getApplicationContext(), "Veuillez renseigner correctement votre sexe", Toast.LENGTH_LONG).show();
                             }
                         }

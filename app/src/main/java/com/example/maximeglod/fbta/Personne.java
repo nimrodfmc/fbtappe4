@@ -1,9 +1,9 @@
 package com.example.maximeglod.fbta;
 
 
-import android.widget.TextView;
-
 public class Personne extends Inscription {
+    //Propriétés
+    Inscription i = new Inscription();
     private String prenom;
     private String nom;
     private int age;
@@ -12,13 +12,6 @@ public class Personne extends Inscription {
     private float poids;
     private String sport;
     private int objectif;
-    /*public float Calorie;*/
-
-    TextView tv_objectif, tv_calorie, tv_conso, tv_total;
-    Personne p1 = new Personne("Jules", "Couraud", 18, "Homme", (float) 1.78, (float) 90, "Intensité forte", 80);
-    //TextView total = (TextView )findViewById(R.id.tv_total);
-//tftgj
-    public float totalcal = 2500;
 
     //constructeur
     public Personne(String prenom, String nom, int age, String sexe, float taille, float poids, String sport, int objectif) {
@@ -32,10 +25,10 @@ public class Personne extends Inscription {
         this.objectif = objectif;
     }
 
+//getter / setter
+
     public Personne(String sexe, String prenom, Integer age, Float taille, Integer poids, Integer act_sport, Integer objectif) {
     }
-
-//getter / setter
 
     public String getPrenom() {
         return prenom;
@@ -60,9 +53,6 @@ public class Personne extends Inscription {
     public int getObjectifs() {
         return objectif;
     }
-
-
-    Inscription i = new Inscription();
 
 
 }

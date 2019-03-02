@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@color/colorDark"
@@ -18,14 +17,14 @@
             android:id="@+id/currentdate"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/affdate"
-            app:layout_column="0"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="30dp"
-             />
+            android:gravity="center"
+            android:text="@string/affdate"
+            app:layout_column="0" />
+
         <TextView
             android:id="@+id/objectif"
             android:layout_width="wrap_content"
@@ -60,6 +59,7 @@
 
             app:layout_column="2"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/blank"
             android:layout_width="wrap_content"
@@ -68,9 +68,9 @@
             android:layout_marginLeft="100dp"
             android:layout_marginTop="8dp"
 
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_column="6"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/blank3"
             android:layout_width="wrap_content"
@@ -79,9 +79,9 @@
             android:layout_marginLeft="100dp"
             android:layout_marginTop="8dp"
 
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_column="7"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/blank2"
             android:layout_width="wrap_content"
@@ -90,9 +90,8 @@
             android:layout_marginLeft="100dp"
             android:layout_marginTop="8dp"
 
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_column="4"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/verif"
@@ -101,14 +100,14 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
+            android:layout_marginRight="30dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/rounded_button"
             android:focusable="false"
+            app:layout_column="5"
             app:layout_constraintBottom_toTopOf="@+id/gridView"
             app:layout_constraintEnd_toStartOf="@+id/libeleobj"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_column="5"
-            android:layout_marginRight="30dp"
 
             />
 
@@ -137,8 +136,10 @@
             android:id="@+id/Button04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/rounded_button"
@@ -147,16 +148,16 @@
             android:text="@string/activit_sportive"
             android:textColor="@color/colorOrange"
             app:layout_column="0"
-            app:layout_row="0"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="3dp" />
+            app:layout_row="0" />
 
         <Button
             android:id="@+id/Button05"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/rounded_button"
@@ -165,9 +166,7 @@
             android:text="@string/saisie_du_poids"
             android:textColor="@color/colorOrange"
             app:layout_column="2"
-            app:layout_row="0"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="25dp" />
+            app:layout_row="0" />
 
     </android.support.v7.widget.GridLayout>
 
@@ -192,10 +191,6 @@
         android:background="@drawable/rounded_button"
         android:text="@string/evolution"
         android:textColor="@color/colorOrange" />
-
-
-
-
 
 
 </LinearLayout>

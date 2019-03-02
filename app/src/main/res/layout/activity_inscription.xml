@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/colorDark">
+    android:background="@color/colorDark"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvPoids"
@@ -97,13 +97,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/tvObjectif"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnProfil"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSport"
-        app:layout_constraintVertical_bias="0.386"
-        android:visibility="invisible"/>
+        app:layout_constraintVertical_bias="0.386" />
 
     <EditText
         android:id="@+id/etPoids"
