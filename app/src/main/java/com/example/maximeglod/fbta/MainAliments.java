@@ -1,5 +1,6 @@
 package com.example.maximeglod.fbta;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -33,6 +34,7 @@ import static com.example.maximeglod.fbta.CustomGridAdapter.maMap;
 public class MainAliments extends AppCompatActivity {
 
     public static String recup_date;
+    private static AccesLocal accesLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class MainAliments extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aliments);
-
+        accesLocal = new AccesLocal(getApplicationContext());
         Intent intent = getIntent();
         String date = intent.getStringExtra("date");
         recup_date = date;
@@ -55,6 +57,8 @@ public class MainAliments extends AppCompatActivity {
         if (verif==true){
 
         }else {
+
+
             dateMap.put(date2,new HashMap<Integer, Integer>());
             (dateMap.get(date2)).put(900000,900000);
 
@@ -893,15 +897,16 @@ public class MainAliments extends AppCompatActivity {
         //On implémente la méthode pour mettre à jour le totalcalorique
         public void run() {
 
-            int sum = 0;
+//            int sum = 0;
             //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
             //dans la variable sum
             //calMap.values()
 
 
-                for (int f : (caltolMap.get(recup_date)).values()) {
-                    sum += f;
-                }
+//                for (int f : (caltolMap.get(recup_date)).values()) {
+//                    sum += f;
+//                }
+                Integer sum=accesLocal.sumcal(recup_date);
 
                 //On récupère le champ totalcalories de la vue
                 TextView totalcalories = (TextView) findViewById(R.id.totalcalories);

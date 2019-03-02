@@ -16,13 +16,101 @@
 
         <TextView
             android:id="@+id/currentdate"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="@string/affdate"
-            app:layout_column="1"
+            app:layout_column="0"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="30dp"
+             />
+        <TextView
+            android:id="@+id/objectif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_2500"
+            android:visibility="invisible"
+            app:layout_column="0"
             app:layout_row="0" />
+
+        <TextView
+            android:id="@+id/totalcalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/_0"
+            app:layout_column="3"
+            app:layout_constraintBottom_toBottomOf="@+id/libelecaltotal"
+            app:layout_constraintStart_toEndOf="@+id/libelecaltotal"
+            app:layout_constraintTop_toTopOf="@+id/libelecaltotal"
+            app:layout_row="0" />
+
+        <TextView
+            android:id="@+id/libelecaltotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="800dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/calories_consomm_es"
+
+            app:layout_column="2"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/blank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="8dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_column="6"
+            />
+        <TextView
+            android:id="@+id/blank3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="8dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_column="7"
+            />
+        <TextView
+            android:id="@+id/blank2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="8dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_column="4"
+            />
+
+        <Button
+            android:id="@+id/verif"
+            android:layout_width="27dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_button"
+            android:focusable="false"
+            app:layout_constraintBottom_toTopOf="@+id/gridView"
+            app:layout_constraintEnd_toStartOf="@+id/libeleobj"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_column="5"
+            android:layout_marginRight="30dp"
+
+            />
 
 
     </android.support.v7.widget.GridLayout>
@@ -71,7 +159,9 @@
             android:text="@string/activit_sportive"
             android:textColor="@color/colorOrange"
             app:layout_column="0"
-            app:layout_row="0" />
+            app:layout_row="0"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="3dp" />
 
         <Button
             android:id="@+id/Button05"
@@ -84,10 +174,12 @@
             android:background="@drawable/rounded_button"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="Saisie du Poids"
+            android:text="@string/saisie_du_poids"
             android:textColor="@color/colorOrange"
             app:layout_column="2"
-            app:layout_row="0" />
+            app:layout_row="0"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="25dp" />
 
     </android.support.v7.widget.GridLayout>
 

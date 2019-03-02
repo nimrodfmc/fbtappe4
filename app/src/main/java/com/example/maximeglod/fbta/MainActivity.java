@@ -28,6 +28,8 @@ import static com.example.maximeglod.fbta.CustomGridAdapter.caltolMap;
 
 public class MainActivity extends Activity {
     public static HashMap<String, Object> personne = new HashMap<>();
+    public static String recup_date;
+    private static AccesLocal accesLocal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,10 @@ public class MainActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        accesLocal = new AccesLocal(getApplicationContext());
 
+        myHandler = new Handler();
+        myHandler.postDelayed(myRunnable, 5);
         //Instance de Handler pour lancer une fonction à intervalle de temps régulier
 //        myHandler = new Handler();
 //        myHandler.postDelayed(myRunnable, 5);
@@ -212,6 +217,77 @@ public class MainActivity extends Activity {
 
     }
 
+    //Déclaration d'un Handler pour tâches automatique
+    private Handler myHandler;
+    private Runnable myRunnable = new Runnable() {
+
+        @Override
+        //On implémente la méthode pour mettre à jour le totalcalorique
+        public void run() {
+
+//            int sum = 0;
+            //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
+            //dans la variable sum
+            //calMap.values()
+
+
+//                for (int f : (caltolMap.get(recup_date)).values()) {
+//                    sum += f;
+//                }
+            TextView dateView2 = (TextView) findViewById(R.id.currentdate);
+            final String heures3 = dateView2.getText().toString();
+            Integer sum = accesLocal.sumcal(heures3);
+
+            //On récupère le champ totalcalories de la vue
+            TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+            String sumtotal = Integer.toString(sum);
+            //On met à jour le text de totalcalories avec la valeur calculée
+            totalcalories.setText(sumtotal);
+
+
+//            for (int f : (caltolMap.get(recup_date)).values()) {
+//                sum += f;
+//            }
+//
+//            //On récupère le champ totalcalories de la vue
+//            TextView totalcalories = (TextView) findViewById(R.id.totalcalories);
+//            String sumtotal = Integer.toString(sum);
+//            //On met à jour le text de totalcalories avec la valeur calculée
+//            totalcalories.setText(sumtotal);
+
+            //Changement de la couleur d'un élément si l'objectif n'est pas respecté
+            TextView objectifcalories = (TextView) findViewById(R.id.objectif);
+            int objectif = Integer.parseInt(objectifcalories.getText().toString());
+
+            if (sum <= objectif) {
+                Button b1 = (Button) findViewById(R.id.verif);
+                b1.setBackgroundResource(R.drawable.rounded_button_ok);
+                b1.setText("V");
+                b1.setTextColor(Color.BLACK);
+            } else {
+
+                //On tolère une marge de 5% par rapport à l'objectif (Changement de couleur)
+                if (sum <= objectif + (objectif * 0.05)) {
+                    Button b2 = (Button) findViewById(R.id.verif);
+                    b2.setBackgroundResource(R.drawable.rounded_button_mid);
+                    b2.setText("~");
+                    b2.setTextColor(Color.WHITE);
+                } else {
+                    Button b1 = (Button) findViewById(R.id.verif);
+                    b1.setBackgroundResource(R.drawable.rounded_button_false);
+                    b1.setText("X");
+                    b1.setTextColor(Color.WHITE);
+                }
+
+            }
+
+
+            //On appel cette fonction toutes les 5 milisecondes
+            myHandler.postDelayed(this, 5);
+
+
+        }
+    };
 
     public static Map<String, Map<Integer, Integer>> caltolMap = new HashMap<>();
 }

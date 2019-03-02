@@ -32,6 +32,9 @@ public class Personne extends Inscription {
         this.objectif = objectif;
     }
 
+    public Personne(String sexe, String prenom, Integer age, Float taille, Integer poids, Integer act_sport, Integer objectif) {
+    }
+
 //getter / setter
 
     public String getPrenom() {

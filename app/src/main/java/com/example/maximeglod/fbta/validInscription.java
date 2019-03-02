@@ -29,6 +29,7 @@ public class validInscription extends AppCompatActivity {
     private String lePoids;
     private String lActivite;
     private String lObjectif;
+    private static AccesLocal accesLocal;
 
 
     @Override

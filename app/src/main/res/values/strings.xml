@@ -23,4 +23,5 @@
     <string name="evolution">Evolution</string>
     <string name="activit_sportive">Activité Sportive</string>
     <string name="affdate">TextView</string>
+    <string name="saisie_du_poids">Saisie du Poids</string>
 </resources>

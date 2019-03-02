@@ -32,6 +32,7 @@ import java.util.Map;
 public class Evolution extends Activity {
     private RelativeLayout Evolution;
     private LineChart mChart;
+    public static AccesLocal accesLocal;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -45,7 +46,7 @@ public class Evolution extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.evolution);
         Evolution = (RelativeLayout) findViewById(R.id.Evolution);
-
+        accesLocal = new AccesLocal(getApplicationContext());
         //Création du graph ligne
         mChart = new LineChart(this);
         //On ajoute au layout
@@ -102,12 +103,12 @@ public class Evolution extends Activity {
         mChart.getAxisRight().setStartAtZero(false);
 
         ArrayList<Entry> yValues = new ArrayList<>();
-        
-        if (poidsMap != null) {
+
+        if (accesLocal.selectevolution() != null) {
             mChart.getAxisLeft().setStartAtZero(false);
             mChart.getAxisRight().setStartAtZero(false);
             //Boucle While + iterator
-            Iterator iterator = poidsMap.entrySet().iterator();
+            Iterator iterator = accesLocal.selectevolution().entrySet().iterator();
 
             while (iterator.hasNext()) {
                 mChart.getAxisLeft().setStartAtZero(false);
@@ -316,6 +317,6 @@ public class Evolution extends Activity {
     }
 
 
-    public static Map<String, Integer> poidsMap = SaisiePoids.poidsMap;
+    //public static Map<String, Integer> poidsMap = SaisiePoids.poidsMap;
 
 }
