@@ -897,15 +897,16 @@ public class MainAliments extends AppCompatActivity {
         //On implémente la méthode pour mettre à jour le totalcalorique
         public void run() {
 
-            int sum = 0;
+//            int sum = 0;
             //Parcours du Hashmap pour sommer toutes les valeurs caloriques et ainsi récupérer le totalcalorique
             //dans la variable sum
             //calMap.values()
 
 
-                for (int f : (caltolMap.get(recup_date)).values()) {
-                    sum += f;
-                }
+//                for (int f : (caltolMap.get(recup_date)).values()) {
+//                    sum += f;
+//                }
+                Integer sum=accesLocal.sumcal(recup_date);
 
                 //On récupère le champ totalcalories de la vue
                 TextView totalcalories = (TextView) findViewById(R.id.totalcalories);

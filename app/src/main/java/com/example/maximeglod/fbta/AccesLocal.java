@@ -175,6 +175,22 @@ public class AccesLocal {
         return poidsMap;
     }
 
+    //Création d'une requète qui renvoi la somme des calories journalière
+    public int sumcal(String date){
+        bd = accesBD.getReadableDatabase();
+        String req="select sum(qtecalorie) from alimentation where alimentation.date=\"" + date + "\";";
+        Cursor curseur = bd.rawQuery(req, null);
+        curseur.moveToFirst();
+
+        if (curseur != null && curseur.moveToFirst()) {
+            Integer qte = curseur.getInt(0);
+            return qte;
+        }
+        return 0;
+
+
+    }
+
     //Récupération du dernier profil de la bd
     public Personne recupDernier() {
         bd = accesBD.getReadableDatabase();
