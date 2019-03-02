@@ -51,21 +51,103 @@ public class AccesLocal {
         }
     }
 
-    //Ajout d'une ligne dans alimentation avec date position etqtecalorie
+    public String checkalimentation(String date, Integer position) {
+        bd = accesBD.getReadableDatabase();
+        String req = "select * from alimentation where alimentation.date=\"" + date + "\" AND alimentation.position=" + position + "";
+        Cursor curseur = bd.rawQuery(req, null);
+        curseur.moveToLast();
+        if (curseur.isAfterLast()) {
+            return "pasok";
+        } else {
+            return "ok";
+        }
+    }
+
+    public String checkalimentation2(String date, Integer position) {
+        bd = accesBD.getReadableDatabase();
+        String req = "select * from datemap where datemap.date=\"" + date + "\" AND datemap.position=" + position + "";
+        Cursor curseur = bd.rawQuery(req, null);
+        curseur.moveToLast();
+        if (curseur.isAfterLast()) {
+            return "pasok";
+        } else {
+            return "ok";
+        }
+    }
+
+    public String checkalimentation3(String date) {
+        bd = accesBD.getReadableDatabase();
+        String req = "select * from datemap where datemap.date=\"" + date + "\"";
+        Cursor curseur = bd.rawQuery(req, null);
+        curseur.moveToLast();
+        if (curseur.isAfterLast()) {
+            return "pasok";
+        } else {
+            return "ok";
+        }
+    }
+
+
+    //Ajout d'une ligne dans alimentation avec date position et qtecalorie
     public void ajoutalimentation(String date, Integer position, Integer qtecalorie) {
         bd = accesBD.getWritableDatabase();
         String req = "insert into alimentation (date,position,qtecalorie) values(\"" + date + "\"," + position + "," + qtecalorie + ");";
         bd.execSQL(req);
     }
 
-    //Création d'une méthode qui renvoie la qtecalories en focntion de la date et de la position
-    public Integer returnqtecal(String date, Integer position){
+    //Ajout d'une ligne dans alimentation avec date position et qtecalorie
+    public void ajoutalimentation2(String date, Integer position, Integer qte2) {
+        bd = accesBD.getWritableDatabase();
+        String req = "insert into datemap (date,position,qte2) values(\"" + date + "\"," + position + "," + qte2 + ");";
+        bd.execSQL(req);
+    }
+
+    //Modification d'une ligne dans alimentation avec date position et qtecalorie
+    public void modifalimentation(String date, Integer position, Integer qtecalorie) {
         bd = accesBD.getReadableDatabase();
-        String req = "select qtecalorie from alimentation where alimentation.date=\"" + date + "\" AND alimentation.position="+position+"";
-        Cursor curseur = bd.rawQuery(req,null);
-        Integer qte =curseur.getInt(0);
+        String req = "UPDATE alimentation set position=" + position + ", qtecalorie=" + qtecalorie + " Where date=\"" + date + "\" AND position=" + position + ";";
+        bd.execSQL(req);
+    }
+
+    //Modification d'une ligne dans alimentation avec date position et qtecalorie
+    public void modifalimentation2(String date, Integer position, Integer qte2) {
+        bd = accesBD.getReadableDatabase();
+        String req = "UPDATE datemap set position=" + position + ", qte2=" + qte2 + " Where date=\"" + date + "\" AND position=" + position + ";";
+        bd.execSQL(req);
+    }
+
+    //Création d'une méthode qui renvoie la qtecalories en focntion de la date et de la position
+    public Integer returnqtecal(String date, Integer position) {
+        bd = accesBD.getReadableDatabase();
+        String req = "select qtecalorie from alimentation where alimentation.date=\"" + date + "\" AND alimentation.position=" + position + "";
+        Cursor curseur = bd.rawQuery(req, null);
+        Integer qte = curseur.getInt(0);
         return qte;
 
+    }
+
+    //Création d'une méthode qui renvoie la qtecalories en focntion de la date et de la position
+    public Integer returnempty(String date) {
+        bd = accesBD.getReadableDatabase();
+        String req = "select qtecalorie from alimentation where date=\"" + date + "\"";
+        Cursor curseur = bd.rawQuery(req, null);
+        Integer qte = curseur.getInt(0);
+        return qte;
+
+    }
+
+    //renvoi la quantité de l'aliment
+    public Integer qtealiment(String date, Integer position) {
+        bd = accesBD.getReadableDatabase();
+        String req = "select qte2 from datemap where date=\"" + date + "\" AND position=" + position + "";
+        Cursor curseur = bd.rawQuery(req, null);
+        curseur.moveToFirst();
+
+        if (curseur != null && curseur.moveToFirst()) {
+            Integer qte = curseur.getInt(0);
+            return qte;
+        }
+        return 0;
     }
 
     //si poids déjà rentrer alors faire une mise à jour
