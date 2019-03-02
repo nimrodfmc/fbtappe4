@@ -15,6 +15,7 @@ public class ActiviteSportive extends AppCompatActivity {
     RadioButton r_nulle, r_modere, r_forte;
     RadioGroup r_grp;
     Button btn;
+    private static AccesLocal accesLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,27 @@ public class ActiviteSportive extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activite_sportive);
+        accesLocal = new AccesLocal(getApplicationContext());
 
         r_nulle = (RadioButton) findViewById(R.id.btnNulle);
         r_modere = (RadioButton) findViewById(R.id.btnModere);
         r_forte = (RadioButton) findViewById(R.id.btnForte);
         r_grp = (RadioGroup) findViewById(R.id.radioGroup);
         btn = (Button) findViewById(R.id.save);
+
+        //On récupère l'activité sportive de l'utilisateur pour cocher le btn radio correspondant
+        if (accesLocal.recupactsport().equals("Intense")){
+            r_forte.setChecked(true);
+            r_forte.toggle();
+        } else if (accesLocal.recupactsport().equals("Modéré")){
+            r_modere.setChecked(true);
+            r_modere.toggle();
+        } else {
+            //L'activité est "détente"
+            r_nulle.setChecked(true);
+            r_nulle.toggle();
+        }
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

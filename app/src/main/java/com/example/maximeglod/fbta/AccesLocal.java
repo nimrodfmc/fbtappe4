@@ -231,4 +231,19 @@ public class AccesLocal {
 
 
   }
+  //Récupération de l'activité sportive de l'utilisateur
+    public String recupactsport(){
+        bd = accesBD.getReadableDatabase();
+        String req = "select act_sport from user;";
+        Cursor curseur = bd.rawQuery(req,null);
+        curseur.moveToFirst();
+        if(curseur!= null && curseur.moveToFirst()){
+            String act = curseur.getString(0);
+            curseur.close();
+            return act;
+        }
+        curseur.close();
+        //Par défaut renvoi dédente
+        return "Détente";
+    }
 }
