@@ -51,7 +51,18 @@ public class ActiviteSportive extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
-                Toast.makeText(getApplicationContext(), "L'activité choisie a bien été sauvegardée", Toast.LENGTH_LONG).show();
+                //Mise à jour de l'activité sportive dans la base de données
+                if (r_forte.isChecked()){
+                    //Si l'activité forte est cochée
+                    accesLocal.majactsport("Intense");
+                } else if (r_modere.isChecked()){
+                    //Si l'activité modéré est cochée
+                    accesLocal.majactsport("Modéré");
+                } else {
+                    //Si l'activité détente est cochée
+                    accesLocal.majactsport("Détente");
+                }
+                Toast.makeText(getApplicationContext(), "L'activité choisie a bien été sauvegardée dans la base de données", Toast.LENGTH_LONG).show();
                 startActivityForResult(myIntent, 0);
             }
         });

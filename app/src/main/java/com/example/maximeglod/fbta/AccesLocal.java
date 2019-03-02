@@ -246,4 +246,11 @@ public class AccesLocal {
         //Par défaut renvoi dédente
         return "Détente";
     }
+
+    //Mise à jour de l'activité sportive de l'utilisateur
+    public void majactsport(String act_sport){
+        bd = accesBD.getWritableDatabase();
+        String req = "UPDATE user set act_sport=\"" + act_sport + "\";";
+        bd.execSQL(req);
+    }
 }
