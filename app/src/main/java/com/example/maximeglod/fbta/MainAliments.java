@@ -146,7 +146,7 @@ public class MainAliments extends AppCompatActivity {
         Aliments carotte = new Aliments("Carotte", "carotte", 40);
         Aliments carpe = new Aliments("Carpe", "carpe", 110);
         Aliments carrelet = new Aliments("Carrelet", "carrelet", 65);
-        Aliments casis = new Aliments("Cassis", "cassis", 54);
+        Aliments casis = new Aliments("Cassis", "casis", 54);
         Aliments caviar = new Aliments("Caviar", "caviar", 330);
         Aliments celerifeuille = new Aliments("Céleri en Feuille", "celerifeuille", 21);
         Aliments celeriracine = new Aliments("Céleri en Racine", "celeriracine", 44);
