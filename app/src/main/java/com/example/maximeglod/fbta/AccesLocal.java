@@ -213,4 +213,22 @@ public class AccesLocal {
       String req = "insert into user (sexe,prenom,age,taille,poids,act_sport,objectif) values(\""+sexe+"\",\"" + prenom + "\"," + age + "," + taille + ","+poids+",\""+act_sport+"\","+objectif+");";
       bd.execSQL(req);
   }
+  //Récupération de l'objectif calorique de l'utilisateur
+  public int totalcal() {
+      bd = accesBD.getReadableDatabase();
+      String req = "select objectif from user;";
+      Cursor curseur = bd.rawQuery(req, null);
+      curseur.moveToFirst();
+
+      if (curseur != null && curseur.moveToFirst()) {
+          Integer obj = curseur.getInt(0);
+          curseur.close();
+          return obj;
+
+      }
+      curseur.close();
+      return 0;
+
+
+  }
 }

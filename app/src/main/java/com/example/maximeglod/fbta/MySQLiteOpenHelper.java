@@ -8,6 +8,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     //Propriétés
     private String creationtableuser = "create table user ("
+            + "sexe TEXT,"
             + "prenom TEXT,"
             + "age INTEGER,"
             + "taille REAL,"

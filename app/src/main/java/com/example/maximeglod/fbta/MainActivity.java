@@ -244,6 +244,10 @@ public class MainActivity extends Activity {
             //On met à jour le text de totalcalories avec la valeur calculée
             totalcalories.setText(sumtotal);
 
+            //récupération de l'objectif calorique
+            TextView objcal = (TextView) findViewById(R.id.objectif);
+            String objecutilisateur = Integer.toString(accesLocal.totalcal());
+            objcal.setText(objecutilisateur);
 
 //            for (int f : (caltolMap.get(recup_date)).values()) {
 //                sum += f;
