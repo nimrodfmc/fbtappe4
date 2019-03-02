@@ -148,7 +148,7 @@ public class MainActivity extends Activity {
 
         //On instancie des bouttons de menu sur la vue activity_main
         // avec des intent pour lancer les activités correspondante
-      
+
 
         Button alimentation = (Button) findViewById(R.id.Button02);
         alimentation.setOnClickListener(new View.OnClickListener() {
