@@ -102,7 +102,8 @@
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSport"
-        app:layout_constraintVertical_bias="0.386" />
+        app:layout_constraintVertical_bias="0.386"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/etPoids"
@@ -161,10 +162,13 @@
         android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvObjectif"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="@+id/btnProfil"
-        app:layout_constraintTop_toTopOf="@+id/tvObjectif" />
+        app:layout_constraintTop_toTopOf="@+id/tvObjectif"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvPrenom"

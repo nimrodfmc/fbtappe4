@@ -80,8 +80,7 @@ public class Inscription extends AppCompatActivity {
         spinner.setAdapter(adapter);
         this.sport = spinner.getSelectedItem().toString();
 
-        et_objectif = (EditText) findViewById(R.id.etObjectif);
-        this.objectif = et_objectif.getText().toString();
+
 
         bt_valider = (Button) findViewById(R.id.btnProfil);
 
@@ -113,9 +112,7 @@ public class Inscription extends AppCompatActivity {
                                     if (et_poids.getText().toString().length() < 1) {
                                         Toast.makeText(getApplicationContext(), "Veuillez renseigner votre poids", Toast.LENGTH_LONG).show();
                                     } else {
-                                        if (et_objectif.getText().toString().length() < 1) {
-                                            Toast.makeText(getApplicationContext(), "Veuillez renseigner votre objectif de poids", Toast.LENGTH_LONG).show();
-                                        } else {
+
                                             i.putExtra("Prénom", et_prenom.getText().toString());
                                             i.putExtra("Nom", et_nom.getText().toString());
                                             i.putExtra("Naissance", et_age.getText().toString());
@@ -123,12 +120,11 @@ public class Inscription extends AppCompatActivity {
                                             i.putExtra("Taille", et_taille.getText().toString());
                                             i.putExtra("Poids", et_poids.getText().toString());
                                             i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
-                                            i.putExtra("Objectif de poids", et_objectif.getText().toString());
                                             startActivity(i);
                                         }
                                     }
                                 }
-                            } else {
+                             else {
                                 Toast.makeText(getApplicationContext(), "Veuillez renseigner correctement votre sexe", Toast.LENGTH_LONG).show();
                             }
                         }
