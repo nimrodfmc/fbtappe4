@@ -253,4 +253,20 @@ public class AccesLocal {
         String req = "UPDATE user set act_sport=\"" + act_sport + "\", objectif="+objectif+";";
         bd.execSQL(req);
     }
+
+    //Vérification précence d'un utilisateur dans la table user pour ne pas afficher certains bouttons si l'utilisateur est déjà inscrit
+
+    public String checkuser(){
+        bd = accesBD.getReadableDatabase();
+        String req="Select * from user";
+        Cursor curseur = bd.rawQuery(req,null);
+        curseur.moveToFirst();
+        if(curseur!= null && curseur.moveToFirst()){
+            curseur.close();
+            return "inscrit";
+        }
+        curseur.close();
+        return "pasinscrit";
+
+    }
 }

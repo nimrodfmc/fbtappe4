@@ -27,6 +27,9 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".MainActivitynew"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ActiviteSportive"
             android:screenOrientation="portrait" />
         <activity

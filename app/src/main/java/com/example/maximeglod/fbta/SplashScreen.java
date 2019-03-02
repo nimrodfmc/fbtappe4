@@ -23,6 +23,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
     private static int SPLASH_TIME = 3000; //Environ 2 secondes
+    private static AccesLocal accesLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class SplashScreen extends AppCompatActivity {
         this.setContentView(R.layout.activity_splash);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        accesLocal = new AccesLocal(getApplicationContext());
 
 
         //Code qui commence avec le timer et lance les actions ensuite
@@ -43,14 +45,27 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-                //On change de page
-                Intent mySuperIntent = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(mySuperIntent);
+                //Vérification présence utilisateur
+                if (accesLocal.checkuser().equals("inscrit")) {
+                    //On change de page
+                    Intent mySuperIntent = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(mySuperIntent);
 
-                /* Ce finish() sert à quitter l'application lorsque le bouton de retour est enfoncé
-                 * de la page d'accueil qui est mainactivity
-                 */
-                finish();
+                    /* Ce finish() sert à quitter l'application lorsque le bouton de retour est enfoncé
+                     * de la page d'accueil qui est mainactivity
+                     */
+                    finish();
+                } else {
+                    //Il n'est pas inscrit
+                    //On change de page
+                    Intent mySuperIntent = new Intent(SplashScreen.this, Inscription.class);
+                    startActivity(mySuperIntent);
+
+                    /* Ce finish() sert à quitter l'application lorsque le bouton de retour est enfoncé
+                     * de la page d'accueil qui est mainactivity
+                     */
+                    finish();
+                }
             }
         }, SPLASH_TIME);
     }

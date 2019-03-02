@@ -148,14 +148,7 @@ public class MainActivity extends Activity {
 
         //On instancie des bouttons de menu sur la vue activity_main
         // avec des intent pour lancer les activités correspondante
-        Button inscription = (Button) findViewById(R.id.Button01);
-        inscription.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent myIntent = new Intent(getBaseContext(), Inscription.class);
-                startActivityForResult(myIntent, 0);
-            }
-
-        });
+      
 
         Button alimentation = (Button) findViewById(R.id.Button02);
         alimentation.setOnClickListener(new View.OnClickListener() {
