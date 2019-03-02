@@ -52,6 +52,12 @@ public class MainAliments extends AppCompatActivity {
         recup_date = date;
         String date2 = date.toString();
 
+        //récupération de l'objectif calorique
+        TextView objcal = (TextView) findViewById(R.id.objectif);
+        String objecutilisateur = Integer.toString(accesLocal.totalcal());
+        objcal.setText(objecutilisateur);
+
+
         Boolean verif = dateMap.containsKey(date2);
 
         if (verif==true){
