@@ -288,7 +288,7 @@ public class Evolution extends Activity {
             set1.setCircleColor(Color.GREEN);
             set1.setCircleRadius(6);
             set1.setValueTextSize(15);
-            set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            set1.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
             set1.setHighLightColor(Color.RED);
             set1.setValueTextColor(Color.WHITE);
 
