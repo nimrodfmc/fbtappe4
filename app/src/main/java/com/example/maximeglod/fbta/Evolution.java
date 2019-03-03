@@ -19,7 +19,6 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -30,9 +29,9 @@ import java.util.Map;
 
 
 public class Evolution extends Activity {
+    public static AccesLocal accesLocal;
     private RelativeLayout Evolution;
     private LineChart mChart;
-    public static AccesLocal accesLocal;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -70,10 +69,6 @@ public class Evolution extends Activity {
 
 
         //Maintenant on travail sur les données
-        //LineData data = new LineData();
-        // data.setValueTextColor(Color.WHITE);
-        //On ajoute les données au graphique
-        // mChart.setData(data);
         //Récupération de la légende
         Legend l = mChart.getLegend();
         //Personalisation de la légende
@@ -91,7 +86,6 @@ public class Evolution extends Activity {
         xl.setDrawAxisLine(true);
         YAxis yl = mChart.getAxisLeft();
         yl.setTextColor(Color.WHITE);
-        // yl.setAxisMaxValue(120f);
         yl.setDrawGridLines(false);
 
         mChart.setAutoScaleMinMaxEnabled(false);
@@ -116,7 +110,6 @@ public class Evolution extends Activity {
                 Map.Entry mapentry = (Map.Entry) iterator.next();
                 Object i = mapentry.getValue();
                 Integer i2 = (Integer) i;
-                //DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
                 String dateduhashmap = (String) mapentry.getKey();
 
 
@@ -146,14 +139,12 @@ public class Evolution extends Activity {
                             yValues.add(new Entry(getdays, i2));
 
 
-                            //yValues.add(new Entry(1,63));
                             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
 
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
 
                             LineData data2 = new LineData(dataSets);
-                            //LineData data3 = new LineDataSet(null,"Evolution du poids");
                             mChart.getAxisLeft().setStartAtZero(false);
                             mChart.getAxisRight().setStartAtZero(false);
                             mChart.setData(data2);
@@ -162,12 +153,10 @@ public class Evolution extends Activity {
 
                             Integer getdays = (period.getDays()) * -1;
                             yValues.add(new Entry(getdays, i2));
-                            //yValues.add(new Entry(1,63));
                             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
                             LineData data2 = new LineData(dataSets);
-                            //LineData data3 = new LineDataSet(null,"Evolution du poids");
                             mChart.getAxisLeft().setStartAtZero(false);
                             mChart.getAxisRight().setStartAtZero(false);
                             mChart.setData(data2);
@@ -191,12 +180,10 @@ public class Evolution extends Activity {
                             Integer getdays = (period.getDays()) * -1;
 
                             yValues.add(new Entry(getdays, i2));
-                            //yValues.add(new Entry(1,63));
                             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
                             LineData data2 = new LineData(dataSets);
-                            //LineData data3 = new LineDataSet(null,"Evolution du poids");
                             mChart.getAxisLeft().setStartAtZero(false);
                             mChart.getAxisRight().setStartAtZero(false);
                             mChart.setData(data2);
@@ -205,12 +192,10 @@ public class Evolution extends Activity {
 
                             Integer getdays = (period.getDays()) * -1;
                             yValues.add(new Entry(getdays, i2));
-                            //yValues.add(new Entry(1,63));
                             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
                             LineData data2 = new LineData(dataSets);
-                            //LineData data3 = new LineDataSet(null,"Evolution du poids");
                             mChart.getAxisLeft().setStartAtZero(false);
                             mChart.getAxisRight().setStartAtZero(false);
                             mChart.setData(data2);
@@ -239,12 +224,10 @@ public class Evolution extends Activity {
                             Integer getdays = (period.getDays()) * -1;
 
                             yValues.add(new Entry(getdays, i2));
-                            //yValues.add(new Entry(1,63));
                             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
                             LineData data2 = new LineData(dataSets);
-                            //LineData data3 = new LineDataSet(null,"Evolution du poids");
                             mChart.getAxisLeft().setStartAtZero(false);
                             mChart.getAxisRight().setStartAtZero(false);
                             mChart.setData(data2);
@@ -253,12 +236,10 @@ public class Evolution extends Activity {
 
                             Integer getdays = (period.getDays()) * -1;
                             yValues.add(new Entry(getdays, i2));
-                            //yValues.add(new Entry(1,63));
                             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
                             LineData data2 = new LineData(dataSets);
-                            //LineData data3 = new LineDataSet(null,"Evolution du poids");
                             mChart.getAxisLeft().setStartAtZero(false);
                             mChart.getAxisRight().setStartAtZero(false);
                             mChart.setData(data2);
@@ -281,12 +262,10 @@ public class Evolution extends Activity {
                             Integer getdays = (period.getDays()) * -1;
 
                             yValues.add(new Entry(getdays, i2));
-                            //yValues.add(new Entry(1,63));
                             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
                             LineData data2 = new LineData(dataSets);
-                            //LineData data3 = new LineDataSet(null,"Evolution du poids");
                             mChart.getAxisLeft().setStartAtZero(false);
                             mChart.getAxisRight().setStartAtZero(false);
                             mChart.setData(data2);
@@ -294,12 +273,10 @@ public class Evolution extends Activity {
 
                             Integer getdays = (period.getDays()) * -1;
                             yValues.add(new Entry(getdays, i2));
-                            //yValues.add(new Entry(1,63));
                             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                             dataSets.add(set1);
                             LineData data2 = new LineData(dataSets);
-                            //LineData data3 = new LineDataSet(null,"Evolution du poids");
                             mChart.getAxisLeft().setStartAtZero(false);
                             mChart.getAxisRight().setStartAtZero(false);
                             mChart.setData(data2);
@@ -316,7 +293,5 @@ public class Evolution extends Activity {
 
     }
 
-
-    //public static Map<String, Integer> poidsMap = SaisiePoids.poidsMap;
 
 }

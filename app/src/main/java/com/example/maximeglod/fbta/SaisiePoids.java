@@ -1,8 +1,8 @@
 package com.example.maximeglod.fbta;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -11,18 +11,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SaisiePoids extends AppCompatActivity {
     public static String recup_date;
+    public static AccesLocal accesLocal;
+    public static Map<String, Integer> poidsMap = new HashMap<>();
     TextView saisie;
     EditText poids;
     Button save;
-    public static AccesLocal accesLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +58,10 @@ public class SaisiePoids extends AppCompatActivity {
                     } else {
                         accesLocal.modifevolution(recupdate2, poidscurrent);
                     }
-                    //accesLocal.ajoutevolution(recupdate2,poidscurrent);
-                    //poidsMap.put(recup_date, poidscurrent);
-                    //poidsMap.get(recup_date);
+
                     startActivityForResult(myIntent, 0);
                 }
             }
         });
     }
-
-    public static Map<String, Integer> poidsMap = new HashMap<>();
 }

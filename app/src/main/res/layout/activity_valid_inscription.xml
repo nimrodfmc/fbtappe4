@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inscription"
-    android:background="@color/colorDark">
+    android:background="@color/colorDark"
+    tools:context=".Inscription">
 
     <TextView
         android:id="@+id/tvPoids"
@@ -86,11 +86,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/tvObjectif"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvSport"
         app:layout_constraintTop_toBottomOf="@+id/tvSport"
-        app:layout_constraintVertical_bias="0.139"
-        android:visibility="invisible"/>
+        app:layout_constraintVertical_bias="0.139" />
 
     <TextView
         android:id="@+id/tvPrenom"

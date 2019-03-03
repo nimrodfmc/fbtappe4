@@ -2,9 +2,9 @@ package com.example.maximeglod.fbta;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,9 +18,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class validInscription extends AppCompatActivity {
+    private static AccesLocal accesLocal;
     TextView tv_prenom, tv_nom, tv_naissance, tv_taille, tv_poids, tv_objectif, tv_sexe, tv_activite;
     Button btn_inscrire;
-    private static AccesLocal accesLocal;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -56,7 +56,7 @@ public class validInscription extends AppCompatActivity {
         tv_poids.setText("Poids : " + lePoids);
         tv_activite.setText("Activité Sportive : " + lActivite);
 
-Integer lObjectif =0;
+        Integer lObjectif = 0;
         //Calcul de l'âge
 
         Calendar cal = Calendar.getInstance();
@@ -70,10 +70,9 @@ Integer lObjectif =0;
         LocalDate date2 = LocalDate.parse(heures, format);
 
         Period period = Period.between(date1, date2);
-
+        //Différence d'années entre la date de naissance et la date actuelle
         final Integer age = period.getYears();
-        //Vérification de l'âge avec breakpoints
-        // Integer age2=age;
+
 
         //Calcul de l'objectif calorique
         if (leSexe.equals("F")) {
@@ -125,8 +124,8 @@ Integer lObjectif =0;
             public void onClick(View v) {
                 Intent e = new Intent(getApplicationContext(), MainActivity.class);
                 //Inscription dans la base de données
-                accesLocal.ajoututilisateur(leSexe,lePrenom,age,Double.parseDouble(laTaille),Double.parseDouble(lePoids),lActivite, finalLObjectif);
-                Toast.makeText(getApplicationContext(), "Utilisateur "+lePrenom + " " + leNom + " bien enregistré", Toast.LENGTH_LONG).show();
+                accesLocal.ajoututilisateur(leSexe, lePrenom, age, Double.parseDouble(laTaille), Double.parseDouble(lePoids), lActivite, finalLObjectif);
+                Toast.makeText(getApplicationContext(), "Utilisateur " + lePrenom + " " + leNom + " bien enregistré", Toast.LENGTH_LONG).show();
                 startActivity(e);
             }
 

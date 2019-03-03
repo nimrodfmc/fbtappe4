@@ -4,10 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.github.mikephil.charting.components.XAxis;
-
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,12 +20,7 @@ public class AccesLocal {
         accesBD = new MySQLiteOpenHelper(context, nomBase, null, versionBase);
     }
 
-    //Ajout d'un utilisateur dans la base de données
-    public void ajout(Personne personne) {
-        bd = accesBD.getWritableDatabase();
-        String req = "insert into user (sexe, prenom, age, taille, poids, act_sport, objectif) values (\"" + personne.getSexe() + "\",\"" + personne.getPrenom() + "\"," + personne.getAge() + "," + personne.getTaille() + "," + personne.getPoids() + "," + personne.getSport() + "," + personne.getObjectif() + ")";
-        bd.execSQL(req);
-    }
+    //Ensemble de méthodes DAO
 
     //Ajout d'une évolution dans la table évolution
     public void ajoutevolution(String date, Integer poids) {
@@ -38,7 +29,7 @@ public class AccesLocal {
         bd.execSQL(req);
     }
 
-    //Récupération du poids en fonction de la date
+    //Récupération du poids en fonction de la date pour le suivi
     public String checkevolution(String date) {
         bd = accesBD.getReadableDatabase();
         String req = "select * from evolution where evolution.date=\"" + date + "\"";
@@ -51,9 +42,9 @@ public class AccesLocal {
             curseur.close();
             return "ok";
         }
-
     }
 
+    //Vérification de l'alimentation
     public String checkalimentation(String date, Integer position) {
         bd = accesBD.getReadableDatabase();
         String req = "select * from alimentation where alimentation.date=\"" + date + "\" AND alimentation.position=" + position + "";
@@ -68,23 +59,10 @@ public class AccesLocal {
         }
     }
 
+    //Vérification alimentation table datemap
     public String checkalimentation2(String date, Integer position) {
         bd = accesBD.getReadableDatabase();
         String req = "select * from datemap where datemap.date=\"" + date + "\" AND datemap.position=" + position + "";
-        Cursor curseur = bd.rawQuery(req, null);
-        curseur.moveToLast();
-        if (curseur.isAfterLast()) {
-            curseur.close();
-            return "pasok";
-        } else {
-            curseur.close();
-            return "ok";
-        }
-    }
-
-    public String checkalimentation3(String date) {
-        bd = accesBD.getReadableDatabase();
-        String req = "select * from datemap where datemap.date=\"" + date + "\"";
         Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToLast();
         if (curseur.isAfterLast()) {
@@ -125,35 +103,13 @@ public class AccesLocal {
         bd.execSQL(req);
     }
 
-    //Création d'une méthode qui renvoie la qtecalories en focntion de la date et de la position
-    public Integer returnqtecal(String date, Integer position) {
-        bd = accesBD.getReadableDatabase();
-        String req = "select qtecalorie from alimentation where alimentation.date=\"" + date + "\" AND alimentation.position=" + position + "";
-        Cursor curseur = bd.rawQuery(req, null);
-        Integer qte = curseur.getInt(0);
-        curseur.close();
-        return qte;
 
-    }
-
-    //Création d'une méthode qui renvoie la qtecalories en focntion de la date et de la position
-    public Integer returnempty(String date) {
-        bd = accesBD.getReadableDatabase();
-        String req = "select qtecalorie from alimentation where date=\"" + date + "\"";
-        Cursor curseur = bd.rawQuery(req, null);
-        Integer qte = curseur.getInt(0);
-        curseur.close();
-        return qte;
-
-    }
-
-    //renvoi la quantité de l'aliment
+    //renvoi la quantitée de l'aliment
     public Integer qtealiment(String date, Integer position) {
         bd = accesBD.getReadableDatabase();
         String req = "select qte2 from datemap where date=\"" + date + "\" AND position=" + position + "";
         Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToFirst();
-
         if (curseur != null && curseur.moveToFirst()) {
             Integer qte = curseur.getInt(0);
             curseur.close();
@@ -163,7 +119,7 @@ public class AccesLocal {
         return 0;
     }
 
-    //si poids déjà rentrer alors faire une mise à jour
+    //si le poids est déjà rentrer pour la journée alors faire une mise à jour
     public void modifevolution(String date, Integer poids) {
         bd = accesBD.getWritableDatabase();
         String req = "UPDATE evolution set poids=" + poids + " Where date=\"" + date + "\";";
@@ -176,68 +132,59 @@ public class AccesLocal {
         String req = "Select * from evolution";
         Cursor curseur = bd.rawQuery(req, null);
         Map<String, Integer> poidsMap = new HashMap<>();
-
         while (curseur.moveToNext()) {
             String date = curseur.getString(0);
             Integer poids = curseur.getInt(1);
             poidsMap.put(date, poids);
-
         }
         curseur.close();
-
         return poidsMap;
     }
 
-    //Création d'une requète qui renvoi la somme des calories journalière
+    //Création d'une requète qui renvoie la somme des calories journalières
     public int sumcal(String date) {
         bd = accesBD.getReadableDatabase();
         String req = "select sum(qtecalorie) from alimentation where alimentation.date=\"" + date + "\";";
         Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToFirst();
-
         if (curseur != null && curseur.moveToFirst()) {
             Integer qte = curseur.getInt(0);
             curseur.close();
             return qte;
-
         }
         curseur.close();
         return 0;
-
-
     }
 
-  //Insertion d'un utilisateur dans la bdd
-  public void ajoututilisateur(String sexe, String prenom, Integer age, Double taille,Double poids,String act_sport,Integer objectif) {
-      bd = accesBD.getWritableDatabase();
-      String req = "insert into user (sexe,prenom,age,taille,poids,act_sport,objectif) values(\""+sexe+"\",\"" + prenom + "\"," + age + "," + taille + ","+poids+",\""+act_sport+"\","+objectif+");";
-      bd.execSQL(req);
-  }
-  //Récupération de l'objectif calorique de l'utilisateur
-  public int totalcal() {
-      bd = accesBD.getReadableDatabase();
-      String req = "select objectif from user;";
-      Cursor curseur = bd.rawQuery(req, null);
-      curseur.moveToFirst();
+    //Insertion d'un utilisateur dans la bdd
+    public void ajoututilisateur(String sexe, String prenom, Integer age, Double taille, Double poids, String act_sport, Integer objectif) {
+        bd = accesBD.getWritableDatabase();
+        String req = "insert into user (sexe,prenom,age,taille,poids,act_sport,objectif) values(\"" + sexe + "\",\"" + prenom + "\"," + age + "," + taille + "," + poids + ",\"" + act_sport + "\"," + objectif + ");";
+        bd.execSQL(req);
+    }
 
-      if (curseur != null && curseur.moveToFirst()) {
-          Integer obj = curseur.getInt(0);
-          curseur.close();
-          return obj;
+    //Récupération de l'objectif calorique de l'utilisateur
+    public int totalcal() {
+        bd = accesBD.getReadableDatabase();
+        String req = "select objectif from user;";
+        Cursor curseur = bd.rawQuery(req, null);
+        curseur.moveToFirst();
+        if (curseur != null && curseur.moveToFirst()) {
+            Integer obj = curseur.getInt(0);
+            curseur.close();
+            return obj;
+        }
+        curseur.close();
+        return 0;
+    }
 
-      }
-      curseur.close();
-      return 0;
-
-
-  }
-  //Récupération de l'activité sportive de l'utilisateur
-    public String recupactsport(){
+    //Récupération de l'activité sportive de l'utilisateur
+    public String recupactsport() {
         bd = accesBD.getReadableDatabase();
         String req = "select act_sport from user;";
-        Cursor curseur = bd.rawQuery(req,null);
+        Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToFirst();
-        if(curseur!= null && curseur.moveToFirst()){
+        if (curseur != null && curseur.moveToFirst()) {
             String act = curseur.getString(0);
             curseur.close();
             return act;
@@ -248,25 +195,23 @@ public class AccesLocal {
     }
 
     //Mise à jour de l'activité sportive de l'utilisateur
-    public void majactsport(String act_sport,Integer objectif){
+    public void majactsport(String act_sport, Integer objectif) {
         bd = accesBD.getWritableDatabase();
-        String req = "UPDATE user set act_sport=\"" + act_sport + "\", objectif="+objectif+";";
+        String req = "UPDATE user set act_sport=\"" + act_sport + "\", objectif=" + objectif + ";";
         bd.execSQL(req);
     }
 
     //Vérification précence d'un utilisateur dans la table user pour ne pas afficher certains bouttons si l'utilisateur est déjà inscrit
-
-    public String checkuser(){
+    public String checkuser() {
         bd = accesBD.getReadableDatabase();
-        String req="Select * from user";
-        Cursor curseur = bd.rawQuery(req,null);
+        String req = "Select * from user";
+        Cursor curseur = bd.rawQuery(req, null);
         curseur.moveToFirst();
-        if(curseur!= null && curseur.moveToFirst()){
+        if (curseur != null && curseur.moveToFirst()) {
             curseur.close();
             return "inscrit";
         }
         curseur.close();
         return "pasinscrit";
-
     }
 }
