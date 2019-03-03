@@ -98,7 +98,7 @@ public class Evolution extends Activity {
 
         ArrayList<Entry> yValues = new ArrayList<>();
 
-        if (accesLocal.selectevolution() != null) {
+        if (accesLocal.selectevolution().size() > 0) {
             mChart.getAxisLeft().setStartAtZero(false);
             mChart.getAxisRight().setStartAtZero(false);
             //Boucle While + iterator
