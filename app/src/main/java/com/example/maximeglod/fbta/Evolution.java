@@ -27,7 +27,6 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 
@@ -68,7 +67,7 @@ public class Evolution extends Activity {
         mChart.setPinchZoom(false);
         //Alternative color background
         mChart.setBackgroundColor(Color.BLACK);
-        mChart.animateXY(1200, 1200);
+        mChart.animateXY(0, 1200);
 
 
         //Maintenant on travail sur les données
@@ -77,25 +76,23 @@ public class Evolution extends Activity {
         //Personalisation de la légende
         l.setForm(Legend.LegendForm.LINE);
         l.setTextColor(Color.WHITE);
-
         XAxis xl = mChart.getXAxis();
         xl.setTextColor(Color.WHITE);
         xl.setDrawGridLines(false);
-        xl.setAvoidFirstLastClipping(true);
-        xl.setGranularity(1f);
-        xl.setAxisMinimum(-10f);
-
-        xl.setAxisMaximum(10f);
+        xl.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xl.setDrawLabels(true);
         xl.setDrawAxisLine(true);
+        xl.setAxisLineColor(Color.CYAN);
+        xl.setAxisLineWidth(3);
         YAxis yl = mChart.getAxisLeft();
         yl.setTextColor(Color.WHITE);
         yl.setDrawGridLines(false);
-
-        mChart.setAutoScaleMinMaxEnabled(false);
+        yl.setAxisLineColor(Color.CYAN);
+        yl.setAxisLineWidth(3);
         YAxis yl2 = mChart.getAxisRight();
         yl2.setEnabled(false);
 
-
+        mChart.setAutoScaleMinMaxEnabled(true);
         mChart.getAxisLeft().setStartAtZero(false);
         mChart.getAxisRight().setStartAtZero(false);
 
@@ -146,17 +143,6 @@ public class Evolution extends Activity {
                                     return 0;
                                 }
                             });
-
-
-                            //LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-
-                            //ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                            //dataSets.add(set1);
-
-                            //LineData data2 = new LineData(dataSets);
-                            //mChart.getAxisLeft().setStartAtZero(false);
-                            //mChart.getAxisRight().setStartAtZero(false);
-                            //mChart.setData(data2);
                         } else {
 
 
@@ -168,13 +154,6 @@ public class Evolution extends Activity {
                                     return 0;
                                 }
                             });
-                            //LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-                            //ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                            //dataSets.add(set1);
-                            //LineData data2 = new LineData(dataSets);
-                            //mChart.getAxisLeft().setStartAtZero(false);
-                            //mChart.getAxisRight().setStartAtZero(false);
-                            //mChart.setData(data2);
                         }
 
 
@@ -201,13 +180,6 @@ public class Evolution extends Activity {
                                     return 0;
                                 }
                             });
-                            //LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-                            //ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                            //dataSets.add(set1);
-                            //LineData data2 = new LineData(dataSets);
-                            //mChart.getAxisLeft().setStartAtZero(false);
-                            //mChart.getAxisRight().setStartAtZero(false);
-                            //mChart.setData(data2);
                         } else {
 
 
@@ -219,13 +191,6 @@ public class Evolution extends Activity {
                                     return 0;
                                 }
                             });
-                           // LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-                           // ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                           // dataSets.add(set1);
-                           // LineData data2 = new LineData(dataSets);
-                           // mChart.getAxisLeft().setStartAtZero(false);
-                            //mChart.getAxisRight().setStartAtZero(false);
-                            //mChart.setData(data2);
                         }
 
 
@@ -257,13 +222,6 @@ public class Evolution extends Activity {
                                     return 0;
                                 }
                             });
-                            //LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-                            //ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                            //dataSets.add(set1);
-                            //LineData data2 = new LineData(dataSets);
-                            //mChart.getAxisLeft().setStartAtZero(false);
-                            //mChart.getAxisRight().setStartAtZero(false);
-                            //mChart.setData(data2);
                         } else {
 
 
@@ -275,13 +233,6 @@ public class Evolution extends Activity {
                                     return 0;
                                 }
                             });
-                            //LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-                            //ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                            //dataSets.add(set1);
-                            //LineData data2 = new LineData(dataSets);
-                            //mChart.getAxisLeft().setStartAtZero(false);
-                            //mChart.getAxisRight().setStartAtZero(false);
-                            //mChart.setData(data2);
                         }
 
                     } else {
@@ -307,13 +258,6 @@ public class Evolution extends Activity {
                                     return 0;
                                 }
                             });
-                            //LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-                            //ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                            //dataSets.add(set1);
-                            //LineData data2 = new LineData(dataSets);
-                            //mChart.getAxisLeft().setStartAtZero(false);
-                            //mChart.getAxisRight().setStartAtZero(false);
-                            //mChart.setData(data2);
                         } else {
 
                             Integer getdays = (period.getDays()) * -1;
@@ -324,13 +268,6 @@ public class Evolution extends Activity {
                                     return 0;
                                 }
                             });
-                           // LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-                           // ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                           // dataSets.add(set1);
-                            //LineData data2 = new LineData(dataSets);
-                            //mChart.getAxisLeft().setStartAtZero(false);
-                            //mChart.getAxisRight().setStartAtZero(false);
-                            //mChart.setData(data2);
                         }
 
                     }
@@ -341,24 +278,29 @@ public class Evolution extends Activity {
             }
 
 //            //Tri des valeur en X
-//            Collections.sort(yValues, new Comparator<Entry>() {
-//                @Override
-//                public int compare(Entry o1, Entry o2) {
-//                    return 0;
-//                }
-//            });
-            Collections.sort(yValues,new EntryXComparator());
-             LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
-set1.setColor(Color.GREEN);
+            Collections.sort(yValues, new EntryXComparator());
 
-             ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-             dataSets.add(set1);
+            LineDataSet set1 = new LineDataSet(yValues, "Evolution de votre poids en kg en fonction des jours");
+
+            //Personalisation de la ligne entre les points
+            set1.setColor(Color.argb(255, 255, 165, 0));
+            set1.setLineWidth(4);
+            set1.setCircleColor(Color.GREEN);
+            set1.setCircleRadius(6);
+            set1.setValueTextSize(15);
+            set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            set1.setHighLightColor(Color.RED);
+            set1.setValueTextColor(Color.WHITE);
+
+            ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+            dataSets.add(set1);
 
 
             LineData data2 = new LineData(dataSets);
-
+            mChart.getDescription().setEnabled(false);
             mChart.getAxisLeft().setStartAtZero(false);
             mChart.getAxisRight().setStartAtZero(false);
+
 
             mChart.setData(data2);
 
