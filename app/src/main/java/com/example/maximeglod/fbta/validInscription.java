@@ -62,7 +62,7 @@ public class validInscription extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         int ds = cal.get(Calendar.MONTH) + 1;
         String corjour = "0";
-        final String heures = (corjour + cal.get(Calendar.DAY_OF_MONTH) + "/" + corjour + ds + "/" + cal.get(Calendar.YEAR));
+        final String heures = ( cal.get(Calendar.DAY_OF_MONTH) + "/" + corjour + ds + "/" + cal.get(Calendar.YEAR));
 
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // format jour / mois / année
 
