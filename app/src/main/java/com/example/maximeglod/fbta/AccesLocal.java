@@ -128,13 +128,20 @@ public class AccesLocal {
 
     //Récupération de l'ensemble des évolutions
     public Map selectevolution() {
+        //Ouverture de l'accès à la bdd
         bd = accesBD.getReadableDatabase();
         String req = "Select * from evolution";
         Cursor curseur = bd.rawQuery(req, null);
         Map<String, Integer> poidsMap = new HashMap<>();
+        //Début boucle de parcours d'objet
+        //Stockage variable de poids dans hashmap pour affichage graphique
+        //A partir de la bdd
+        //Jours relatifs à la current date (Affichage limité)
+
         while (curseur.moveToNext()) {
             String date = curseur.getString(0);
             Integer poids = curseur.getInt(1);
+            //Stockage du poids dans un hashmap
             poidsMap.put(date, poids);
         }
         curseur.close();
@@ -143,9 +150,12 @@ public class AccesLocal {
 
     //Création d'une requète qui renvoie la somme des calories journalières
     public int sumcal(String date) {
+        //On accède à la bdd
         bd = accesBD.getReadableDatabase();
         String req = "select sum(qtecalorie) from alimentation where alimentation.date=\"" + date + "\";";
         Cursor curseur = bd.rawQuery(req, null);
+       //Le curseur nous permet de parcourir les lignes de résultat
+
         curseur.moveToFirst();
         if (curseur != null && curseur.moveToFirst()) {
             Integer qte = curseur.getInt(0);
@@ -161,6 +171,8 @@ public class AccesLocal {
         bd = accesBD.getWritableDatabase();
         String req = "insert into user (sexe,prenom,age,taille,poids,act_sport,objectif) values(\"" + sexe + "\",\"" + prenom + "\"," + age + "," + taille + "," + poids + ",\"" + act_sport + "\"," + objectif + ");";
         bd.execSQL(req);
+        //Pas besoin de faire des clés étrangères (Appli mono utilisatri e)
+
     }
 
     //Récupération de l'objectif calorique de l'utilisateur

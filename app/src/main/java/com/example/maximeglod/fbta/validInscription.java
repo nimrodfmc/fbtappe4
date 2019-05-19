@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class validInscription extends AppCompatActivity {
     private static AccesLocal accesLocal;
@@ -62,73 +63,288 @@ public class validInscription extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         int ds = cal.get(Calendar.MONTH) + 1;
         String corjour = "0";
-        final String heures = ( cal.get(Calendar.DAY_OF_MONTH) + "/" + corjour + ds + "/" + cal.get(Calendar.YEAR));
+        if (ds < 10) {
+            if (cal.get(Calendar.DAY_OF_MONTH) < 10) {
+                final String heures = (corjour+cal.get(Calendar.DAY_OF_MONTH) + "/" + corjour + ds + "/" + cal.get(Calendar.YEAR));
 
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // format jour / mois / année
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.FRANCE); // format jour / mois / année
 
-        LocalDate date1 = LocalDate.parse(laNaissance, format);
-        LocalDate date2 = LocalDate.parse(heures, format);
+                LocalDate date1 = LocalDate.parse(laNaissance, format);
+                LocalDate date2 = LocalDate.parse(heures, format);
 
-        Period period = Period.between(date1, date2);
-        //Différence d'années entre la date de naissance et la date actuelle
-        final Integer age = period.getYears();
+                Period period = Period.between(date1, date2);
+                //Différence d'années entre la date de naissance et la date actuelle
+                final Integer age = period.getYears();
 
 
-        //Calcul de l'objectif calorique
-        if (leSexe.equals("F")) {
-            //Calcul de l'objectif calorique pour une femme
-            Double objcal = (9.5634 * (Integer.parseInt(lePoids))) + (184.96 * (Double.parseDouble(laTaille))) - (4.6756 * age) + 655.0955;
-            if (lActivite.equals("Détente")) {
-                //Si l'activité est faible
+                //Calcul de l'objectif calorique
+                if (leSexe.equals("F")) {
+                    //Calcul de l'objectif calorique pour une femme
+                    Double objcal = (9.5634 * (Integer.parseInt(lePoids))) + (184.96 * (Double.parseDouble(laTaille))) - (4.6756 * age) + 655.0955;
+                    if (lActivite.equals("Détente")) {
+                        //Si l'activité est faible
 
-                Integer objectifcalorique = (int) (objcal * 1.375);
-                lObjectif = objectifcalorique;
+                        Integer objectifcalorique = (int) (objcal * 1.375);
+                        lObjectif = objectifcalorique;
 
-            } else if (lActivite.equals("Modéré")) {
-                //Si l'activité est modéré
-                Integer objectifcalorique = (int) (objcal * 1.64);
-                lObjectif = objectifcalorique;
+                    } else if (lActivite.equals("Modéré")) {
+                        //Si l'activité est modéré
+                        Integer objectifcalorique = (int) (objcal * 1.64);
+                        lObjectif = objectifcalorique;
 
+                    } else {
+                        //Si l'activité est intense
+                        Integer objectifcalorique = (int) (objcal * 1.82);
+                        lObjectif = objectifcalorique;
+                    }
+                } else {
+                    //Calcul de l'objectif calorique pour un homme
+                    Double objcal = (13.7516 * (Integer.parseInt(lePoids))) + (500.33 * (Double.parseDouble(laTaille))) - (6.7550 * age) + 66.473;
+                    if (lActivite.equals("Détente")) {
+                        //Si l'activité est faible
+
+                        Integer objectifcalorique = (int) (objcal * 1.375);
+                        lObjectif = objectifcalorique;
+
+                    } else if (lActivite.equals("Modéré")) {
+                        //Si l'activité est modéré
+                        Integer objectifcalorique = (int) (objcal * 1.64);
+                        lObjectif = objectifcalorique;
+
+                    } else {
+                        //Si l'activité est intense
+                        Integer objectifcalorique = (int) (objcal * 1.82);
+                        lObjectif = objectifcalorique;
+
+                    }
+                }
+
+                final Integer finalLObjectif = lObjectif;
+                btn_inscrire.setOnClickListener(new View.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent e = new Intent(getApplicationContext(), MainActivity.class);
+                        //Inscription dans la base de données
+                        accesLocal.ajoututilisateur(leSexe, lePrenom, age, Double.parseDouble(laTaille), Double.parseDouble(lePoids), lActivite, finalLObjectif);
+                        Toast.makeText(getApplicationContext(), "Utilisateur " + lePrenom + " " + leNom + " bien enregistré", Toast.LENGTH_LONG).show();
+                        startActivity(e);
+                    }
+
+                });
             } else {
-                //Si l'activité est intense
-                Integer objectifcalorique = (int) (objcal * 1.82);
-                lObjectif = objectifcalorique;
+                final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + corjour + ds + "/" + cal.get(Calendar.YEAR));
+
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.FRANCE); // format jour / mois / année
+
+                LocalDate date1 = LocalDate.parse(laNaissance, format);
+                LocalDate date2 = LocalDate.parse(heures, format);
+
+                Period period = Period.between(date1, date2);
+                //Différence d'années entre la date de naissance et la date actuelle
+                final Integer age = period.getYears();
+
+
+                //Calcul de l'objectif calorique
+                if (leSexe.equals("F")) {
+                    //Calcul de l'objectif calorique pour une femme
+                    Double objcal = (9.5634 * (Integer.parseInt(lePoids))) + (184.96 * (Double.parseDouble(laTaille))) - (4.6756 * age) + 655.0955;
+                    if (lActivite.equals("Détente")) {
+                        //Si l'activité est faible
+
+                        Integer objectifcalorique = (int) (objcal * 1.375);
+                        lObjectif = objectifcalorique;
+
+                    } else if (lActivite.equals("Modéré")) {
+                        //Si l'activité est modéré
+                        Integer objectifcalorique = (int) (objcal * 1.64);
+                        lObjectif = objectifcalorique;
+
+                    } else {
+                        //Si l'activité est intense
+                        Integer objectifcalorique = (int) (objcal * 1.82);
+                        lObjectif = objectifcalorique;
+                    }
+                } else {
+                    //Calcul de l'objectif calorique pour un homme
+                    Double objcal = (13.7516 * (Integer.parseInt(lePoids))) + (500.33 * (Double.parseDouble(laTaille))) - (6.7550 * age) + 66.473;
+                    if (lActivite.equals("Détente")) {
+                        //Si l'activité est faible
+
+                        Integer objectifcalorique = (int) (objcal * 1.375);
+                        lObjectif = objectifcalorique;
+
+                    } else if (lActivite.equals("Modéré")) {
+                        //Si l'activité est modéré
+                        Integer objectifcalorique = (int) (objcal * 1.64);
+                        lObjectif = objectifcalorique;
+
+                    } else {
+                        //Si l'activité est intense
+                        Integer objectifcalorique = (int) (objcal * 1.82);
+                        lObjectif = objectifcalorique;
+
+                    }
+                }
+
+                final Integer finalLObjectif = lObjectif;
+                btn_inscrire.setOnClickListener(new View.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent e = new Intent(getApplicationContext(), MainActivity.class);
+                        //Inscription dans la base de données
+                        accesLocal.ajoututilisateur(leSexe, lePrenom, age, Double.parseDouble(laTaille), Double.parseDouble(lePoids), lActivite, finalLObjectif);
+                        Toast.makeText(getApplicationContext(), "Utilisateur " + lePrenom + " " + leNom + " bien enregistré", Toast.LENGTH_LONG).show();
+                        startActivity(e);
+                    }
+
+                });
             }
         } else {
-            //Calcul de l'objectif calorique pour un homme
-            Double objcal = (13.7516 * (Integer.parseInt(lePoids))) + (500.33 * (Double.parseDouble(laTaille))) - (6.7550 * age) + 66.473;
-            if (lActivite.equals("Détente")) {
-                //Si l'activité est faible
+            if (cal.get(Calendar.DAY_OF_MONTH) < 10) {
 
-                Integer objectifcalorique = (int) (objcal * 1.375);
-                lObjectif = objectifcalorique;
+                final String heures = (corjour + cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
 
-            } else if (lActivite.equals("Modéré")) {
-                //Si l'activité est modéré
-                Integer objectifcalorique = (int) (objcal * 1.64);
-                lObjectif = objectifcalorique;
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.FRANCE); // format jour / mois / année
 
+                LocalDate date1 = LocalDate.parse(laNaissance, format);
+                LocalDate date2 = LocalDate.parse(heures, format);
+
+                Period period = Period.between(date1, date2);
+                //Différence d'années entre la date de naissance et la date actuelle
+                final Integer age = period.getYears();
+
+
+                //Calcul de l'objectif calorique
+                if (leSexe.equals("F")) {
+                    //Calcul de l'objectif calorique pour une femme
+                    Double objcal = (9.5634 * (Integer.parseInt(lePoids))) + (184.96 * (Double.parseDouble(laTaille))) - (4.6756 * age) + 655.0955;
+                    if (lActivite.equals("Détente")) {
+                        //Si l'activité est faible
+
+                        Integer objectifcalorique = (int) (objcal * 1.375);
+                        lObjectif = objectifcalorique;
+
+                    } else if (lActivite.equals("Modéré")) {
+                        //Si l'activité est modéré
+                        Integer objectifcalorique = (int) (objcal * 1.64);
+                        lObjectif = objectifcalorique;
+
+                    } else {
+                        //Si l'activité est intense
+                        Integer objectifcalorique = (int) (objcal * 1.82);
+                        lObjectif = objectifcalorique;
+                    }
+                } else {
+                    //Calcul de l'objectif calorique pour un homme
+                    Double objcal = (13.7516 * (Integer.parseInt(lePoids))) + (500.33 * (Double.parseDouble(laTaille))) - (6.7550 * age) + 66.473;
+                    if (lActivite.equals("Détente")) {
+                        //Si l'activité est faible
+
+                        Integer objectifcalorique = (int) (objcal * 1.375);
+                        lObjectif = objectifcalorique;
+
+                    } else if (lActivite.equals("Modéré")) {
+                        //Si l'activité est modéré
+                        Integer objectifcalorique = (int) (objcal * 1.64);
+                        lObjectif = objectifcalorique;
+
+                    } else {
+                        //Si l'activité est intense
+                        Integer objectifcalorique = (int) (objcal * 1.82);
+                        lObjectif = objectifcalorique;
+
+                    }
+                }
+
+                final Integer finalLObjectif = lObjectif;
+                btn_inscrire.setOnClickListener(new View.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent e = new Intent(getApplicationContext(), MainActivity.class);
+                        //Inscription dans la base de données
+                        accesLocal.ajoututilisateur(leSexe, lePrenom, age, Double.parseDouble(laTaille), Double.parseDouble(lePoids), lActivite, finalLObjectif);
+                        Toast.makeText(getApplicationContext(), "Utilisateur " + lePrenom + " " + leNom + " bien enregistré", Toast.LENGTH_LONG).show();
+                        startActivity(e);
+                    }
+
+                });
             } else {
-                //Si l'activité est intense
-                Integer objectifcalorique = (int) (objcal * 1.82);
-                lObjectif = objectifcalorique;
+                final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + ds + "/" + cal.get(Calendar.YEAR));
 
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.FRANCE); // format jour / mois / année
+
+                LocalDate date1 = LocalDate.parse(laNaissance, format);
+                LocalDate date2 = LocalDate.parse(heures, format);
+
+                Period period = Period.between(date1, date2);
+                //Différence d'années entre la date de naissance et la date actuelle
+                final Integer age = period.getYears();
+
+
+                //Calcul de l'objectif calorique
+                if (leSexe.equals("F")) {
+                    //Calcul de l'objectif calorique pour une femme
+                    Double objcal = (9.5634 * (Integer.parseInt(lePoids))) + (184.96 * (Double.parseDouble(laTaille))) - (4.6756 * age) + 655.0955;
+                    if (lActivite.equals("Détente")) {
+                        //Si l'activité est faible
+
+                        Integer objectifcalorique = (int) (objcal * 1.375);
+                        lObjectif = objectifcalorique;
+
+                    } else if (lActivite.equals("Modéré")) {
+                        //Si l'activité est modéré
+                        Integer objectifcalorique = (int) (objcal * 1.64);
+                        lObjectif = objectifcalorique;
+
+                    } else {
+                        //Si l'activité est intense
+                        Integer objectifcalorique = (int) (objcal * 1.82);
+                        lObjectif = objectifcalorique;
+                    }
+                } else {
+                    //Calcul de l'objectif calorique pour un homme
+                    Double objcal = (13.7516 * (Integer.parseInt(lePoids))) + (500.33 * (Double.parseDouble(laTaille))) - (6.7550 * age) + 66.473;
+                    if (lActivite.equals("Détente")) {
+                        //Si l'activité est faible
+
+                        Integer objectifcalorique = (int) (objcal * 1.375);
+                        lObjectif = objectifcalorique;
+
+                    } else if (lActivite.equals("Modéré")) {
+                        //Si l'activité est modéré
+                        Integer objectifcalorique = (int) (objcal * 1.64);
+                        lObjectif = objectifcalorique;
+
+                    } else {
+                        //Si l'activité est intense
+                        Integer objectifcalorique = (int) (objcal * 1.82);
+                        lObjectif = objectifcalorique;
+
+                    }
+                }
+
+                final Integer finalLObjectif = lObjectif;
+                btn_inscrire.setOnClickListener(new View.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent e = new Intent(getApplicationContext(), MainActivity.class);
+                        //Inscription dans la base de données
+                        accesLocal.ajoututilisateur(leSexe, lePrenom, age, Double.parseDouble(laTaille), Double.parseDouble(lePoids), lActivite, finalLObjectif);
+                        Toast.makeText(getApplicationContext(), "Utilisateur " + lePrenom + " " + leNom + " bien enregistré", Toast.LENGTH_LONG).show();
+                        startActivity(e);
+                    }
+
+                });
             }
         }
 
-        final Integer finalLObjectif = lObjectif;
-        btn_inscrire.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View v) {
-                Intent e = new Intent(getApplicationContext(), MainActivity.class);
-                //Inscription dans la base de données
-                accesLocal.ajoututilisateur(leSexe, lePrenom, age, Double.parseDouble(laTaille), Double.parseDouble(lePoids), lActivite, finalLObjectif);
-                Toast.makeText(getApplicationContext(), "Utilisateur " + lePrenom + " " + leNom + " bien enregistré", Toast.LENGTH_LONG).show();
-                startActivity(e);
-            }
-
-        });
     }
 }
