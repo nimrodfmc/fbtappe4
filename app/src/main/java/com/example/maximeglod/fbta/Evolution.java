@@ -2,6 +2,8 @@ package com.example.maximeglod.fbta;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.icu.text.RelativeDateTimeFormatter;
+import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -205,10 +207,12 @@ public class Evolution extends Activity {
                         mChart.getAxisRight().setStartAtZero(false);
                         final String heures = (cal.get(Calendar.DAY_OF_MONTH) + "/" + "0" + ds + "/" + cal.get(Calendar.YEAR));
 
-                        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // format jour / mois / année
-
-                        LocalDate date1 = LocalDate.parse(dateduhashmap, format);
-                        LocalDate date2 = LocalDate.parse(heures, format);
+                      DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // format jour / mois / année
+                       // SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                      //  LocalDate date1 = LocalDate.parse(dateduhashmap);
+                       LocalDate date1 = LocalDate.parse(dateduhashmap, format);
+                       LocalDate date2 = LocalDate.parse(heures, format);
+                       // LocalDate date2 = LocalDate.parse(dateduhashmap);
 
                         Period period = Period.between(date1, date2);
                         Integer comparaison = date1.compareTo(date2);

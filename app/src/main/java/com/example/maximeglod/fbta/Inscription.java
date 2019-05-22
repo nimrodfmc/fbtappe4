@@ -68,24 +68,6 @@ public class Inscription extends AppCompatActivity {
         this.naissance = et_age.getText().toString();
 
 
-
-//        et_sexe = (EditText) findViewById(R.id.etSexe);
-//        this.sexe = et_sexe.getText().toString();
-
-        //Checkbox case1 = (Checkbox) findViewById (R.id.radio1);
-
-//        switch (view.getId()){
-//            case R.id.radio1:
-//                if (checked)
-//                    break;
-//            case R.id.radio2:
-//                if (checked)
-//                    break;
-//            case R.id.radio3:
-//                if (checked)
-//                    break;
-//        }
-
         et_taille = (EditText) findViewById(R.id.etTaille);
         this.taille = et_taille.getText().toString();
 
@@ -138,12 +120,15 @@ public class Inscription extends AppCompatActivity {
                         if (et_age.getText().toString().length() < 1) {
                             Toast.makeText(getApplicationContext(), "Veuillez renseigner votre date de age", Toast.LENGTH_LONG).show();
                         } else if (et_age.getText().toString().length() < 1) {
+                            if (et_age.getText().toString()=="0"){
+                                Toast.makeText(getApplicationContext(), "Veuillez renseigner correctement votre age", Toast.LENGTH_LONG).show();
+                            }
                             Toast.makeText(getApplicationContext(), "Veuillez renseigner correctement votre age", Toast.LENGTH_LONG).show();
                         } else {
                             if (et_taille.getText().toString().length() < 1) {
                                 Toast.makeText(getApplicationContext(), "Veuillez renseigner votre taille", Toast.LENGTH_LONG).show();
                             } else if (et_taille.getText().toString().length() == 3) {
-                                Toast.makeText(getApplicationContext(), "Veuillez renseigner votre taille en m", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getApplicationContext(), "Veuillez renseigner votre taille en m", Toast.LENGTH_LONG).show();
                             } else {
                                 if (et_poids.getText().toString().length() < 1) {
                                     Toast.makeText(getApplicationContext(), "Veuillez renseigner votre poids", Toast.LENGTH_LONG).show();

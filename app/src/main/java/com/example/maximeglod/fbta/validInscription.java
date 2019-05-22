@@ -50,10 +50,11 @@ public class validInscription extends AppCompatActivity {
         final String lActivite = getIntent().getStringExtra("Activité sportive");
         tv_prenom.setText("Prénom : " + lePrenom);
         tv_nom.setText("Nom : " + leNom);
-        tv_naissance.setText("Age : " + laNaissance);
-        tv_sexe.setText("Sexe : " + leSexe);
-        tv_taille.setText("Taille : " + laTaille);
-        tv_poids.setText("Poids : " + lePoids);
+        tv_naissance.setText("Age : " + laNaissance + " ans");
+            tv_sexe.setText("Sexe : " + leSexe);
+
+        tv_taille.setText("Taille : " + laTaille + " m");
+        tv_poids.setText("Poids : " + lePoids + " Kg");
         tv_activite.setText("Activité Sportive : " + lActivite);
 
         Integer lObjectif = 0;
