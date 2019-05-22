@@ -69,9 +69,10 @@
         android:text="@string/tvSexe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvTaille"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="@+id/tvTaille"
         app:layout_constraintTop_toBottomOf="@+id/tvAge"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintVertical_bias="0.057" />
 
     <TextView
         android:id="@+id/tvSport"
@@ -220,24 +221,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="JJ/MM/AAAA"
-        android:inputType="textPersonName"
+        android:hint="20"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/tvAge"
         app:layout_constraintEnd_toEndOf="@+id/etTaille"
         app:layout_constraintStart_toStartOf="@+id/etTaille"
         app:layout_constraintTop_toTopOf="@+id/tvAge" />
-
-    <EditText
-        android:id="@+id/etSexe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="M = Homme, F = Femme"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSexe"
-        app:layout_constraintEnd_toEndOf="@+id/etAge"
-        app:layout_constraintStart_toStartOf="@+id/etAge"
-        app:layout_constraintTop_toTopOf="@+id/tvSexe" />
 
     <TextView
         android:id="@+id/textView3"
@@ -252,4 +241,39 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="0dp" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="229dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/etTaille"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvSexe"
+        app:layout_constraintTop_toBottomOf="@+id/etAge"
+        app:layout_constraintVertical_bias="0.618">
+
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Femme" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Homme"
+
+            />
+    </RadioGroup>
 </android.support.constraint.ConstraintLayout>
