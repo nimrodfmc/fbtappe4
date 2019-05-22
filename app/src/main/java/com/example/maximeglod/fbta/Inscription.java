@@ -9,6 +9,8 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +23,12 @@ public class Inscription extends AppCompatActivity {
 
 
     TextView tv_poids, tv_taille, tv_nom, tv_age, tv_sexe, tv_sport, tv_objectif, tv_prenom;
-    EditText et_poids, et_taille, et_nom, et_age, et_objectif, et_prenom, et_sexe;
+    EditText et_poids, et_taille, et_nom, et_age, et_objectif, et_prenom;
+    String et_sexe;
     Button bt_valider;
     Spinner spinner;
-
+    RadioButton r_homme, r_femme;
+    RadioGroup r_grp2;
     private String poids, taille, nom, naissance, sexe, sport, objectif, prenom;
 
     public Inscription() {
@@ -50,7 +54,8 @@ public class Inscription extends AppCompatActivity {
         tv_taille = (TextView) findViewById(R.id.tvTaille);
         tv_sexe = (TextView) findViewById(R.id.tvSexe);
         tv_sport = (TextView) findViewById(R.id.tvSport);
-
+        r_homme = (RadioButton) findViewById(R.id.radio2);
+        r_femme = (RadioButton) findViewById(R.id.radio1);
 
         et_prenom = (EditText) findViewById(R.id.etPrenom);
         et_prenom.requestFocus();
@@ -62,8 +67,6 @@ public class Inscription extends AppCompatActivity {
         et_age = (EditText) findViewById(R.id.etAge);
         this.naissance = et_age.getText().toString();
 
-        et_sexe = (EditText) findViewById(R.id.etSexe);
-        this.sexe = et_sexe.getText().toString();
 
         et_taille = (EditText) findViewById(R.id.etTaille);
         this.taille = et_taille.getText().toString();
@@ -83,8 +86,26 @@ public class Inscription extends AppCompatActivity {
 
 
         bt_valider = (Button) findViewById(R.id.btnProfil);
+        //Listener btn radio homme
+        r_homme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                r_femme.setChecked(false);
+
+            }
+        });
+        //Listner btn radio femme
+        r_femme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                r_homme.setChecked(false);
+
+            }
+        });
 
         bt_valider.setOnClickListener(new View.OnClickListener() {
+
+            private String sexe;
 
             @Override
             public void onClick(View v) {
@@ -97,35 +118,45 @@ public class Inscription extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Veuillez renseigner votre nom", Toast.LENGTH_LONG).show();
                     } else {
                         if (et_age.getText().toString().length() < 1) {
-                            Toast.makeText(getApplicationContext(), "Veuillez renseigner votre date de naissance", Toast.LENGTH_LONG).show();
-                        } else if (et_age.getText().toString().length() < 10) {
-                            Toast.makeText(getApplicationContext(), "Veuillez renseigner correctement votre date de naissance", Toast.LENGTH_LONG).show();
-                        } else {
-                            if (et_sexe.getText().toString().length() < 1) {
-                                Toast.makeText(getApplicationContext(), "Veuillez renseigner votre sexe", Toast.LENGTH_LONG).show();
-                            } else if (et_sexe.getText().toString().equals("M") || et_sexe.getText().toString().equals("F")) {
-                                if (et_taille.getText().toString().length() < 1) {
-                                    Toast.makeText(getApplicationContext(), "Veuillez renseigner votre taille", Toast.LENGTH_LONG).show();
-                                } else if (et_taille.getText().toString().length() == 3) {
-                                    Toast.makeText(getApplicationContext(), "Veuillez renseigner votre taille en m", Toast.LENGTH_LONG).show();
-                                } else {
-                                    if (et_poids.getText().toString().length() < 1) {
-                                        Toast.makeText(getApplicationContext(), "Veuillez renseigner votre poids", Toast.LENGTH_LONG).show();
-                                    } else {
-
-                                        i.putExtra("Prénom", et_prenom.getText().toString());
-                                        i.putExtra("Nom", et_nom.getText().toString());
-                                        i.putExtra("Naissance", et_age.getText().toString());
-                                        i.putExtra("Sexe", et_sexe.getText().toString());
-                                        i.putExtra("Taille", et_taille.getText().toString());
-                                        i.putExtra("Poids", et_poids.getText().toString());
-                                        i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
-                                        startActivity(i);
-                                    }
-                                }
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Veuillez renseigner correctement votre sexe", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Veuillez renseigner votre date de age", Toast.LENGTH_LONG).show();
+                        } else if (et_age.getText().toString().length() < 1) {
+                            if (et_age.getText().toString()=="0"){
+                                Toast.makeText(getApplicationContext(), "Veuillez renseigner correctement votre age", Toast.LENGTH_LONG).show();
                             }
+                            Toast.makeText(getApplicationContext(), "Veuillez renseigner correctement votre age", Toast.LENGTH_LONG).show();
+                        } else {
+                            if (et_taille.getText().toString().length() < 1) {
+                                Toast.makeText(getApplicationContext(), "Veuillez renseigner votre taille", Toast.LENGTH_LONG).show();
+                            } else if (et_taille.getText().toString().length() == 3) {
+                                //Toast.makeText(getApplicationContext(), "Veuillez renseigner votre taille en m", Toast.LENGTH_LONG).show();
+                            } else {
+                                if (et_poids.getText().toString().length() < 1) {
+                                    Toast.makeText(getApplicationContext(), "Veuillez renseigner votre poids", Toast.LENGTH_LONG).show();
+                                } else {
+
+                                    if (r_homme.isChecked()) {
+
+                                        et_sexe = (String) "H";
+                                        this.sexe = et_sexe;
+
+
+                                    } else if (r_femme.isChecked()) {
+//            String sexebtn = "F";
+                                        et_sexe = (String) "F";
+                                        this.sexe = et_sexe;
+                                    }
+
+                                    i.putExtra("Prénom", et_prenom.getText().toString());
+                                    i.putExtra("Nom", et_nom.getText().toString());
+                                    i.putExtra("Naissance", et_age.getText().toString());
+                                    i.putExtra("Sexe", et_sexe);
+                                    i.putExtra("Taille", et_taille.getText().toString());
+                                    i.putExtra("Poids", et_poids.getText().toString());
+                                    i.putExtra("Activité sportive", spinner.getSelectedItem().toString());
+                                    startActivity(i);
+                                }
+                            }
+
                         }
                     }
                 }
@@ -136,6 +167,22 @@ public class Inscription extends AppCompatActivity {
 
     }
 
+//    public void buttonclicked(View view) {
+//        boolean checked = ((RadioButton) view).isChecked();
+//        switch (view.getId()) {
+//            case R.id.radio1:
+//                if (checked)
+//                    r_homme.setChecked(false);
+//                r_femme.toggle();
+//                break;
+//            case R.id.radio2:
+//                if (checked)
+//                    r_femme.setChecked(false);
+//                r_homme.toggle();
+//                break;
+//
+//        }
+//    }
 
     public String getPoids() {
         return this.poids;
